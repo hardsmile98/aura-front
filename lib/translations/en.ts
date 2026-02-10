@@ -1,24 +1,25 @@
 export const en = {
   metadata: {
-    siteName: "Hint",
-    title: "Hint — Discover Your True Soulmate",
+    siteName: "Aura",
+    title: "Aura: Hyper-personalized astrology & horoscope",
     description:
-      "Take the quiz and discover what your soulmate looks like. 87% of users said it felt familiar.",
+      "Discover your unique destiny and connect with your soulmate. 87% of users said it felt familiar.",
   },
   common: {
     header: {
-      logo: "Hint",
+      logo: "Aura",
     },
   },
   soulmate: {
     welcome: {
-      headline: "Ready to finally discover your True Soulmate?",
+      headlineStart: "Ready to finally discover",
+      headlineEnd: " your True Soulmate?",
       stat1Value: "87.6%",
       stat1Label: "Say it felt Familiar",
       stat2Value: "173K+",
       stat2Label: "Happy Customers",
       ctaButton: "Let's begin",
-      subheadline: "No long forms, just quick taps",
+      subheadline: "It takes only 1 minute",
     },
     quiz: {
       comingSoon: "Quiz (coming soon)",

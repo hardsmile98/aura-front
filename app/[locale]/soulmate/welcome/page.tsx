@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { getTranslations } from "@/lib/translations";
 import type { Locale } from "@/lib/translations";
+import Image from "next/image";
 
 export default async function SoulmateWelcomePage({
   params,
@@ -16,9 +17,22 @@ export default async function SoulmateWelcomePage({
       <Header locale={locale as Locale} />
 
       <main className="flex-1 flex flex-col items-center justify-center px-6 py-12 max-w-lg mx-auto text-center">
-        <h1 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100 leading-tight mb-12">
-          {t.soulmate.welcome.headline}
+        <h1 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-zinc-100 leading-tight mb-4 md:mb-12">
+          <span className="text-violet-600 dark:text-violet-400">
+            {t.soulmate.welcome.headlineStart}
+          </span>
+          {t.soulmate.welcome.headlineEnd}
         </h1>
+
+        <div className="rounded-lg border-2 border-zinc-300 dark:border-zinc-600 p-2 my-6 overflow-hidden min-h-[180px] md:min-h-[280px]">
+          <Image
+            src="/portrait.png"
+            alt="Soulmate"
+            width={160}
+            height={280}
+            className="h-[180px] w-auto object-cover md:h-[280px]"
+          />
+        </div>
 
         <div className="flex gap-8 md:gap-16 mb-12">
           <div className="text-center">
@@ -41,7 +55,7 @@ export default async function SoulmateWelcomePage({
 
         <Link
           href={`/${locale}/soulmate/quiz`}
-          className="w-full max-w-xs py-4 px-8 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white font-semibold rounded-2xl shadow-lg shadow-violet-500/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+          className="w-full max-w-xs py-4 px-8 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white font-semibold rounded-2xl shadow-lg shadow-violet-500/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
         >
           {t.soulmate.welcome.ctaButton}
         </Link>
