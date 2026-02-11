@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Header } from "@/components/Header";
+import { ButtonLink } from "@/components/ButtonLink";
 import { getTranslations } from "@/lib/translations";
 import type { Locale } from "@/lib/translations";
 import Image from "next/image";
@@ -10,11 +11,12 @@ export default async function SoulmateWelcomePage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+
   const t = getTranslations((locale as Locale) || "en");
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-pink-50 dark:from-violet-950/20 dark:via-zinc-950 dark:to-pink-950/20 flex flex-col">
-      <Header locale={locale as Locale} />
+      <Header />
 
       <main className="flex-1 flex flex-col items-center justify-center px-6 py-12 max-w-lg mx-auto text-center">
         <h1 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-zinc-100 leading-tight mb-4 md:mb-12">
@@ -28,9 +30,10 @@ export default async function SoulmateWelcomePage({
           <Image
             src="/portrait.png"
             alt="Soulmate"
-            width={160}
+            width={220}
             height={280}
             className="h-[180px] w-auto object-cover md:h-[280px]"
+            loading="lazy"
           />
         </div>
 
@@ -53,12 +56,9 @@ export default async function SoulmateWelcomePage({
           </div>
         </div>
 
-        <Link
-          href={`/${locale}/soulmate/quiz`}
-          className="w-full max-w-xs py-4 px-8 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white font-semibold rounded-2xl shadow-lg shadow-violet-500/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
-        >
+        <ButtonLink href={`/${locale}/soulmate/review`}>
           {t.soulmate.welcome.ctaButton}
-        </Link>
+        </ButtonLink>
 
         <p className="text-zinc-600 dark:text-zinc-400 mt-6 text-sm">
           {t.soulmate.welcome.subheadline}
