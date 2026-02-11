@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { redirect } from "next/navigation";
 import { getTranslations } from "@/lib/translations";
 import { isValidLocale, defaultLocale, locales } from "@/lib/i18n";
+import { RedirectWithParams } from "@/components/RedirectWithParams";
 import type { Locale } from "@/lib/translations";
 
 export function generateStaticParams() {
@@ -41,7 +41,7 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   if (!isValidLocale(locale)) {
-    redirect(`/${defaultLocale}`);
+    return <RedirectWithParams to={`/${defaultLocale}`} />;
   }
 
   return <>{children}</>;

@@ -1,5 +1,9 @@
-import Image from "next/image";
-import Link from "next/link";
+'use client';
+
+import Image from 'next/image';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
 type HeaderProps = {
   /** Show back button (for quiz steps > 1) */
@@ -14,30 +18,59 @@ type HeaderProps = {
   totalSteps?: number;
 };
 
-export function Header({ backHref, onBack, backLabel = "Back", currentStep = 1, totalSteps }: HeaderProps) {
+const backButtonClass =
+  'absolute left-4 md:left-6 top-1/2 -translate-y-1/2 inline-flex items-center justify-center gap-1.5 p-3 md:p-0 text-base font-semibold text-zinc-900 dark:text-zinc-100 hover:text-violet-600 dark:hover:text-violet-400 transition-colors';
+
+function HeaderWithParams({
+  backHref,
+  onBack,
+  backLabel = 'Back',
+  currentStep = 1,
+  totalSteps,
+}: HeaderProps) {
+  const searchParams = useSearchParams();
+
+  const url = new URL(backHref!, window.location.origin);
+
+  url.search = searchParams.toString();
+
+  const resolvedBackHref = url.pathname + url.search;
+
+  return (
+    <HeaderContent
+      backHref={resolvedBackHref}
+      onBack={onBack}
+      backLabel={backLabel}
+      currentStep={currentStep}
+      totalSteps={totalSteps}
+    />
+  );
+}
+
+function HeaderContent({
+  backHref,
+  onBack,
+  backLabel = 'Back',
+  currentStep = 1,
+  totalSteps,
+}: HeaderProps) {
   const showBack = (backHref || onBack) && currentStep > 1;
 
-  const progressPercent = totalSteps && currentStep > 0
-    ? (currentStep / totalSteps) * 100
-    : 0;
+  const progressPercent =
+    totalSteps && currentStep > 0 ? (currentStep / totalSteps) * 100 : 0;
 
   return (
     <header className="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-b border-zinc-200 dark:border-zinc-800">
       <div className="relative flex justify-center items-center px-4 md:px-6 py-4">
         {showBack ? (
           onBack ? (
-            <button
-              type="button"
-              onClick={onBack}
-              className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 inline-flex items-center justify-center gap-1.5 p-3 md:p-0 text-base font-semibold text-zinc-900 dark:text-zinc-100 hover:text-violet-600 dark:hover:text-violet-400 transition-colors"
-            >
+            <button type="button" onClick={onBack} className={backButtonClass}>
               <svg
                 className="h-5 w-5 shrink-0"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth={2.5}
-                viewBox="0 0 24 24"
-              >
+                viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -47,17 +80,13 @@ export function Header({ backHref, onBack, backLabel = "Back", currentStep = 1, 
               <span className="hidden md:inline">{backLabel}</span>
             </button>
           ) : (
-            <Link
-              href={backHref!}
-              className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 inline-flex items-center justify-center gap-1.5 p-3 md:p-0 text-base font-semibold text-zinc-900 dark:text-zinc-100 hover:text-violet-600 dark:hover:text-violet-400 transition-colors"
-            >
+            <Link href={backHref!} className={backButtonClass}>
               <svg
                 className="h-5 w-5 shrink-0"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth={2.5}
-                viewBox="0 0 24 24"
-              >
+                viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -69,13 +98,7 @@ export function Header({ backHref, onBack, backLabel = "Back", currentStep = 1, 
           )
         ) : null}
 
-        <Image
-          priority
-          src="/logo.svg"
-          alt="Aura"
-          width={100}
-          height={28}
-        />
+        <Image priority src="/logo.svg" alt="Aura" width={100} height={28} />
 
         <div className="absolute right-4 md:right-6">
           {totalSteps != null && currentStep > 0 ? (
@@ -96,4 +119,16 @@ export function Header({ backHref, onBack, backLabel = "Back", currentStep = 1, 
       )}
     </header>
   );
+}
+
+export function Header(props: HeaderProps) {
+  if (props.backHref) {
+    return (
+      <Suspense
+        fallback={<HeaderContent {...props} backHref={props.backHref} />}>
+        <HeaderWithParams {...props} />
+      </Suspense>
+    );
+  }
+  return <HeaderContent {...props} />;
 }

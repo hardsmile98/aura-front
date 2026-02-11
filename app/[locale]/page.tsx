@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import { RedirectWithParams } from "@/components/RedirectWithParams";
 
 export default async function LocaleHome({
   params,
@@ -6,5 +6,5 @@ export default async function LocaleHome({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  redirect(`/${locale}/soulmate/welcome`);
+  return <RedirectWithParams to={`/${locale}/soulmate/welcome`} />;
 }
