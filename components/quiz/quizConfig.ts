@@ -20,6 +20,10 @@ export type QuizState = {
   idealPartnerRelationships: string;
   relationshipFear: string;
   sharedGoals: string[];
+  /** Ответ из модалки: считаете ли себя духовным человеком */
+  spiritualPerson: string;
+  /** Ответ из модалки: знакомы ли с концепцией Психического Искусства */
+  psychicArtistry: string;
 };
 
 export type QuizStepSelectOption = {
@@ -337,4 +341,6 @@ export const INITIAL_QUIZ_STATE: QuizState = {
   idealPartnerRelationships: "",
   relationshipFear: "",
   sharedGoals: [],
+  spiritualPerson: "",
+  psychicArtistry: "",
 };

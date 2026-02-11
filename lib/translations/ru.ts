@@ -154,9 +154,19 @@ export const ru = {
       step17Option7: "✨ Другое",
     },
     result: {
-      title: "Анализируем твои ответы...",
-      subtitle: "Создаём портрет твоей родственной души",
-      progress: "Расчёт...",
+      title: "Готовим твои персональные инсайты о родственной душе",
+      progressHeartIntentions: "Намерения сердца",
+      progressPortrait: "Портрет родственной души",
+      progressConnection: "Взгляды на связи",
+      modalQuestion1: "Считаете ли вы себя духовным человеком?",
+      modalQuestion2: "Ты знаком(а) с понятием “интуитивного искусства”?",
+      modalNo: "Нет",
+      modalYes: "Да",
+      warningTitle: "ПРЕДУПРЕЖДЕНИЕ",
+      warningMessage:
+        "Во время поиска твоей родственной души мы заметили нечто тревожное. Готовься к неожиданным результатам.",
+      warningPrivacy: "Мы не делимся никакой личной информацией",
+      warningUnderstand: "Понимаю",
     },
     zodiacSigns: {
       aries: "Овен",

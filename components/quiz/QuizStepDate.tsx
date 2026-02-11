@@ -6,7 +6,7 @@ import type { Locale } from "@/lib/translations";
 const inputClassName =
   "w-full py-4 px-4 rounded-2xl border-2 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 focus:border-violet-400 dark:focus:border-violet-500 focus:ring-2 focus:ring-violet-200 dark:focus:ring-violet-900/50 outline-none transition-all";
 const nextButtonClassName =
-  "w-full py-4 px-8 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-2xl shadow-lg shadow-violet-500/30 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center";
+  "w-full py-4 px-8 bg-violet-600 hover:bg-violet-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center";
 
 type QuizStepDateProps = {
   value: string;
@@ -50,7 +50,9 @@ export function QuizStepDate({
           onChange={(e) => onChange(e.target.value)}
           className={inputClassName}
           placeholder={placeholder}
+          lang={locale === "ru" ? "ru" : "en"}
         />
+
         <button
           type="button"
           onClick={onNext}

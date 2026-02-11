@@ -1,0 +1,42 @@
+"use client";
+
+type QuizResultProgressProps = {
+  title: string;
+  labels: string[];
+  progress: number[];
+};
+
+export function QuizResultProgress({
+  title,
+  labels,
+  progress,
+}: QuizResultProgressProps) {
+  return (
+    <main className="flex-1 flex flex-col items-center px-6 py-8 md:py-16 max-w-lg mx-auto w-full">
+      <h1 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-8 text-center">
+        {title}
+      </h1>
+
+      <div className="w-full space-y-5 text-left">
+        {labels.map((label, i) => (
+          <div key={i}>
+            <div className="flex justify-between items-center mb-1.5">
+              <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                {label}
+              </span>
+              <span className="text-sm text-zinc-500 dark:text-zinc-400">
+                {Math.round(progress[i])}%
+              </span>
+            </div>
+            <div className="h-2.5 w-full rounded-full bg-zinc-200 dark:bg-zinc-800 overflow-hidden">
+              <div
+                className="h-full bg-violet-600 dark:bg-violet-500 transition-all duration-300 ease-out rounded-full"
+                style={{ width: `${progress[i]}%` }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </main>
+  );
+}

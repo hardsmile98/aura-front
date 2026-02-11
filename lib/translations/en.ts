@@ -154,9 +154,19 @@ export const en = {
       step17Option7: "✨ Other",
     },
     result: {
-      title: "Analyzing your answers...",
-      subtitle: "Creating your soulmate sketch",
-      progress: "Calculating...",
+      title: "Preparing Your Personal Soulmate Insights",
+      progressHeartIntentions: "Heart's Intentions",
+      progressPortrait: "Portrait of the Soulmate",
+      progressConnection: "Connection Insights",
+      modalQuestion1: "Do you consider yourself a spiritual person?",
+      modalQuestion2: "Are you familiar with the concept of Psychic Artistry?",
+      modalNo: "No",
+      modalYes: "Yes",
+      warningTitle: "WARNING",
+      warningMessage:
+        "We have noticed something shocking while searching for your Soulmate. Prepare for surprising results!",
+      warningPrivacy: "We don't share any personal information",
+      warningUnderstand: "I Understand",
     },
     zodiacSigns: {
       aries: "Aries",

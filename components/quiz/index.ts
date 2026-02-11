@@ -2,6 +2,9 @@ export { QuizStepSelect } from "./QuizStepSelect";
 export { QuizStepDate } from "./QuizStepDate";
 export { QuizStepMultiSelect } from "./QuizStepMultiSelect";
 export { QuizInfoSlide } from "./QuizInfoSlide";
+export { QuizResultProgress } from "./QuizResultProgress";
+export { QuizResultQuestionModal } from "./QuizResultQuestionModal";
+export { QuizResultWarningModal } from "./QuizResultWarningModal";
 export {
   QUIZ_STEPS,
   INFO_SLIDES,

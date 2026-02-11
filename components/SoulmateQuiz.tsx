@@ -93,7 +93,9 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
   };
 
   if (showResult) {
-    return <QuizResult locale={locale} />;
+    return (
+      <QuizResult locale={locale} onUpdateQuiz={updateQuiz} />
+    );
   }
 
   if (infoSlide) {

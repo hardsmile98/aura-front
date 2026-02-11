@@ -89,6 +89,33 @@ export function SparklesIcon({ className }: { className?: string }) {
   );
 }
 
+/** Иконка для модальных окон результата — два перекрывающихся четырёхлучевых звёзды */
+export function SparkleModalIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 48 48"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path
+        d="M24 8l3 9 9 3-9 3-3 9-3-9-9-3 9-3 3-9z"
+        fill="#fbbf24"
+        stroke="#f59e0b"
+      />
+      <path
+        d="M24 20l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z"
+        fill="#ec4899"
+        stroke="#db2777"
+        transform="rotate(45 24 24)"
+      />
+    </svg>
+  );
+}
+
 /** Реестр иконок для информационных слайдов */
 export const INFO_SLIDE_ICONS = {
   target: TargetIcon,
