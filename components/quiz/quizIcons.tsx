@@ -134,6 +134,92 @@ export function BrainIcon({ className }: { className?: string }) {
   );
 }
 
+export function TargetIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 120 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="60" cy="60" r="50" className="stroke-violet-400" strokeWidth="4" fill="none" />
+      <circle cx="60" cy="60" r="36" className="stroke-violet-400/80" strokeWidth="3" fill="none" />
+      <circle cx="60" cy="60" r="22" className="stroke-violet-500" strokeWidth="2" fill="none" />
+      <circle cx="60" cy="60" r="10" className="fill-violet-600" />
+      <path
+        d="M70 35 L88 55 L68 52 L68 42 Z"
+        className="fill-amber-400 stroke-amber-500"
+        strokeWidth="1.5"
+      />
+      <circle cx="38" cy="82" r="14" className="fill-emerald-500" />
+      <path
+        d="M32 82 L36 86 L46 76"
+        stroke="white"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+    </svg>
+  );
+}
+
+export function SparklesIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z" />
+      <path d="M19 12l.75 2.25L22 15l-2.25.75L19 18l-.75-2.25L16 15l2.25-.75L19 12z" />
+      <path d="M5 16l.5 1.5L7 18l-1.5.5L5 20l-.5-1.5L3 18l1.5-.5L5 16z" />
+    </svg>
+  );
+}
+
+export function StarCircleIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 7l1.5 4.5L18 12l-4.5 1.5L12 18l-1.5-4.5L6 12l4.5-1.5L12 7z" />
+    </svg>
+  );
+}
+
+/** Реестр иконок для информационных слайдов */
+export const INFO_SLIDE_ICONS = {
+  target: TargetIcon,
+  sparkles: SparklesIcon,
+  star: StarCircleIcon,
+  heart: HeartIcon,
+  fire: FireIcon,
+} as const;
+
+export type InfoSlideIconName = keyof typeof INFO_SLIDE_ICONS;
+
+export function getInfoSlideIcon(name: InfoSlideIconName) {
+  return INFO_SLIDE_ICONS[name];
+}
+
+/** Возвращает React-элемент иконки (для избежания «component during render») */
+export function renderInfoSlideIcon(name: InfoSlideIconName, className?: string) {
+  const Icon = INFO_SLIDE_ICONS[name];
+  return Icon ? <Icon className={className} /> : null;
+}
+
 /** Реестр иконок для использования в конфиге квиза */
 export const QUIZ_ICONS = {
   male: MaleIcon,

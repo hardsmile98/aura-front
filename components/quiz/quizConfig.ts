@@ -1,5 +1,5 @@
 import type { Translations } from "@/lib/translations";
-import type { QuizIconName } from "./quizIcons";
+import type { QuizIconName, InfoSlideIconName } from "./quizIcons";
 
 export type QuizState = {
   step: number;
@@ -62,7 +62,7 @@ export const QUIZ_STEPS: QuizStepConfig[] = [
       { value: "male", labelKey: "step1OptionMale", icon: "male" },
       { value: "female", labelKey: "step1OptionFemale", icon: "female" },
     ],
-    layout: "verticalIcons",
+    layout: "horizontalIcons",
     autoAdvance: true,
   },
   {
@@ -73,7 +73,6 @@ export const QUIZ_STEPS: QuizStepConfig[] = [
       { value: "men", labelKey: "step2Option1", icon: "male" },
       { value: "women", labelKey: "step2Option2", icon: "female" },
     ],
-    layout: "horizontalIcons",
     autoAdvance: true,
   },
   {
@@ -81,11 +80,10 @@ export const QUIZ_STEPS: QuizStepConfig[] = [
     field: "idealAge",
     titleKey: "step3Title",
     options: [
-      { value: "18-25", labelKey: "step3Option1" },
-      { value: "26-35", labelKey: "step3Option2" },
-      { value: "36-45", labelKey: "step3Option3" },
-      { value: "46-55", labelKey: "step3Option4" },
-      { value: "56+", labelKey: "step3Option5" },
+      { value: "20-30", labelKey: "step3Option1" },
+      { value: "30-40", labelKey: "step3Option2" },
+      { value: "40-50", labelKey: "step3Option3" },
+      { value: "50+", labelKey: "step3Option4" },
     ],
     autoAdvance: true,
   },
@@ -94,11 +92,11 @@ export const QUIZ_STEPS: QuizStepConfig[] = [
     field: "appearanceType",
     titleKey: "step4Title",
     options: [
-      { value: "romantic", labelKey: "step4Option1" },
-      { value: "sporty", labelKey: "step4Option2" },
-      { value: "classic", labelKey: "step4Option3" },
-      { value: "creative", labelKey: "step4Option4" },
-      { value: "natural", labelKey: "step4Option5" },
+      { value: "european", labelKey: "step4Option1" },
+      { value: "latino", labelKey: "step4Option2" },
+      { value: "african", labelKey: "step4Option3" },
+      { value: "asian", labelKey: "step4Option4" },
+      { value: "no-preference", labelKey: "step4Option5" },
     ],
     autoAdvance: true,
   },
@@ -121,11 +119,12 @@ export const QUIZ_STEPS: QuizStepConfig[] = [
     field: "soulmatePriority",
     titleKey: "step6Title",
     options: [
-      { value: "connection", labelKey: "step6Option1" },
-      { value: "interests", labelKey: "step6Option2" },
-      { value: "trust", labelKey: "step6Option3" },
-      { value: "adventure", labelKey: "step6Option4" },
-      { value: "support", labelKey: "step6Option5" },
+      { value: "kindness", labelKey: "step6Option1" },
+      { value: "loyalty", labelKey: "step6Option2" },
+      { value: "intelligence", labelKey: "step6Option3" },
+      { value: "creativity", labelKey: "step6Option4" },
+      { value: "passion", labelKey: "step6Option5" },
+      { value: "empathy", labelKey: "step6Option6" },
     ],
     autoAdvance: true,
   },
@@ -141,12 +140,11 @@ export const QUIZ_STEPS: QuizStepConfig[] = [
     field: "element",
     titleKey: "step8Title",
     options: [
-      { value: "fire", labelKey: "step8Option1", icon: "fire" },
-      { value: "water", labelKey: "step8Option2", icon: "water" },
-      { value: "earth", labelKey: "step8Option3", icon: "earth" },
-      { value: "air", labelKey: "step8Option4", icon: "air" },
+      { value: "fire", labelKey: "step8Option1" },
+      { value: "water", labelKey: "step8Option2" },
+      { value: "earth", labelKey: "step8Option3" },
+      { value: "air", labelKey: "step8Option4" },
     ],
-    layout: "horizontalIcons",
     autoAdvance: true,
   },
   {
@@ -154,11 +152,10 @@ export const QUIZ_STEPS: QuizStepConfig[] = [
     field: "decisionType",
     titleKey: "step9Title",
     options: [
-      { value: "head", labelKey: "step9Option1", icon: "brain" },
-      { value: "heart", labelKey: "step9Option2", icon: "heart" },
+      { value: "head", labelKey: "step9Option1" },
+      { value: "heart", labelKey: "step9Option2" },
       { value: "depends", labelKey: "step9Option3" },
     ],
-    layout: "horizontalIcons",
     autoAdvance: true,
   },
   {
@@ -167,10 +164,11 @@ export const QUIZ_STEPS: QuizStepConfig[] = [
     titleKey: "step10Title",
     options: [
       { value: "trust", labelKey: "step10Option1" },
-      { value: "communication", labelKey: "step10Option2" },
-      { value: "self-doubt", labelKey: "step10Option3" },
-      { value: "vulnerability", labelKey: "step10Option4" },
-      { value: "past", labelKey: "step10Option5" },
+      { value: "find-the-one", labelKey: "step10Option2" },
+      { value: "keep-spark", labelKey: "step10Option3" },
+      { value: "understand-needs", labelKey: "step10Option4" },
+      { value: "let-go-past", labelKey: "step10Option5" },
+      { value: "uncertainty", labelKey: "step10Option6" },
     ],
     autoAdvance: true,
   },
@@ -179,11 +177,12 @@ export const QUIZ_STEPS: QuizStepConfig[] = [
     field: "relationshipRedFlag",
     titleKey: "step11Title",
     options: [
-      { value: "dishonesty", labelKey: "step11Option1" },
-      { value: "disrespect", labelKey: "step11Option2" },
-      { value: "unavailable", labelKey: "step11Option3" },
-      { value: "controlling", labelKey: "step11Option4" },
-      { value: "uncommitted", labelKey: "step11Option5" },
+      { value: "distrust", labelKey: "step11Option1" },
+      { value: "communication", labelKey: "step11Option2" },
+      { value: "jealousy", labelKey: "step11Option3" },
+      { value: "disrespect", labelKey: "step11Option4" },
+      { value: "inconsistency", labelKey: "step11Option5" },
+      { value: "egocentrism", labelKey: "step11Option6" },
     ],
     autoAdvance: true,
   },
@@ -202,11 +201,11 @@ export const QUIZ_STEPS: QuizStepConfig[] = [
     field: "idealRelationships",
     titleKey: "step13Title",
     options: [
-      { value: "passionate", labelKey: "step13Option1" },
-      { value: "calm", labelKey: "step13Option2" },
+      { value: "partnership", labelKey: "step13Option1" },
+      { value: "friendship", labelKey: "step13Option2" },
       { value: "adventurous", labelKey: "step13Option3" },
-      { value: "spiritual", labelKey: "step13Option4" },
-      { value: "playful", labelKey: "step13Option5" },
+      { value: "deep-connection", labelKey: "step13Option4" },
+      { value: "growth-together", labelKey: "step13Option5" },
     ],
     autoAdvance: true,
   },
@@ -228,11 +227,13 @@ export const QUIZ_STEPS: QuizStepConfig[] = [
     field: "idealPartnerRelationships",
     titleKey: "step15Title",
     options: [
-      { value: "friends", labelKey: "step15Option1" },
-      { value: "independent", labelKey: "step15Option2" },
-      { value: "traditional", labelKey: "step15Option3" },
-      { value: "unconventional", labelKey: "step15Option4" },
-      { value: "growth", labelKey: "step15Option5" },
+      { value: "deep-close", labelKey: "step15Option1" },
+      { value: "fun-adventurous", labelKey: "step15Option2" },
+      { value: "supportive", labelKey: "step15Option3" },
+      { value: "passionate", labelKey: "step15Option4" },
+      { value: "calm-reliable", labelKey: "step15Option5" },
+      { value: "growth-open", labelKey: "step15Option6" },
+      { value: "other", labelKey: "step15Option7" },
     ],
     autoAdvance: true,
   },
@@ -241,11 +242,13 @@ export const QUIZ_STEPS: QuizStepConfig[] = [
     field: "relationshipFear",
     titleKey: "step16Title",
     options: [
-      { value: "betrayal", labelKey: "step16Option1" },
-      { value: "losing", labelKey: "step16Option2" },
-      { value: "rejection", labelKey: "step16Option3" },
-      { value: "boredom", labelKey: "step16Option4" },
-      { value: "hurt", labelKey: "step16Option5" },
+      { value: "lose-trust", labelKey: "step16Option1" },
+      { value: "drift-apart", labelKey: "step16Option2" },
+      { value: "misunderstood", labelKey: "step16Option3" },
+      { value: "lack-involvement", labelKey: "step16Option4" },
+      { value: "vulnerable", labelKey: "step16Option5" },
+      { value: "hurt-again", labelKey: "step16Option6" },
+      { value: "other", labelKey: "step16Option7" },
     ],
     autoAdvance: true,
   },
@@ -255,15 +258,51 @@ export const QUIZ_STEPS: QuizStepConfig[] = [
     titleKey: "step17Title",
     options: [
       { value: "family", labelKey: "step17Option1" },
-      { value: "career", labelKey: "step17Option2" },
-      { value: "travel", labelKey: "step17Option3" },
+      { value: "travel", labelKey: "step17Option2" },
+      { value: "business", labelKey: "step17Option3" },
       { value: "development", labelKey: "step17Option4" },
-      { value: "creative", labelKey: "step17Option5" },
-      { value: "financial", labelKey: "step17Option6" },
-      { value: "spiritual", labelKey: "step17Option7" },
-      { value: "health", labelKey: "step17Option8" },
+      { value: "financial", labelKey: "step17Option5" },
+      { value: "positive-change", labelKey: "step17Option6" },
+      { value: "other", labelKey: "step17Option7" },
     ],
     submitLabelKey: "submit",
+  },
+];
+
+/** Информационные слайды между шагами (не считаются в прогрессе) */
+export type InfoSlideConfig = {
+  afterStep: number;
+  titleKey: string;
+  /** Иконка слайда */
+  icon: InfoSlideIconName;
+  /** Поле из QuizState для выбора описания по значению */
+  descriptionByValue: Record<string, string>;
+};
+
+export const INFO_SLIDES: InfoSlideConfig[] = [
+  {
+    afterStep: 6,
+    titleKey: "slide1Title",
+    icon: "target",
+    descriptionByValue: {
+      kindness: "slide1DescKindness",
+      loyalty: "slide1DescLoyalty",
+      intelligence: "slide1DescIntelligence",
+      creativity: "slide1DescCreativity",
+      passion: "slide1DescPassion",
+      empathy: "slide1DescEmpathy",
+    },
+  },
+  {
+    afterStep: 8,
+    titleKey: "slide2Title",
+    icon: "sparkles",
+    descriptionByValue: {
+      fire: "slide2DescFire",
+      water: "slide2DescWater",
+      earth: "slide2DescEarth",
+      air: "slide2DescAir",
+    },
   },
 ];
 

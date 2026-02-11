@@ -7,7 +7,7 @@ import type { Locale } from "@/lib/translations";
 import type { QuizStepSelectOption } from "./quizConfig";
 
 const optionButtonBase =
-  "rounded-2xl border-2 transition-all text-center font-medium cursor-pointer flex items-center justify-center ";
+  "rounded-2xl border-2 transition-all text-center font-medium cursor-pointer flex items-center justify-center text-base";
 const optionButtonSelected =
   "border-violet-500 dark:border-violet-400 bg-violet-50 dark:bg-violet-950/40 text-violet-700 dark:text-violet-300";
 const optionButtonDefault =
@@ -26,7 +26,9 @@ type QuizStepSelectProps = {
 
 function renderIcon(iconName?: QuizIconName, className = "h-10 w-10") {
   if (!iconName) return null;
+
   const Icon = getQuizIcon(iconName);
+
   return Icon ? <Icon className={className} /> : null;
 }
 
@@ -67,7 +69,7 @@ export function QuizStepSelect({
         ? "py-5 px-5 flex-1 min-w-[4rem] text-2xl"
         : isHorizontal
           ? "py-4 px-6 flex-1 min-w-0"
-          : "w-full py-4 px-6";
+          : "w-full py-4 px-6 text-left justify-start";
 
   const renderLabel = (opt: QuizStepSelectOption) => {
     const label = tQuiz[opt.labelKey];

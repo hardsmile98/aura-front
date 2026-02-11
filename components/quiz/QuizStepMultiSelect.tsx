@@ -6,7 +6,7 @@ import type { Locale } from "@/lib/translations";
 import type { QuizStepSelectOption } from "./quizConfig";
 
 const optionButtonBase =
-  "w-full py-4 px-6 rounded-2xl border-2 transition-all font-medium cursor-pointer flex items-center gap-3 text-left ";
+  "w-full py-4 px-6 rounded-2xl border-2 transition-all font-medium cursor-pointer flex items-center gap-3 text-left text-base";
 const optionButtonSelected =
   "border-violet-500 dark:border-violet-400 bg-violet-50 dark:bg-violet-950/40 text-violet-700 dark:text-violet-300";
 const optionButtonDefault =
@@ -55,12 +55,12 @@ export function QuizStepMultiSelect({
             <span
               className={`w-6 h-6 rounded border-2 flex items-center justify-center shrink-0 ${
                 value.includes(opt.value)
-                  ? "border-violet-500 dark:border-violet-400 bg-violet-500 dark:bg-violet-400"
+                  ? "border-violet-500 dark:border-violet-400 bg-violet-100 dark:bg-violet-900/50"
                   : "border-zinc-400 dark:border-zinc-500 bg-transparent"
               }`}
             >
               {value.includes(opt.value) && (
-                <CheckMarkIcon className="h-4 w-4 text-white" />
+                <CheckMarkIcon className="h-4 w-4 text-violet-600 dark:text-violet-400" />
               )}
             </span>
           </button>

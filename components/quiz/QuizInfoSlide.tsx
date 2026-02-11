@@ -1,0 +1,51 @@
+"use client";
+
+import { renderInfoSlideIcon, type InfoSlideIconName } from "./quizIcons";
+import { getTranslations } from "@/lib/translations";
+import type { Locale } from "@/lib/translations";
+
+type QuizInfoSlideProps = {
+  titleKey: string;
+  descriptionKey: string;
+  icon: InfoSlideIconName;
+  locale: string;
+  onContinue: () => void;
+};
+
+export function QuizInfoSlide({
+  titleKey,
+  descriptionKey,
+  icon,
+  locale,
+  onContinue,
+}: QuizInfoSlideProps) {
+  const t = getTranslations((locale as Locale) || "en");
+  const infoSlides = t.soulmate.infoSlides as Record<string, string>;
+  const title = infoSlides[titleKey];
+  const description = infoSlides[descriptionKey];
+  const continueLabel = infoSlides.continue;
+
+  return (
+    <div className="w-full">
+      <div className="flex flex-col items-center mb-8">
+        {renderInfoSlideIcon(icon, "h-20 w-20 md:h-24 md:w-24 text-violet-500 shrink-0")}
+      </div>
+
+      <h2 className="text-xl md:text-2xl font-bold text-zinc-900 dark:text-zinc-100 text-center mb-4">
+        {title}
+      </h2>
+
+      <p className="text-zinc-600 dark:text-zinc-400 text-center mb-8 leading-relaxed">
+        {description}
+      </p>
+
+      <button
+        type="button"
+        onClick={onContinue}
+        className="w-full py-4 px-8 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white font-semibold rounded-2xl shadow-lg shadow-violet-500/30 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center"
+      >
+        {continueLabel}
+      </button>
+    </div>
+  );
+}
