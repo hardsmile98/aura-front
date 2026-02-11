@@ -60,7 +60,7 @@ export default async function SoulmateWelcomePage({
           {t.soulmate.welcome.ctaButton}
         </ButtonLink>
 
-        <p className="text-zinc-600 dark:text-zinc-400 mt-6 text-sm">
+        <p className="text-zinc-600 dark:text-zinc-400 mt-4 text-sm">
           {t.soulmate.welcome.subheadline}
         </p>
       </main>

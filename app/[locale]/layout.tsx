@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { getTranslations } from "@/lib/translations";
-import { isValidLocale, defaultLocale } from "@/lib/i18n";
+import { isValidLocale, defaultLocale, locales } from "@/lib/i18n";
 import type { Locale } from "@/lib/translations";
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata({
   params,
