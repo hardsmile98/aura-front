@@ -29,14 +29,14 @@ export function QuizResultQuestionModal({
           <button
             type="button"
             onClick={onNo}
-            className="flex-1 py-4 px-8 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center"
+            className="flex-1 py-4 px-8 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center cursor-pointer"
           >
             {noLabel}
           </button>
           <button
             type="button"
             onClick={onYes}
-            className="flex-1 py-4 px-8 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center"
+            className="flex-1 py-4 px-8 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center cursor-pointer"
           >
             {yesLabel}
           </button>
