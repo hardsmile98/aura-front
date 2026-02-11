@@ -16,6 +16,7 @@ import {
 } from "@/components/quiz";
 import { getTranslations } from "@/lib/translations";
 import type { Locale } from "@/lib/translations";
+import { getZodiacSignKey } from "@/lib/zodiac";
 
 type SoulmateQuizProps = {
   locale: string;
@@ -31,6 +32,7 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
     descriptionKey: string;
     icon: InfoSlideConfig["icon"];
     nextStep: number;
+    descriptionReplacements?: Record<string, string>;
   } | null>(null);
 
   const t = getTranslations((locale as Locale) || "en");
@@ -39,8 +41,9 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
     setQuiz((prev) => ({ ...prev, ...updates }));
   };
 
-  const advanceStep = (fromStep: number) => {
+  const advanceStep = (fromStep: number, recentValue?: string) => {
     const slide = INFO_SLIDES.find((s) => s.afterStep === fromStep);
+
     if (slide) {
       const prevStepConfig = QUIZ_STEPS[fromStep - 1];
 
@@ -49,17 +52,32 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
           ? prevStepConfig.field
           : null;
 
-      const value = field ? (quiz[field as keyof QuizState] as string) : "";
+      const value =
+        recentValue ??
+        (field ? (quiz[field as keyof QuizState] as string) : "");
 
       const descriptionKey =
         slide.descriptionByValue[value] ??
         Object.values(slide.descriptionByValue)[0];
+
+      let descriptionReplacements: Record<string, string> | undefined;
+
+      if (slide.afterStep === 9 && quiz.birthDate) {
+        const signKey = getZodiacSignKey(quiz.birthDate);
+
+        if (signKey) {
+          const zodiacSigns = t.soulmate.zodiacSigns as Record<string, string>;
+          const signName = zodiacSigns[signKey] ?? signKey;
+          descriptionReplacements = { signName };
+        }
+      }
 
       setInfoSlide({
         titleKey: slide.titleKey,
         descriptionKey,
         icon: slide.icon,
         nextStep: fromStep + 1,
+        descriptionReplacements,
       });
     } else {
       updateQuiz({ step: fromStep + 1 });
@@ -93,6 +111,7 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
             descriptionKey={infoSlide.descriptionKey}
             icon={infoSlide.icon}
             locale={locale}
+            descriptionReplacements={infoSlide.descriptionReplacements}
             onContinue={() => {
               updateQuiz({ step: infoSlide.nextStep });
               setInfoSlide(null);
@@ -124,7 +143,7 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
             onSelect={(value) => {
               updateQuiz({ [currentStepConfig.field]: value });
               if (currentStepConfig.autoAdvance) {
-                advanceStep(quiz.step);
+                advanceStep(quiz.step, value);
               }
             }}
             options={currentStepConfig.options}

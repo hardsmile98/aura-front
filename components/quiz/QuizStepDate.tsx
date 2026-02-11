@@ -28,9 +28,13 @@ export function QuizStepDate({
   locale,
 }: QuizStepDateProps) {
   const t = getTranslations((locale as Locale) || "en");
+
   const tQuiz = t.soulmate.quiz as Record<string, string>;
+
   const title = tQuiz[titleKey];
+
   const nextLabel = tQuiz[nextLabelKey];
+
   const placeholder = placeholderKey ? tQuiz[placeholderKey] : undefined;
 
   return (
@@ -38,12 +42,14 @@ export function QuizStepDate({
       <h2 className="text-xl md:text-2xl font-bold text-zinc-900 dark:text-zinc-100 text-center mb-8">
         {title}
       </h2>
+
       <div className="space-y-4">
         <input
           type="date"
           value={value}
           onChange={(e) => onChange(e.target.value)}
           className={inputClassName}
+          placeholder={placeholder}
         />
         <button
           type="button"

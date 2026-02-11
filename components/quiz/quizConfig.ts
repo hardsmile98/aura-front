@@ -294,14 +294,26 @@ export const INFO_SLIDES: InfoSlideConfig[] = [
     },
   },
   {
-    afterStep: 8,
+    afterStep: 9,
     titleKey: "slide2Title",
     icon: "sparkles",
     descriptionByValue: {
-      fire: "slide2DescFire",
-      water: "slide2DescWater",
-      earth: "slide2DescEarth",
-      air: "slide2DescAir",
+      head: "slide2DescHead",
+      heart: "slide2DescHeart",
+      depends: "slide2DescOther",
+    },
+  },
+  {
+    afterStep: 10,
+    titleKey: "slide3Title",
+    icon: "heart",
+    descriptionByValue: {
+      trust: "slide3DescTrust",
+      "find-the-one": "slide3DescFindTheOne",
+      "keep-spark": "slide3DescKeepSpark",
+      "understand-needs": "slide3DescUnderstandNeeds",
+      "let-go-past": "slide3DescLetGoPast",
+      uncertainty: "slide3DescUncertainty",
     },
   },
 ];

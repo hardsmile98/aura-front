@@ -35,80 +35,14 @@ export function FemaleIcon({ className }: { className?: string }) {
   );
 }
 
-export function FireIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
-    </svg>
-  );
-}
-
-export function WaterIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
-    </svg>
-  );
-}
-
-export function EarthIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="10" />
-      <line x1="2" y1="12" x2="22" y2="12" />
-      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-    </svg>
-  );
-}
-
-export function AirIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2 2 0 1 1 19 12H2m19.73 4.27A2 2 0 1 0 19 20H2" />
-    </svg>
-  );
-}
-
 export function HeartIcon({ className }: { className?: string }) {
   return (
     <svg
       className={className}
       viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
+      fill="#f43f5e"
+      stroke="#e11d48"
+      strokeWidth={1}
       strokeLinecap="round"
       strokeLinejoin="round"
     >
@@ -117,49 +51,22 @@ export function HeartIcon({ className }: { className?: string }) {
   );
 }
 
-export function BrainIcon({ className }: { className?: string }) {
+export function TargetIcon({ className }: { className?: string }) {
   return (
     <svg
       className={className}
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
+      stroke="#7c3aed"
+      strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1 .34-5.62 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z" />
-      <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0-.34-5.62 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z" />
-    </svg>
-  );
-}
-
-export function TargetIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 120 120"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle cx="60" cy="60" r="50" className="stroke-violet-400" strokeWidth="4" fill="none" />
-      <circle cx="60" cy="60" r="36" className="stroke-violet-400/80" strokeWidth="3" fill="none" />
-      <circle cx="60" cy="60" r="22" className="stroke-violet-500" strokeWidth="2" fill="none" />
-      <circle cx="60" cy="60" r="10" className="fill-violet-600" />
-      <path
-        d="M70 35 L88 55 L68 52 L68 42 Z"
-        className="fill-amber-400 stroke-amber-500"
-        strokeWidth="1.5"
-      />
-      <circle cx="38" cy="82" r="14" className="fill-emerald-500" />
-      <path
-        d="M32 82 L36 86 L46 76"
-        stroke="white"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
+      <circle cx="12" cy="12" r="2" />
+      <circle cx="5" cy="17" r="3" fill="#22c55e" stroke="#22c55e" strokeWidth={1.5} />
+      <path d="M3.5 17l1 1 2-2" stroke="white" strokeWidth={1.5} fill="none" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -169,9 +76,9 @@ export function SparklesIcon({ className }: { className?: string }) {
     <svg
       className={className}
       viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
+      fill="#fbbf24"
+      stroke="#f59e0b"
+      strokeWidth={1}
       strokeLinecap="round"
       strokeLinejoin="round"
     >
@@ -182,30 +89,11 @@ export function SparklesIcon({ className }: { className?: string }) {
   );
 }
 
-export function StarCircleIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="10" />
-      <path d="M12 7l1.5 4.5L18 12l-4.5 1.5L12 18l-1.5-4.5L6 12l4.5-1.5L12 7z" />
-    </svg>
-  );
-}
-
 /** Реестр иконок для информационных слайдов */
 export const INFO_SLIDE_ICONS = {
   target: TargetIcon,
   sparkles: SparklesIcon,
-  star: StarCircleIcon,
   heart: HeartIcon,
-  fire: FireIcon,
 } as const;
 
 export type InfoSlideIconName = keyof typeof INFO_SLIDE_ICONS;
@@ -214,22 +102,22 @@ export function getInfoSlideIcon(name: InfoSlideIconName) {
   return INFO_SLIDE_ICONS[name];
 }
 
-/** Возвращает React-элемент иконки (для избежания «component during render») */
+/** Возвращает React-элемент иконки на белой подложке */
 export function renderInfoSlideIcon(name: InfoSlideIconName, className?: string) {
   const Icon = INFO_SLIDE_ICONS[name];
-  return Icon ? <Icon className={className} /> : null;
+  return Icon ? (
+    <span
+      className={`flex size-24 shrink-0 items-center justify-center rounded-2xl bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.06)] ring-1 ring-zinc-200/60 md:size-28 dark:bg-white/10 dark:shadow-[0_8px_30px_rgba(0,0,0,0.25)] dark:ring-white/10 ${className ?? ""}`.trim()}
+    >
+      <Icon className="size-16 shrink-0 md:size-20" />
+    </span>
+  ) : null;
 }
 
 /** Реестр иконок для использования в конфиге квиза */
 export const QUIZ_ICONS = {
   male: MaleIcon,
   female: FemaleIcon,
-  fire: FireIcon,
-  water: WaterIcon,
-  earth: EarthIcon,
-  air: AirIcon,
-  heart: HeartIcon,
-  brain: BrainIcon,
 } as const;
 
 export type QuizIconName = keyof typeof QUIZ_ICONS;

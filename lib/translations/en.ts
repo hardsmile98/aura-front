@@ -38,8 +38,8 @@ export const en = {
     },
     quiz: {
       back: "Back",
-      next: "Next",
-      submit: "Discover my soulmate",
+      next: "Continue",
+      submit: "Continue",
 
       step1Title: "Choose your gender",
       step1OptionMale: "Male",
@@ -158,6 +158,20 @@ export const en = {
       subtitle: "Creating your soulmate sketch",
       progress: "Calculating...",
     },
+    zodiacSigns: {
+      aries: "Aries",
+      taurus: "Taurus",
+      gemini: "Gemini",
+      cancer: "Cancer",
+      leo: "Leo",
+      virgo: "Virgo",
+      libra: "Libra",
+      scorpio: "Scorpio",
+      sagittarius: "Sagittarius",
+      capricorn: "Capricorn",
+      aquarius: "Aquarius",
+      pisces: "Pisces",
+    },
     infoSlides: {
       continue: "Continue",
       slide1Title: "Amazing!",
@@ -173,15 +187,26 @@ export const en = {
         "Passion is your drive. You value intensity of feeling and emotional depth.",
       slide1DescEmpathy:
         "Empathy is your language of love. You seek someone who understands and feels you without words.",
-      slide2Title: "Great!",
-      slide2DescFire:
-        "Fire — energy and passion. Your element reveals your strength and determination.",
-      slide2DescWater:
-        "Water — depth of feeling and intuition. Your element speaks of your emotional nature.",
-      slide2DescEarth:
-        "Earth — reliability and stability. Your element reflects your practicality.",
-      slide2DescAir:
-        "Air — freedom and mind. Your element reveals your curiosity and lightness.",
+      slide2Title: "Interesting fact!",
+      slide2DescHeart:
+        "In our observations, 33% of people with Sun in {signName} are more often guided by their heart.",
+      slide2DescHead:
+        "In our observations, 48% of people with Sun in {signName} are more often guided by their head.",
+      slide2DescOther:
+        "Only 19% of people with Sun sign {signName} can make decisions by listening to both heart and mind.",
+      slide3Title: "You're not alone in this",
+      slide3DescTrust:
+        "Trust can't be rebuilt in a day, and many go through the same. We'll help you build strong, genuine relationships, step by step.",
+      slide3DescFindTheOne:
+        "Finding \"the one\" takes patience. We'll help you get closer to the person where everything finally falls into place.",
+      slide3DescKeepSpark:
+        "Keeping the flame of love alive isn't easy, but we're here. Together we'll help you bring back that spark and warmth in your relationship.",
+      slide3DescUnderstandNeeds:
+        "Many find it hard to figure out their true desires. We'll help you listen to yourself and understand what your heart really wants.",
+      slide3DescLetGoPast:
+        "Letting go of the past isn't easy, but many go through the same. We'll help you find peace and clarity.",
+      slide3DescUncertainty:
+        "Uncertainty can be scary, but we're here. Together we'll find a path that brings you confidence and peace.",
     },
   },
   footer: {

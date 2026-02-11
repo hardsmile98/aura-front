@@ -10,6 +10,8 @@ type QuizInfoSlideProps = {
   icon: InfoSlideIconName;
   locale: string;
   onContinue: () => void;
+  /** Replacements for placeholders in description (e.g. { signName: "Овен" }) */
+  descriptionReplacements?: Record<string, string>;
 };
 
 export function QuizInfoSlide({
@@ -18,17 +20,28 @@ export function QuizInfoSlide({
   icon,
   locale,
   onContinue,
+  descriptionReplacements,
 }: QuizInfoSlideProps) {
   const t = getTranslations((locale as Locale) || "en");
+
   const infoSlides = t.soulmate.infoSlides as Record<string, string>;
+
   const title = infoSlides[titleKey];
-  const description = infoSlides[descriptionKey];
+
+  let description = infoSlides[descriptionKey] ?? "";
+
+  if (descriptionReplacements) {
+    for (const [key, value] of Object.entries(descriptionReplacements)) {
+      description = description.replace(new RegExp(`\\{${key}\\}`, "g"), value);
+    }
+  }
+
   const continueLabel = infoSlides.continue;
 
   return (
     <div className="w-full">
       <div className="flex flex-col items-center mb-8">
-        {renderInfoSlideIcon(icon, "h-20 w-20 md:h-24 md:w-24 text-violet-500 shrink-0")}
+        {renderInfoSlideIcon(icon)}
       </div>
 
       <h2 className="text-xl md:text-2xl font-bold text-zinc-900 dark:text-zinc-100 text-center mb-4">
