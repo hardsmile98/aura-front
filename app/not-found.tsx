@@ -1,0 +1,6 @@
+import { defaultLocale } from "@/lib/i18n";
+import { RedirectWithParams } from "@/components/RedirectWithParams";
+
+export default function NotFound() {
+  return <RedirectWithParams to={`/${defaultLocale}/soulmate/welcome/`} />;
+}
