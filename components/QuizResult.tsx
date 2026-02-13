@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Header } from "@/components/Header";
 import { getTranslations } from "@/lib/translations";
 import type { Locale } from "@/lib/translations";
@@ -23,6 +24,7 @@ const PROGRESS_BARS = [
 ];
 
 export function QuizResult({ locale, onUpdateQuiz }: QuizResultProps) {
+  const router = useRouter();
   const [progress, setProgress] = useState([0, 0, 0]);
   const [modal, setModal] = useState<ModalState>("none");
   const [phase, setPhase] = useState(0);
@@ -87,6 +89,7 @@ export function QuizResult({ locale, onUpdateQuiz }: QuizResultProps) {
   const handleWarningClose = () => {
     setModal("none");
     setPhase((p) => p + 1);
+    router.push(`/${locale}/email`);
   };
 
   const progressLabels = [

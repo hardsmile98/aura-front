@@ -24,6 +24,8 @@ export type QuizState = {
   spiritualPerson: string;
   /** Ответ из модалки: знакомы ли с концепцией Психического Искусства */
   psychicArtistry: string;
+  /** Email для отправки результата */
+  email?: string;
 };
 
 export type QuizStepSelectOption = {

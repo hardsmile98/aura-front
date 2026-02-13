@@ -31,9 +31,9 @@ export function QuizResultWarningModal({
           {message}
         </p>
       
-        <div className="flex items-center justify-center gap-2 text-zinc-600 dark:text-zinc-400 mb-6 text-sm">
+        <div className="inline-block text-zinc-600 dark:text-zinc-400 mb-6 text-sm">
           <svg
-            className="size-5 text-emerald-500 shrink-0"
+            className="inline size-5 text-emerald-500 align-middle mr-2"
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -43,7 +43,7 @@ export function QuizResultWarningModal({
               clipRule="evenodd"
             />
           </svg>
-          <span>{privacyText}</span>
+          <span className="inline align-middle">{privacyText}</span>
         </div>
   
         <button

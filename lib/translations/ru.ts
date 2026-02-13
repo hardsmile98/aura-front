@@ -203,6 +203,18 @@ export const ru = {
         "Во время поиска твоей родственной души мы заметили нечто тревожное. Готовься к неожиданным результатам.",
       warningPrivacy: "Мы не делимся никакой личной информацией",
       warningUnderstand: "Понимаю",
+      emailTitle: "Портрет твоей родственной души готов!",
+      emailSubtitleStart: "Увидь свою родственную душу ",
+      emailSubtitleEnd: "прямо сейчас!",
+      emailSubtitleQuestion: "Куда отправить результат?",
+      emailLabel: "Email*",
+      emailContinue: "Продолжить",
+      emailPrivacy:
+        "Твоя конфиденциальность защищена — мы не храним и не передаём твои данные.",
+      emailSupportPrefix: "Есть вопрос? Свяжись с поддержкой ",
+      promoTitle: "Ты получаешь эксклюзивный одноразовый промокод на ",
+      promoHighlight: "скидку 93%",
+      promoCopied: "Скопировано!",
     },
     zodiacSigns: {
       aries: "Овен",

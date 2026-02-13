@@ -203,6 +203,18 @@ export const en = {
         "We have noticed something shocking while searching for your Soulmate. Prepare for surprising results!",
       warningPrivacy: "We don't share any personal information",
       warningUnderstand: "I Understand",
+      emailTitle: "Your soulmate portrait is ready!",
+      emailSubtitleStart: "See your soulmate ",
+      emailSubtitleEnd: "now!",
+      emailSubtitleQuestion: "Where should we send it?",
+      emailLabel: "Email*",
+      emailContinue: "Continue",
+      emailPrivacy:
+        "Your privacy is protected — we don't store or share your data.",
+      emailSupportPrefix: "Have a question? Reach our support team ",
+      promoTitle: "You get an exclusive one-time promo code ",
+      promoHighlight: "for a 93% discount",
+      promoCopied: "Copied!",
     },
     zodiacSigns: {
       aries: "Aries",
