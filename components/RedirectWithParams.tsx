@@ -12,11 +12,15 @@ type RedirectWithParamsProps = {
  */
 export function RedirectWithParams({ to }: RedirectWithParamsProps) {
   useEffect(() => {
-    const target = new URL(to, window.location.origin);
-  
-    target.search = window.location.search;
+    if (typeof window === "undefined") return;
 
-    window.location.replace(target.toString());
+    const path = to.split('?')[0];
+  
+    const search = window.location.search;
+  
+    const target = search ? `${path}?${search}` : path;
+
+    window.location.replace(target);
   }, [to]);
 
   return null;

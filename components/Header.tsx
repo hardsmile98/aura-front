@@ -30,11 +30,9 @@ function HeaderWithParams({
 }: HeaderProps) {
   const searchParams = useSearchParams();
 
-  const url = new URL(backHref!, window.location.origin);
-
-  url.search = searchParams.toString();
-
-  const resolvedBackHref = url.pathname + url.search;
+  const path = backHref!.split('?')[0];
+  const search = searchParams.toString();
+  const resolvedBackHref = search ? `${path}?${search}` : path;
 
   return (
     <HeaderContent

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Header } from "@/components/Header";
-import { ButtonLink } from "@/components/ButtonLink";
+import { RandomReviewLink } from "@/components/RandomReviewLink";
 import { getTranslations } from "@/lib/translations";
 import type { Locale } from "@/lib/translations";
 import Image from "next/image";
@@ -56,9 +56,9 @@ export default async function SoulmateWelcomePage({
           </div>
         </div>
 
-        <ButtonLink href={`/${locale}/soulmate/review`}>
+        <RandomReviewLink locale={locale}>
           {t.soulmate.welcome.ctaButton}
-        </ButtonLink>
+        </RandomReviewLink>
 
         <p className="text-zinc-600 dark:text-zinc-400 mt-4 text-sm">
           {t.soulmate.welcome.subheadline}

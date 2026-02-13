@@ -17,6 +17,7 @@ export async function generateMetadata({
   if (!isValidLocale(locale)) {
     return {};
   }
+
   const t = getTranslations(locale as Locale);
 
   return {
