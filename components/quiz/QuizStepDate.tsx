@@ -63,7 +63,6 @@ export function QuizStepDate({
       <div className="space-y-4 w-full min-w-0">
         <div className="overflow-hidden w-full">
           <input
-            type="date"
             id="birthDate"
             name="birthDate"
             value={value}
