@@ -18,7 +18,8 @@ body {
 }
 
 input[type="date"] {
-  width: 100%;
-  box-sizing: border-box;
   display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
