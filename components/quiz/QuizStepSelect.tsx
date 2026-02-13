@@ -19,7 +19,7 @@ type QuizStepSelectProps = {
   options: QuizStepSelectOption[];
   titleKey: string;
   locale: string;
-  layout?: "vertical" | "horizontal" | "verticalIcons" | "horizontalIcons" | "emoji";
+  layout?: "vertical" | "horizontal" | "verticalIcons" | "horizontalIcons" | "emoji" | "degree";
   submitLabelKey?: string;
   submitHref?: string;
 };
@@ -54,26 +54,44 @@ export function QuizStepSelect({
 
   const isEmoji = layout === "emoji";
 
+  const isDegree = layout === "degree";
+
   const hasIcons = isVerticalIcons || isHorizontalIcons;
 
-  const containerClass =
-    isHorizontal || isHorizontalIcons
+  const containerClass = isDegree
+    ? "flex flex-row gap-0 justify-center items-stretch"
+    : isHorizontal || isHorizontalIcons
       ? "flex flex-row flex-wrap gap-3 justify-center"
       : "flex flex-col gap-3";
 
-  const buttonClass = isVerticalIcons
-    ? "w-full py-6 px-6 flex-col gap-3"
-    : isHorizontalIcons
-      ? "py-5 px-6 flex-1 min-w-0 flex-col gap-2"
-      : isEmoji
-        ? "py-5 px-5 flex-1 min-w-[4rem] text-2xl"
-        : isHorizontal
-          ? "py-4 px-6 flex-1 min-w-0"
-          : "w-full py-4 px-6 text-left justify-start";
+  const getButtonClass = (opt: QuizStepSelectOption, index: number) => {
+    if (isDegree) {
+      const rounded =
+        index === 0
+          ? "rounded-l-2xl rounded-r-none"
+          : index === options.length - 1
+            ? "rounded-r-2xl rounded-l-none"
+            : "rounded-none";
+      const borderRight = index < options.length - 1 ? "border-r-0" : "";
+      return `py-5 px-3 flex-1 min-w-0 ${borderRight} ${rounded}`;
+    }
+    if (isVerticalIcons) return "w-full py-6 px-6 flex-col gap-3";
+    if (isHorizontalIcons) return "py-5 px-6 flex-1 min-w-0 flex-col gap-2";
+    if (isEmoji) return "py-5 px-5 flex-1 min-w-[4rem] text-2xl";
+    if (isHorizontal) return "py-4 px-6 flex-1 min-w-0";
+    return "w-full py-4 px-6 text-left justify-start";
+  };
 
-  const renderLabel = (opt: QuizStepSelectOption) => {
+  const renderLabel = (opt: QuizStepSelectOption, index: number) => {
     const label = tQuiz[opt.labelKey];
 
+    if (isDegree) {
+      const isEdge = index === 0 || index === options.length - 1;
+  
+      return (
+        <span className={isEdge ? "text-2xl" : "text-base"}>{label}</span>
+      );
+    }
     if (isEmoji) return label;
 
     if (hasIcons && opt.icon) {
@@ -94,16 +112,22 @@ export function QuizStepSelect({
       </h2>
 
       <div className={containerClass}>
-        {options.map((opt) => (
+        {options.map((opt, index) => (
           <button
             key={opt.value}
             type="button"
             onClick={() => onSelect(opt.value)}
-            className={`${optionButtonBase} ${buttonClass} ${
-              value === opt.value ? optionButtonSelected : optionButtonDefault
+            className={`${optionButtonBase} ${getButtonClass(opt, index)} ${
+              value === opt.value
+                ? isDegree
+                  ? "outline outline-2 outline-violet-500 dark:outline-violet-400 outline-offset-[-2px] bg-violet-50 dark:bg-violet-950/40 text-violet-700 dark:text-violet-300"
+                  : optionButtonSelected
+                : isDegree
+                  ? "border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 hover:bg-violet-50/70 dark:hover:bg-violet-950/30 text-zinc-900 dark:text-zinc-100"
+                  : optionButtonDefault
             }`}
           >
-            {renderLabel(opt)}
+            {renderLabel(opt, index)}
           </button>
         ))}
       </div>

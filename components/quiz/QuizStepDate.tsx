@@ -63,6 +63,8 @@ export function QuizStepDate({
       <div className="space-y-4 w-full">
         <input
           type="date"
+          id="birthDate"
+          name="birthDate"
           value={value}
           onChange={(e) => onChange(e.target.value)}
           className={inputClassName}

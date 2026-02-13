@@ -100,9 +100,9 @@ export const en = {
 
       step5Title: "How important is how your soulmate looks to you?",
       step5Option1: "👎",
-      step5Option2: "😐",
+      step5Option2: "👎",
       step5Option3: "🤷",
-      step5Option4: "😊",
+      step5Option4: "👍",
       step5Option5: "👍",
 
       step6Title: "What matters most to you in a soulmate?",

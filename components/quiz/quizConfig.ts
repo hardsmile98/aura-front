@@ -38,7 +38,7 @@ export type QuizStepConfig =
       field: keyof Omit<QuizState, "step" | "sharedGoals">;
       titleKey: keyof Translations["soulmate"]["quiz"];
       options: QuizStepSelectOption[];
-      layout?: "vertical" | "horizontal" | "verticalIcons" | "horizontalIcons" | "emoji";
+      layout?: "vertical" | "horizontal" | "verticalIcons" | "horizontalIcons" | "emoji" | "degree";
       autoAdvance?: boolean;
       submitLabelKey?: keyof Translations["soulmate"]["quiz"];
     }
@@ -115,7 +115,7 @@ export const QUIZ_STEPS: QuizStepConfig[] = [
       { value: "4", labelKey: "step5Option4" },
       { value: "5", labelKey: "step5Option5" },
     ],
-    layout: "emoji",
+    layout: "degree",
     autoAdvance: true,
   },
   {
