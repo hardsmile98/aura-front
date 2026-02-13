@@ -61,16 +61,18 @@ export function QuizStepDate({
       </h2>
 
       <div className="space-y-4 w-full min-w-0">
-        <input
-          type="date"
-          id="birthDate"
-          name="birthDate"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          className={inputClassName}
-          placeholder={placeholder}
-          lang={locale === "ru" ? "ru" : "en"}
-        />
+        <div className="overflow-hidden w-full">
+          <input
+            type="date"
+            id="birthDate"
+            name="birthDate"
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            className={inputClassName}
+            placeholder={placeholder}
+            lang={locale === "ru" ? "ru" : "en"}
+          />
+        </div>
 
         <button
           type="button"
