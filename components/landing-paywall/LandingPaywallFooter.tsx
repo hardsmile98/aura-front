@@ -34,12 +34,14 @@ export function LandingPaywallFooter({ locale }: Props) {
               <div className="flex flex-col gap-2">
                 <Link
                   href={`/${locale}/privacy-notice`}
+                  target="_blank"
                   className="text-sm hover:text-white transition-colors"
                 >
                   {lp.footerPrivacy}
                 </Link>
                 <Link
                   href={`/${locale}/eula`}
+                  target="_blank"
                   className="text-sm hover:text-white transition-colors"
                 >
                   {lp.footerTerms}

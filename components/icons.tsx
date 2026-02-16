@@ -57,37 +57,25 @@ export function StarIcon({
   );
 }
 
-/** Gift box icon for promo code page */
+/** Gift box icon (Lucide style) */
 export function GiftBoxIcon({ className }: { className?: string }) {
   return (
     <svg
       className={className}
-      viewBox="0 0 120 120"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
-      <defs>
-        <linearGradient id="gift-box" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop stopColor="#8B5CF6" />
-          <stop offset="1" stopColor="#6D28D9" />
-        </linearGradient>
-        <linearGradient id="gift-ribbon" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop stopColor="#FCD34D" />
-          <stop offset="1" stopColor="#F59E0B" />
-        </linearGradient>
-      </defs>
-      {/* Box body */}
-      <rect x="25" y="55" width="70" height="45" rx="4" fill="url(#gift-box)" />
-      {/* Box lid */}
-      <rect x="22" y="48" width="76" height="12" rx="3" fill="#A78BFA" />
-      {/* Vertical ribbon */}
-      <rect x="56" y="48" width="8" height="52" rx="2" fill="url(#gift-ribbon)" />
-      {/* Horizontal ribbon */}
-      <rect x="25" y="58" width="70" height="8" rx="2" fill="url(#gift-ribbon)" />
-      {/* Bow loops */}
-      <ellipse cx="45" cy="46" rx="14" ry="10" fill="url(#gift-ribbon)" />
-      <ellipse cx="75" cy="46" rx="14" ry="10" fill="url(#gift-ribbon)" />
-      <circle cx="60" cy="50" r="5" fill="#F59E0B" />
+      <rect x="3" y="8" width="18" height="4" rx="1" />
+      <path d="M12 8v13" />
+      <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" />
+      <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5" />
     </svg>
   );
 }

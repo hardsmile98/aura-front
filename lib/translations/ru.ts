@@ -288,6 +288,34 @@ export const ru = {
     stat2Label: "Довольных клиентов",
     ctaButton: "Увидеть эскиз родственной души",
     tryFor7Days: "Попробуй Aura 7 дней",
+    subscriptionPeopleJoined: "996 человек присоединились сегодня",
+    subscriptionWhyTrust: "ПОЧЕМУ МОЖНО ДОВЕРЯТЬ ЭСКИЗУ РОДСТВЕННОЙ ДУШИ AURA",
+    subscriptionTrust1Title: "Подлинное художественное мастерство",
+    subscriptionTrust1Desc:
+      "Наши эскизы создаются опытными художниками, специализирующимися на интуитивных и персонализированных рисунках родственных душ, обеспечивая уникальное представление, созданное специально для вас.",
+    subscriptionTrust2Title: "Астрологические инсайты",
+    subscriptionTrust2Desc:
+      "Каждый эскиз сопровождается анализом, основанным на астрологической совместимости и духовном выравнивании, предлагая глубокие инсайты о вашей связи с родственной душой.",
+    subscriptionTrust3Title: "Персонализированная связь",
+    subscriptionTrust3Desc:
+      "Вместе с эскизом мы предоставляем подробное описание черт личности и характеристик вашей родственной души, созданное специально для вас.",
+    subscriptionFeaturedIn: "AURA УПОМИНАЛИ В",
+    subscriptionFeaturedBrands: "THE GLOBE AND MAIL • BENZINGA • BARCHART • YAHOO!",
+    subscriptionBenefit1:
+      "Получите нарисованный от руки эскиз родственной души от опытных художников",
+    subscriptionBenefit2:
+      "Узнайте уникальные черты личности и характеристики вашей родственной души",
+    subscriptionBenefit3:
+      "Получите персонализированные инсайты на основе астрологии и духовного выравнивания",
+    subscriptionBenefit4:
+      "Доступ к ежедневному гороскопу, психологическим чтениям и многому другому",
+    subscriptionPromoReport: "Ваш бесплатный отчёт астрокартографии ждёт",
+    subscriptionPromoClaimed: "Предложение получено",
+    subscriptionPromoCode: "Промокод применён",
+    subscriptionPromoYouSave: "Вы экономите 93%",
+    subscriptionTotalDue: "К оплате:",
+    subscriptionPayPal: "PayPal",
+    subscriptionCreditCard: "Банковская карта",
     subscription: "Подписка",
     subscriptionDesc:
       "Получи эскиз своей родственной души с расширенными инсайтами совместимости",

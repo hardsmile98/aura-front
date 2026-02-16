@@ -288,6 +288,34 @@ export const en = {
     stat2Label: "Happy Customers",
     ctaButton: "See Your Soulmate Sketch",
     tryFor7Days: "Try Aura for 7 days",
+    subscriptionPeopleJoined: "996 people joined today",
+    subscriptionWhyTrust: "WHY YOU CAN TRUST AURA'S SOULMATE SKETCH",
+    subscriptionTrust1Title: "Authentic Artistic Expertise",
+    subscriptionTrust1Desc:
+      "Our sketches are created by skilled artists with expertise in intuitive and personalized soulmate drawings, ensuring a unique representation tailored to you.",
+    subscriptionTrust2Title: "Astrology-Driven Insights",
+    subscriptionTrust2Desc:
+      "Every sketch is accompanied by an analysis deeply rooted in astrological compatibility and spiritual alignment, offering profound insights into your soulmate connection.",
+    subscriptionTrust3Title: "Personalized Connection",
+    subscriptionTrust3Desc:
+      "Along with your sketch, we provide a detailed description of your soulmate's personality traits and characteristics, uniquely crafted just for you.",
+    subscriptionFeaturedIn: "AURA HAS BEEN FEATURED IN",
+    subscriptionFeaturedBrands: "THE GLOBE AND MAIL • BENZINGA • BARCHART • YAHOO!",
+    subscriptionBenefit1:
+      "Receive a hand-drawn sketch of your soulmate created by skilled artists",
+    subscriptionBenefit2:
+      "Discover unique personality traits and characteristics of your soulmate",
+    subscriptionBenefit3:
+      "Gain personalized insights based on astrology and spiritual alignment",
+    subscriptionBenefit4:
+      "Access to daily horoscope, psychic readings & more",
+    subscriptionPromoReport: "Your Free Astrocartography Report Awaits",
+    subscriptionPromoClaimed: "Offer Claimed",
+    subscriptionPromoCode: "Promo Code Applied",
+    subscriptionPromoYouSave: "You save 93%",
+    subscriptionTotalDue: "Total due:",
+    subscriptionPayPal: "PayPal",
+    subscriptionCreditCard: "Credit or debit card",
     subscription: "Subscription",
     subscriptionDesc:
       "Get your True Soulmate Sketch with advanced compatibility insights",
