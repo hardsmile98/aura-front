@@ -4,15 +4,17 @@ import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
-const linkClassName =
+const defaultLinkClassName =
   "w-full py-4 px-8 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center text-center";
 
 function RandomReviewLinkInner({
   locale,
   children,
+  className,
 }: {
   locale: string;
   children: React.ReactNode;
+  className?: string;
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -26,7 +28,11 @@ function RandomReviewLinkInner({
   };
 
   return (
-    <button type="button" onClick={handleClick} className={linkClassName}>
+    <button
+      type="button"
+      onClick={handleClick}
+      className={className ?? defaultLinkClassName}
+    >
       {children}
     </button>
   );
@@ -35,10 +41,13 @@ function RandomReviewLinkInner({
 export function RandomReviewLink({
   locale,
   children,
+  className,
 }: {
   locale: string;
   children: React.ReactNode;
+  className?: string;
 }) {
+  const linkClassName = className ?? defaultLinkClassName;
   return (
     <Suspense
       fallback={
@@ -47,7 +56,7 @@ export function RandomReviewLink({
         </a>
       }
     >
-      <RandomReviewLinkInner locale={locale}>
+      <RandomReviewLinkInner locale={locale} className={linkClassName}>
         {children}
       </RandomReviewLinkInner>
     </Suspense>

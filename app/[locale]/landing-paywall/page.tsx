@@ -2,8 +2,8 @@ import { LandingHeader } from "@/components/LandingHeader";
 import {
   LandingPaywallFAQSection,
   LandingPaywallFooter,
-  LandingPaywallHero,
   LandingPaywallPortraits,
+  LandingPaywallSketchHero,
   LandingPaywallSubscription,
   LandingPaywallTestimonials,
 } from "@/components/landing-paywall";
@@ -27,7 +27,7 @@ export default async function LandingPaywallPage({
       />
 
       <main className="flex-1">
-        <LandingPaywallHero locale={locale} />
+        <LandingPaywallSketchHero locale={locale} />
         <LandingPaywallSubscription locale={locale} />
         <LandingPaywallPortraits locale={locale} />
         <LandingPaywallTestimonials locale={locale} />

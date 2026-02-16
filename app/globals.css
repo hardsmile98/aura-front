@@ -11,6 +11,10 @@
   --foreground: #171717;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -48,4 +52,39 @@ input[type="date"] {
 .testimonials-carousel .slick-dots li.slick-active button:before {
   color: rgb(124 58 237);
   opacity: 1;
+}
+
+@keyframes button-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-button-pulse {
+  animation: button-pulse 2s ease-in-out infinite;
+}
+
+/* Scrolling banner (logo strip) */
+@keyframes scrolling-banner {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@-webkit-keyframes scrolling-banner {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
 }

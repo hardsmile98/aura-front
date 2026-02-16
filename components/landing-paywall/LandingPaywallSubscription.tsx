@@ -225,7 +225,7 @@ export function LandingPaywallSubscription({ locale }: Props) {
                 </p>
               </div>
             </div>
-            <div className="space-y-3">
+            <div id="payment-button" className="space-y-3">
               <Link
                 href={`#`}
                 className="flex items-center justify-center gap-2 w-full py-3.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors"
