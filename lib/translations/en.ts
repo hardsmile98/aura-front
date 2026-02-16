@@ -304,6 +304,10 @@ export const en = {
     plan2PriceStruck: "$5/week",
     continuePayment: "Continue with payment",
     usersPortraits: "Our Users' Soulmate Portraits",
+    karmicLoveGuide: "Karmic Love Guide",
+    karmicLoveGuideIntro:
+      "Choosing creativity reveals your unique and imaginative spirit. You seek a partner who sees the world differently, and we're here to help you find someone who shares your vision.",
+    karmicLoveGuidePaywall: "To read the full report, you need full access.",
     getFullGuide: "Get the Full Guide",
     getFullGuideText:
       "Our algorithms combine centuries of astrological wisdom with modern technology to create your unique soulmate sketch. Discover the face and traits of your true soulmate based on your birth chart, personality, and cosmic compatibility.",
