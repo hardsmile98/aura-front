@@ -293,7 +293,8 @@ export const ru = {
     stat2Label: "Довольных клиентов",
     ctaButton: "Увидеть эскиз родственной души",
     tryFor7Days: "Попробуй Aura 7 дней",
-    subscriptionPeopleJoined: "996 человек присоединились сегодня",
+    subscriptionPeopleJoinedCount: "996",
+    subscriptionPeopleJoinedRest: "человек присоединились сегодня",
     subscriptionWhyTrust: "ПОЧЕМУ МОЖНО ДОВЕРЯТЬ ЭСКИЗУ РОДСТВЕННОЙ ДУШИ AURA",
     subscriptionTrust1Title: "Подлинное художественное мастерство",
     subscriptionTrust1Desc:

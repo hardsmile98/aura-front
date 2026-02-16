@@ -293,7 +293,8 @@ export const en = {
     stat2Label: "Happy Customers",
     ctaButton: "See Your Soulmate Sketch",
     tryFor7Days: "Try Aura for 7 days",
-    subscriptionPeopleJoined: "996 people joined today",
+    subscriptionPeopleJoinedCount: "996",
+    subscriptionPeopleJoinedRest: "people joined today",
     subscriptionWhyTrust: "WHY YOU CAN TRUST AURA'S SOULMATE SKETCH",
     subscriptionTrust1Title: "Authentic Artistic Expertise",
     subscriptionTrust1Desc:

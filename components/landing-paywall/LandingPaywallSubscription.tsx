@@ -86,7 +86,7 @@ export function LandingPaywallSubscription({ locale }: Props) {
           <div className="bg-white rounded-xl md:rounded-2xl p-6 md:p-8 shadow-none border-0 md:shadow-md md:border md:border-zinc-100">
             <div className="flex items-center justify-between flex-wrap gap-3 mb-8 p-4 rounded-xl bg-zinc-100">
               <span className="text-sm font-medium text-zinc-900">
-                {lp.subscriptionPeopleJoined}
+                <span className="font-bold">{lp.subscriptionPeopleJoinedCount}</span> {lp.subscriptionPeopleJoinedRest}
               </span>
               <div className="flex -space-x-2">
                 <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-zinc-200 shrink-0">
