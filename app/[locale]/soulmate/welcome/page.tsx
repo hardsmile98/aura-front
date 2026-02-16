@@ -68,11 +68,17 @@ export default async function SoulmateWelcomePage({
       <footer className="px-6 py-8 text-center">
         <p className="text-xs text-zinc-500 dark:text-zinc-500 max-w-md mx-auto leading-relaxed">
           {t.footer.prefix}
-          <Link href="#" className="underline hover:text-zinc-700 dark:hover:text-zinc-300">
+          <Link
+            href={`/${locale}/eula`}
+            className="underline hover:text-zinc-700 dark:hover:text-zinc-300 mx-1"
+          >
             {t.footer.termsLink}
           </Link>
           {t.footer.and}
-          <Link href="#" className="underline hover:text-zinc-700 dark:hover:text-zinc-300">
+          <Link
+            href={`/${locale}/privacy-notice`}
+            className="underline hover:text-zinc-700 dark:hover:text-zinc-300 mx-1"
+          >
             {t.footer.privacyLink}
           </Link>
           {t.footer.suffix}

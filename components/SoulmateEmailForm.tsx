@@ -100,23 +100,17 @@ export function SoulmateEmailForm({ locale }: SoulmateEmailFormProps) {
           <p className="text-xs text-zinc-500 dark:text-zinc-500 mt-6 leading-relaxed">
             {t.footer.prefix}
             <Link
-              href="#"
-              className="underline hover:text-zinc-700 dark:hover:text-zinc-300">
+              href={`/${locale}/eula`}
+              className="underline hover:text-zinc-700 dark:hover:text-zinc-300 mx-1">
               {t.footer.termsLink}
             </Link>
             {t.footer.and}
             <Link
-              href="#"
-              className="underline hover:text-zinc-700 dark:hover:text-zinc-300">
+              href={`/${locale}/privacy-notice`}
+              className="underline hover:text-zinc-700 dark:hover:text-zinc-300 mx-1">
               {t.footer.privacyLink}
             </Link>
-            {t.footer.suffix} {t.soulmate.result.emailSupportPrefix}
-            <Link
-              href="#"
-              className="underline hover:text-zinc-700 dark:hover:text-zinc-300">
-              {t.footer.supportLink}
-            </Link>
-            .
+            {t.footer.suffix}
           </p>
         </form>
       </div>

@@ -275,5 +275,86 @@ export const en = {
     termsLink: "Terms & Conditions",
     privacyLink: "Privacy Notice",
     supportLink: "here",
+    supportPrefix: "Have a question? Reach our support team ",
+  },
+  landingPaywall: {
+    logIn: "Log In",
+    signUp: "Sign Up",
+    heroTitle: "Your Sketch is Ready!",
+    heroHighlight: "See Your Soulmate Today!",
+    stat1Value: "87.3%",
+    stat1Label: "Say it felt Familiar",
+    stat2Value: "172K+",
+    stat2Label: "Happy Customers",
+    ctaButton: "See Your Soulmate Sketch",
+    tryFor7Days: "Try Aura for 7 days",
+    subscription: "Subscription",
+    subscriptionDesc:
+      "Get your True Soulmate Sketch with advanced compatibility insights",
+    subscriptionBullet1: "Receive your true soulmate drawing",
+    subscriptionBullet2:
+      "Detailed horoscope and love compatibility readings",
+    subscriptionBullet3:
+      "Get an in-depth reading based on your birth chart and a psychic analysis",
+    subscriptionBullet4:
+      "Access to daily horoscope, psychic readings & more",
+    plan1Price: "$1 for 7 days, then $19.99/week",
+    plan1PriceStruck: "$5/week",
+    plan2Price: "$3.99 for 7 days, then $13.21/week",
+    plan2PriceStruck: "$5/week",
+    continuePayment: "Continue with payment",
+    usersPortraits: "Our Users' Soulmate Portraits",
+    getFullGuide: "Get the Full Guide",
+    getFullGuideText:
+      "Our algorithms combine centuries of astrological wisdom with modern technology to create your unique soulmate sketch. Discover the face and traits of your true soulmate based on your birth chart, personality, and cosmic compatibility.",
+    whyLovePrefix: "Why does everyone love ",
+    whyLoveHighlight: "Aura",
+    whyLoveSuffix: "?",
+    testimonial1Name: "Rebecca Bauman",
+    testimonial1Date: "August 28, 2024",
+    testimonial1Headline: "It's changed my life!",
+    testimonial1Text:
+      "I'm thankful for this app! The soulmate sketch was clear, thorough, and reassuring. I eagerly look forward to more insights!",
+    testimonial2Name: "Mika Ryan",
+    testimonial2Date: "August 29, 2024",
+    testimonial2Headline: "After years of seeking, I've finally found a true love.",
+    testimonial2Text:
+      "I was hesitant about whether it was really worth trying, but now I have no regrets and I'm enjoying my new relationships!",
+    testimonial3Name: "Amanda Holmes",
+    testimonial3Date: "August 30, 2024",
+    testimonial3Headline: "I've found my soulmate.",
+    testimonial3Text:
+      "Thanks to Aura, I've finally discovered a clue about what my life's purpose really is and what kind of person resonates with me better!",
+    faqTitle: "Frequently Asked Questions",
+    faq1Q: "How soon can I expect to receive my sketch and reading?",
+    faq1A:
+      "You will receive your sketch and reading within 24 hours. Our Artist & Astrologers require this time to carefully process your information and create a detailed and accurate portrait. Thank you for your patience!",
+    faq2Q: "What does my sketch include?",
+    faq2A:
+      "Your sketch includes a detailed portrait of your soulmate, created based on your answers and designed to represent the person most aligned with you. Along with the sketch, you'll receive a karmic guide about your love connection, providing deeper insights into your destined bond.",
+    faq3Q: "Will I recognize my soulmate from the sketch?",
+    faq3A:
+      "Many users have shared incredible stories of recognizing their soulmate or meeting someone who resembles the sketch. While the portrait is based on traits most aligned with you, it's also a guide to help you feel closer to your destined connection. Keep an open heart and mind!",
+    faq4Q: "What can I expect from the service?",
+    faq4A:
+      "Our service provides a personalized experience where you'll receive a hand-drawn sketch of your soulmate, created using your answers and advanced AI insights. Along with the sketch, you'll get a karmic love guide offering meaningful insights about your connection and what makes this relationship special. It's a unique and exciting journey into discovering your destined partner!",
+    faq5Q: "How do I cancel my subscription?",
+    faq5A1: "Canceling is simple and takes less than a few minutes. Visit our ",
+    faq5Link: "Help Center",
+    faq5A2:
+      " and follow the instructions. You'll maintain access until the end of your current billing period.",
+    footerCustomerSupport: "Customer Support",
+    footerLegal: "Legal",
+    footerAboutUs: "About Us",
+    footerHowToCancel: "How to Cancel",
+    footerSupport: "Customer Support 24/7/365",
+    footerPrivacy: "Privacy Policy",
+    footerTerms: "Terms & Conditions",
+    footerCookie: "Cookie Policy",
+    footerRefund: "Refund Policy",
+    footerHelpCenter: "Help Center",
+    footerPricing: "Pricing",
+    footerCopyright:
+      "Copyright © 2024-2026 Aura™. All rights reserved. All trademarks referenced herein are the properties of their respective owners.",
   },
 } as const;

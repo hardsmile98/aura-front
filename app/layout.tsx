@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hint",
+  title: "Aura",
   description: "Discover your true soulmate",
 };
 

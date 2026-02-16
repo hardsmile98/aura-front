@@ -1,5 +1,9 @@
 import { ru } from "./ru";
 import { en } from "./en";
+import { privacyEn } from "./privacy-en";
+import { privacyRu } from "./privacy-ru";
+import { eulaEn } from "./eula-en";
+import { eulaRu } from "./eula-ru";
 
 export type Locale = "ru" | "en";
 
@@ -16,4 +20,18 @@ export const translations: Record<Locale, Translations> = {
 
 export function getTranslations(locale: Locale): Translations {
   return translations[locale] ?? translations.en;
+}
+
+export type PrivacyContent =
+  | typeof privacyEn
+  | typeof privacyRu;
+
+export function getPrivacyContent(locale: Locale): PrivacyContent {
+  return locale === "ru" ? privacyRu : privacyEn;
+}
+
+export type EulaContent = typeof eulaEn | typeof eulaRu;
+
+export function getEulaContent(locale: Locale): EulaContent {
+  return locale === "ru" ? eulaRu : eulaEn;
 }
