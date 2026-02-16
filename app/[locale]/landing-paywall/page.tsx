@@ -254,7 +254,7 @@ export default async function LandingPaywallPage({
               </span>
               {lp.whyLoveSuffix}
             </h2>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-4">
               {[
                 {
                   name: lp.testimonial1Name,
