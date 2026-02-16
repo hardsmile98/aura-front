@@ -198,8 +198,12 @@ export function LandingPaywallSubscription({ locale }: Props) {
               <div className="flex items-center gap-3 p-4 rounded-xl bg-violet-50/80 border border-violet-100">
                 <GiftBoxIcon className="w-6 h-6 text-violet-600 shrink-0" />
                 <div className="flex-1 min-w-0">
-                  <p className="font-medium text-zinc-900 text-sm">
-                    {lp.subscriptionPromoCode}
+                  <p className="font-medium text-sm">
+                    {lp.subscriptionPromoCodePrefix}
+                    <span>
+                      {lp.subscriptionPromoCodeValue}
+                    </span>
+                    {lp.subscriptionPromoCodeSuffix}
                   </p>
                   <p className="text-xs text-emerald-600 font-medium">
                     {lp.subscriptionPromoYouSave}
