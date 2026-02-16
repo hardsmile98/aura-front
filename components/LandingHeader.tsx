@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useParams, useSearchParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { getTranslations } from '@/lib/translations';
 import type { Locale } from '@/lib/translations';
 import { ScrollToPaymentButton } from '@/components/landing-paywall/ScrollToPaymentButton';
@@ -16,18 +16,16 @@ function formatTime(seconds: number): string {
   return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
 }
 
+const userEmail = 'user@example.com';
+
 export function LandingHeader() {
   const params = useParams();
-  const searchParams = useSearchParams();
   const locale = (params?.locale as Locale) || 'en';
-  const userEmail = searchParams?.get('email');
   const t = getTranslations(locale).common.header;
 
-  const displayEmail = userEmail
-    ? userEmail.length > 20
-      ? `${userEmail.slice(0, 12)}...`
-      : userEmail
-    : 'user@example.com';
+  const displayEmail = userEmail.length > 20
+    ? `${userEmail.slice(0, 12)}...`
+    : userEmail;
 
   // Анимированные сообщения в верхней плашке
   const messages = [
@@ -134,7 +132,7 @@ export function LandingHeader() {
                 {formatTime(secondsLeft)}
               </div>
             </div>
-            <ScrollToPaymentButton className="shrink-0 px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors">
+            <ScrollToPaymentButton className="shrink-0 px-6 py-2.5 bg-violet-600 hover:bg-violet-700 text-white font-medium rounded-lg transition-colors">
               {t.continue}
             </ScrollToPaymentButton>
           </div>
