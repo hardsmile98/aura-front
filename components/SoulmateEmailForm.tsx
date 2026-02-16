@@ -7,7 +7,7 @@ import { getTranslations } from '@/lib/translations';
 import type { Locale } from '@/lib/translations';
 
 const inputClassName =
-  'w-full min-w-0 max-w-full py-4 px-4 rounded-2xl border-2 border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 focus:border-violet-400 dark:focus:border-violet-500 focus:ring-2 focus:ring-violet-200 dark:focus:ring-violet-900/50 outline-none transition-all text-base min-w-auto';
+  'w-full min-w-0 max-w-full py-4 px-4 rounded-2xl border-2 border-zinc-200 bg-white text-zinc-900 focus:border-violet-400 focus:ring-2 focus:ring-violet-200 outline-none transition-all text-base min-w-auto';
 const continueButtonClassName =
   'w-full py-4 px-8 bg-violet-600 hover:bg-violet-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center';
 
@@ -38,13 +38,13 @@ export function SoulmateEmailForm({ locale }: SoulmateEmailFormProps) {
       <div className="relative z-10 w-full max-w-md">
         <form
           onSubmit={handleSubmit}
-          className="w-full bg-white dark:bg-zinc-900 rounded-2xl shadow-xl p-6 md:p-8 ring-1 ring-zinc-200 dark:ring-zinc-700">
+          className="w-full bg-white rounded-2xl shadow-xl p-6 md:p-8 ring-1 ring-zinc-200">
           <div className="mb-4 text-center">
             <h2 className="text-xl md:text-2xl font-bold mb-1">
-              <span className="text-violet-600 dark:text-violet-400">
+              <span className="text-violet-600">
                 {t.soulmate.result.emailSubtitleStart}
               </span>
-              <span className="text-violet-600 dark:text-violet-400">
+              <span className="text-violet-600">
                 {t.soulmate.result.emailSubtitleEnd}
               </span>
             </h2>
@@ -56,7 +56,7 @@ export function SoulmateEmailForm({ locale }: SoulmateEmailFormProps) {
           <div className="space-y-2 mb-4">
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">
+              className="block text-sm font-medium text-zinc-700">
               {t.soulmate.result.emailLabel.replace('*', '')}
               <span className="text-red-500">*</span>
             </label>
@@ -92,22 +92,22 @@ export function SoulmateEmailForm({ locale }: SoulmateEmailFormProps) {
                 />
               </svg>
             </div>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            <p className="text-sm text-zinc-600">
               {t.soulmate.result.emailPrivacy}
             </p>
           </div>
 
-          <p className="text-xs text-zinc-500 dark:text-zinc-500 mt-6 leading-relaxed">
+          <p className="text-xs text-zinc-500 mt-6 leading-relaxed">
             {t.footer.prefix}
             <Link
               href={`/${locale}/eula`}
-              className="underline hover:text-zinc-700 dark:hover:text-zinc-300 mx-1">
+              className="underline hover:text-zinc-700 mx-1">
               {t.footer.termsLink}
             </Link>
             {t.footer.and}
             <Link
               href={`/${locale}/privacy-notice`}
-              className="underline hover:text-zinc-700 dark:hover:text-zinc-300 mx-1">
+              className="underline hover:text-zinc-700 mx-1">
               {t.footer.privacyLink}
             </Link>
             {t.footer.suffix}

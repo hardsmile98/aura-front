@@ -22,16 +22,16 @@ export function QuizResultWarningModal({
         onClick={onClose}
         aria-hidden
       />
-      <div className="relative bg-white dark:bg-zinc-900 rounded-2xl shadow-xl max-w-md w-full p-6 text-center ring-1 ring-zinc-200 dark:ring-zinc-700">
+      <div className="relative bg-white rounded-2xl shadow-xl max-w-md w-full p-6 text-center ring-1 ring-zinc-200">
         <h2 className="text-lg font-bold text-amber-500 uppercase tracking-wide mb-4">
           {title}
         </h2>
 
-        <p className="text-zinc-700 dark:text-zinc-300 mb-4 leading-relaxed">
+        <p className="text-zinc-700 mb-4 leading-relaxed">
           {message}
         </p>
       
-        <div className="inline-block text-zinc-600 dark:text-zinc-400 mb-6 text-sm">
+        <div className="inline-block text-zinc-600 mb-6 text-sm">
           <svg
             className="inline size-5 text-emerald-500 align-middle mr-2"
             fill="currentColor"

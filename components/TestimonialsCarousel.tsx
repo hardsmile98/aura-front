@@ -38,7 +38,7 @@ function TestimonialCard({
   index: number;
 }) {
   return (
-    <div className="bg-white dark:bg-zinc-900 rounded-xl md:rounded-2xl p-6 shadow-none md:shadow-md border border-zinc-100 dark:border-zinc-800 h-full w-full md:mx-0">
+    <div className="bg-white rounded-xl md:rounded-2xl p-6 shadow-none md:shadow-md border border-zinc-100 h-full w-full md:mx-0">
       <div className="flex items-center flex-wrap justify-between gap-4 mb-4">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-full overflow-hidden shrink-0">
@@ -51,10 +51,10 @@ function TestimonialCard({
             />
           </div>
           <div>
-            <div className="font-semibold text-zinc-900 dark:text-zinc-100 text-sm">
+            <div className="font-semibold text-zinc-900 text-sm">
               {testimonial.name}
             </div>
-            <div className="text-xs text-zinc-500 dark:text-zinc-400">
+            <div className="text-xs text-zinc-500">
               {testimonial.date}
             </div>
           </div>
@@ -63,10 +63,10 @@ function TestimonialCard({
           <StarRating size="sm" />
         </div>
       </div>
-      <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 text-sm mb-2">
+      <h3 className="font-semibold text-zinc-900 text-sm mb-2">
         {testimonial.headline}
       </h3>
-      <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+      <p className="text-xs text-zinc-600 leading-relaxed">
         {testimonial.text}
       </p>
     </div>

@@ -100,7 +100,7 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
 
   if (infoSlide) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-pink-50 dark:from-violet-950/20 dark:via-zinc-950 dark:to-pink-950/20 flex flex-col">
+      <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-pink-50 flex flex-col">
         <Header
           onBack={handleBack}
           backLabel={t.soulmate.quiz.back}
@@ -130,7 +130,7 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
     : "";
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-pink-50 dark:from-violet-950/20 dark:via-zinc-950 dark:to-pink-950/20 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-pink-50 flex flex-col">
       <Header
         onBack={handleBack}
         backLabel={t.soulmate.quiz.back}

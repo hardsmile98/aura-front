@@ -19,7 +19,7 @@ type HeaderProps = {
 };
 
 const backButtonClass =
-  'absolute left-4 md:left-6 top-1/2 -translate-y-1/2 inline-flex items-center justify-center gap-1.5 p-3 md:p-0 text-base font-semibold text-zinc-900 dark:text-zinc-100 hover:text-violet-600 dark:hover:text-violet-400 transition-colors';
+  'absolute left-4 md:left-6 top-1/2 -translate-y-1/2 inline-flex items-center justify-center gap-1.5 p-3 md:p-0 text-base font-semibold text-zinc-900 hover:text-violet-600 transition-colors';
 
 function HeaderWithParams({
   backHref,
@@ -58,7 +58,7 @@ function HeaderContent({
     totalSteps && currentStep > 0 ? (currentStep / totalSteps) * 100 : 0;
 
   return (
-    <header className="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-b border-zinc-200 dark:border-zinc-800">
+    <header className="bg-white/80 backdrop-blur-sm border-b border-zinc-200">
       <div className="relative flex justify-center items-center px-4 md:px-6 py-4">
         {showBack ? (
           onBack ? (
@@ -100,7 +100,7 @@ function HeaderContent({
 
         <div className="absolute right-4 md:right-6">
           {totalSteps != null && currentStep > 0 ? (
-            <span className="text-sm text-zinc-500 dark:text-zinc-400">
+            <span className="text-sm text-zinc-500">
               {currentStep}/{totalSteps}
             </span>
           ) : null}
@@ -108,9 +108,9 @@ function HeaderContent({
       </div>
 
       {totalSteps != null && totalSteps > 0 && (
-        <div className="h-1 w-full bg-zinc-200 dark:bg-zinc-800">
+        <div className="h-1 w-full bg-zinc-200">
           <div
-            className="h-full bg-violet-600 dark:bg-violet-500 transition-all duration-300"
+            className="h-full bg-violet-600 transition-all duration-300"
             style={{ width: `${progressPercent}%` }}
           />
         </div>

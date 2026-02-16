@@ -12,11 +12,11 @@ export function SoulmateEmailPage({ locale }: SoulmateEmailPageProps) {
   const t = getTranslations((locale as Locale) || 'en');
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-pink-50 dark:from-violet-950/20 dark:via-zinc-950 dark:to-pink-950/20 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-pink-50 flex flex-col">
       <Header />
 
       <main className="flex-1 flex flex-col items-center px-6 py-8 md:py-16 max-w-lg mx-auto w-full">
-        <h1 className="text-xl md:text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-8 text-center">
+        <h1 className="text-xl md:text-2xl font-bold text-zinc-900 mb-8 text-center">
           {t.soulmate.result.emailTitle}
         </h1>
 

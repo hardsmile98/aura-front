@@ -18,7 +18,7 @@ export function CheckMarkIcon({ className }: { className?: string }) {
 export function CheckIcon({ className }: { className?: string }) {
   return (
     <svg
-      className={className ?? "h-4 w-4 text-violet-500 dark:text-violet-400 shrink-0"}
+      className={className ?? "h-4 w-4 text-violet-500 shrink-0"}
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"

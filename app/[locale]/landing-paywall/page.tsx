@@ -56,7 +56,7 @@ export default async function LandingPaywallPage({
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-950 flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
       <LandingHeader
         locale={locale}
         logInLabel={lp.logIn}
@@ -68,13 +68,13 @@ export default async function LandingPaywallPage({
         <section className="px-4 md:px-8 py-12 md:py-20 max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-zinc-100 leading-tight mb-4">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-900 leading-tight mb-4">
                 {lp.heroTitle}{" "}
-                <span className="text-violet-600 dark:text-violet-400">
+                <span className="text-violet-600">
                   {lp.heroHighlight}
                 </span>
               </h1>
-              <div className="flex gap-6 mb-4 text-zinc-600 dark:text-zinc-400">
+              <div className="flex gap-6 mb-4 text-zinc-600">
                 <span>
                   {lp.stat1Value} {lp.stat1Label}
                 </span>
@@ -90,7 +90,7 @@ export default async function LandingPaywallPage({
                   {lp.ctaButton}
                 </RandomReviewLink>
               </div>
-              <div className="flex flex-wrap gap-4 items-center text-sm text-zinc-500 dark:text-zinc-500">
+              <div className="flex flex-wrap gap-4 items-center text-sm text-zinc-500">
                 <span>As featured in:</span>
                 <span className="font-semibold text-violet-600">Aura</span>
                 <span>DailyWire</span>
@@ -101,7 +101,7 @@ export default async function LandingPaywallPage({
               </div>
             </div>
             <div className="relative">
-              <div className="relative rounded-xl overflow-hidden border-2 border-zinc-200 dark:border-zinc-700">
+              <div className="relative rounded-xl overflow-hidden border-2 border-zinc-200">
                 <Image
                   src="/portrait.png"
                   alt="Soulmate sketch"
@@ -109,31 +109,31 @@ export default async function LandingPaywallPage({
                   height={500}
                   className="w-full h-auto object-cover"
                 />
-                <div className="absolute bottom-4 right-4 w-24 h-24 rounded-lg bg-zinc-300/80 dark:bg-zinc-600/80 blur-sm" />
+                <div className="absolute bottom-4 right-4 w-24 h-24 rounded-lg bg-zinc-300/80 blur-sm" />
               </div>
             </div>
           </div>
         </section>
 
         {/* Subscription Section */}
-        <section className="px-4 md:px-8 py-16 bg-zinc-50 dark:bg-zinc-900/50">
+        <section className="px-4 md:px-8 py-16 bg-zinc-50">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-zinc-100 text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 text-center mb-12">
               {lp.tryFor7Days}
             </h2>
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {[1, 2].map((plan) => (
                 <div
                   key={plan}
-                  className="bg-white dark:bg-zinc-900 rounded-2xl border-2 border-zinc-200 dark:border-zinc-700 p-6 shadow-sm"
+                  className="bg-white rounded-2xl border-2 border-zinc-200 p-6 shadow-sm"
                 >
-                  <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                  <h3 className="font-semibold text-zinc-900 mb-2">
                     {lp.subscription}
                   </h3>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
+                  <p className="text-sm text-zinc-600 mb-4">
                     {lp.subscriptionDesc}
                   </p>
-                  <ul className="space-y-2 mb-6 text-sm text-zinc-600 dark:text-zinc-400">
+                  <ul className="space-y-2 mb-6 text-sm text-zinc-600">
                     <li className="flex gap-2">
                       <span className="text-violet-600">•</span>
                       {lp.subscriptionBullet1}
@@ -191,14 +191,14 @@ export default async function LandingPaywallPage({
         {/* Users Portraits */}
         <section className="px-4 md:px-8 py-16">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-zinc-100 text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 text-center mb-12">
               {lp.usersPortraits}
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[1, 2, 3, 4].map((i) => (
                 <div
                   key={i}
-                  className="aspect-[3/4] rounded-lg border-2 border-zinc-200 dark:border-zinc-700 overflow-hidden bg-zinc-100 dark:bg-zinc-800"
+                  className="aspect-[3/4] rounded-lg border-2 border-zinc-200 overflow-hidden bg-zinc-100"
                 >
                   <Image
                     src="/portrait.png"
@@ -214,17 +214,17 @@ export default async function LandingPaywallPage({
         </section>
 
         {/* Get Full Guide */}
-        <section className="px-4 md:px-8 py-16 bg-zinc-50 dark:bg-zinc-900/50">
+        <section className="px-4 md:px-8 py-16 bg-zinc-50">
           <div className="max-w-3xl mx-auto">
             <Link
               href={`/${locale}/soulmate/quiz`}
-              className="group flex items-center gap-4 p-6 rounded-xl border-2 border-violet-200 dark:border-violet-800 hover:border-violet-400 dark:hover:border-violet-600 transition-colors"
+              className="group flex items-center gap-4 p-6 rounded-xl border-2 border-violet-200 hover:border-violet-400 transition-colors"
             >
               <div className="flex-1">
-                <h2 className="text-xl font-bold text-violet-600 dark:text-violet-400 mb-2">
+                <h2 className="text-xl font-bold text-violet-600 mb-2">
                   {lp.getFullGuide}
                 </h2>
-                <p className="text-zinc-600 dark:text-zinc-400 text-sm">
+                <p className="text-zinc-600 text-sm">
                   {lp.getFullGuideText}
                 </p>
               </div>
@@ -246,11 +246,11 @@ export default async function LandingPaywallPage({
         </section>
 
         {/* Testimonials */}
-        <section className="px-4 md:px-8 py-16 bg-white dark:bg-zinc-950">
+        <section className="px-4 md:px-8 py-16 bg-white">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-zinc-100 text-center mb-6 md:mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 text-center mb-6 md:mb-8">
               {lp.whyLovePrefix}
-              <span className="text-violet-600 dark:text-violet-400">
+              <span className="text-violet-600">
                 {lp.whyLoveHighlight}
               </span>
               {lp.whyLoveSuffix}
@@ -283,7 +283,7 @@ export default async function LandingPaywallPage({
         {/* FAQ */}
         <section className="px-4 md:px-8 py-8 md:py-16">
           <div className="max-w-7xl mx-auto grid grid-cols-12 gap-y-4 gap-x-0 md:gap-y-0 md:gap-x-16 items-start">
-            <h2 className="col-span-12 md:col-span-4 text-2xl md:text-3xl font-bold text-zinc-900 dark:text-zinc-100 leading-tight">
+            <h2 className="col-span-12 md:col-span-4 text-2xl md:text-3xl font-bold text-zinc-900 leading-tight">
               {lp.faqTitle}
             </h2>
             <div className="col-span-12 md:col-span-8">
@@ -294,7 +294,7 @@ export default async function LandingPaywallPage({
       </main>
 
       {/* Footer - Dark */}
-      <footer className="bg-zinc-900 dark:bg-zinc-950 text-zinc-300 py-12 px-4 md:px-8">
+      <footer className="bg-zinc-900 text-zinc-300 py-12 px-4 md:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between gap-8 mb-8">
             <div className="flex items-center gap-4">

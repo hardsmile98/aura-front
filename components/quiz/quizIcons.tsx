@@ -134,7 +134,7 @@ export function renderInfoSlideIcon(name: InfoSlideIconName, className?: string)
   const Icon = INFO_SLIDE_ICONS[name];
   return Icon ? (
     <span
-      className={`flex size-24 shrink-0 items-center justify-center rounded-2xl bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.06)] ring-1 ring-zinc-200/60 md:size-28 dark:bg-white/10 dark:shadow-[0_8px_30px_rgba(0,0,0,0.25)] dark:ring-white/10 ${className ?? ""}`.trim()}
+      className={`flex size-24 shrink-0 items-center justify-center rounded-2xl bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.06)] ring-1 ring-zinc-200/60 md:size-28 ${className ?? ""}`.trim()}
     >
       <Icon className="size-16 shrink-0 md:size-20" />
     </span>

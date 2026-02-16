@@ -9,9 +9,9 @@ import type { QuizStepSelectOption } from "./quizConfig";
 const optionButtonBase =
   "rounded-2xl border-2 transition-all text-center font-medium cursor-pointer flex items-center justify-center text-base";
 const optionButtonSelected =
-  "border-violet-500 dark:border-violet-400 bg-violet-50 dark:bg-violet-950/40 text-violet-700 dark:text-violet-300";
+  "border-violet-500 bg-violet-50 text-violet-700";
 const optionButtonDefault =
-  "border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 hover:border-violet-400 dark:hover:border-violet-500 text-zinc-900 dark:text-zinc-100";
+  "border-zinc-200 bg-white hover:border-violet-400 text-zinc-900";
 
 type QuizStepSelectProps = {
   value: string;
@@ -107,7 +107,7 @@ export function QuizStepSelect({
 
   return (
     <div className="w-full">
-      <h2 className="text-xl md:text-2xl font-bold text-zinc-900 dark:text-zinc-100 text-center mb-8">
+      <h2 className="text-xl md:text-2xl font-bold text-zinc-900 text-center mb-8">
         {title}
       </h2>
 
@@ -120,10 +120,10 @@ export function QuizStepSelect({
             className={`${optionButtonBase} ${getButtonClass(opt, index)} ${
               value === opt.value
                 ? isDegree
-                  ? "outline outline-2 outline-violet-500 dark:outline-violet-400 outline-offset-[-2px] bg-violet-50 dark:bg-violet-950/40 text-violet-700 dark:text-violet-300"
+                  ? "outline outline-2 outline-violet-500 outline-offset-[-2px] bg-violet-50 text-violet-700"
                   : optionButtonSelected
                 : isDegree
-                  ? "border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 hover:bg-violet-50/70 dark:hover:bg-violet-950/30 text-zinc-900 dark:text-zinc-100"
+                  ? "border-zinc-200 bg-white hover:bg-violet-50/70 text-zinc-900"
                   : optionButtonDefault
             }`}
           >

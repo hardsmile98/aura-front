@@ -18,11 +18,11 @@ export function QuizResultQuestionModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/20" aria-hidden />
-      <div className="relative bg-white dark:bg-zinc-900 rounded-2xl shadow-xl max-w-md w-full p-6 text-center ring-1 ring-zinc-200 dark:ring-zinc-700">
+      <div className="relative bg-white rounded-2xl shadow-xl max-w-md w-full p-6 text-center ring-1 ring-zinc-200">
         <span className="inline-block text-center mx-auto text-[2rem] font-bold mb-2">
           ✨
         </span>
-        <p className="text-zinc-800 dark:text-zinc-200 text-base font-medium mb-6">
+        <p className="text-zinc-800 text-base font-medium mb-6">
           {question}
         </p>
         <div className="flex gap-3">

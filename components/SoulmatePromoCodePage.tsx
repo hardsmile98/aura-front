@@ -17,25 +17,25 @@ export function SoulmatePromoCodePage({ locale }: SoulmatePromoCodePageProps) {
   const t = getTranslations((locale as Locale) || 'en');
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-pink-50 dark:from-violet-950/20 dark:via-zinc-950 dark:to-pink-950/20 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-pink-50 flex flex-col">
       <Header />
 
       <main className="flex-1 flex flex-col items-center px-6 py-8 md:py-16 max-w-lg mx-auto w-full">
         <div className="w-full">
           <div className="flex flex-col items-center mb-8">
-            <span className="flex size-24 shrink-0 items-center justify-center rounded-2xl bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.06)] ring-1 ring-zinc-200/60 md:size-28 dark:bg-white/10 dark:shadow-[0_8px_30px_rgba(0,0,0,0.25)] dark:ring-white/10">
+            <span className="flex size-24 shrink-0 items-center justify-center rounded-2xl bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.06)] ring-1 ring-zinc-200/60 md:size-28">
               <Image src="/gift.gif" alt="Gift box" width={80} height={80} className="size-16 shrink-0 object-contain md:size-20" />
             </span>
           </div>
 
-          <h2 className="text-xl md:text-2xl font-bold text-zinc-900 dark:text-zinc-100 text-center mb-8">
+          <h2 className="text-xl md:text-2xl font-bold text-zinc-900 text-center mb-8">
             {t.soulmate.result.promoTitle}
-            <span className="text-violet-600 dark:text-violet-400">
+            <span className="text-violet-600">
               {t.soulmate.result.promoHighlight}
             </span>
           </h2>
 
-          <div className="w-full py-4 px-4 rounded-2xl border-2 border-dashed border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800/50 text-zinc-900 dark:text-zinc-100 font-mono font-bold text-lg tracking-wider text-center mb-6">
+          <div className="w-full py-4 px-4 rounded-2xl border-2 border-dashed border-zinc-200 bg-zinc-100 text-zinc-900 font-mono font-bold text-lg tracking-wider text-center mb-6">
             {PROMO_CODE}
           </div>
 

@@ -15,7 +15,7 @@ export function LandingHeader({
   signUpLabel,
 }: LandingHeaderProps) {
   return (
-    <header className="bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
+    <header className="bg-white border-b border-zinc-200">
       <div className="flex justify-between items-center px-4 md:px-8 py-4 max-w-7xl mx-auto">
         <Link href={`/${locale}/soulmate/welcome`} className="flex-shrink-0">
           <Image
@@ -30,7 +30,7 @@ export function LandingHeader({
         <div className="flex items-center gap-4">
           <Link
             href="#"
-            className="text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors"
+            className="text-sm font-medium text-zinc-700 hover:text-violet-600 transition-colors"
           >
             {logInLabel}
           </Link>

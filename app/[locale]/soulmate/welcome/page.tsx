@@ -15,18 +15,18 @@ export default async function SoulmateWelcomePage({
   const t = getTranslations((locale as Locale) || "en");
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-pink-50 dark:from-violet-950/20 dark:via-zinc-950 dark:to-pink-950/20 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-pink-50 flex flex-col">
       <Header />
 
       <main className="flex-1 flex flex-col items-center justify-center px-6 py-12 max-w-lg mx-auto text-center">
-        <h1 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-zinc-100 leading-tight mb-4 md:mb-12">
-          <span className="text-violet-600 dark:text-violet-400">
+        <h1 className="text-2xl md:text-3xl font-bold text-zinc-900 leading-tight mb-4 md:mb-12">
+          <span className="text-violet-600">
             {t.soulmate.welcome.headlineStart}
           </span>
           {t.soulmate.welcome.headlineEnd}
         </h1>
 
-        <div className="rounded-lg border-2 border-zinc-300 dark:border-zinc-600 p-2 my-6 overflow-hidden min-h-[180px] md:min-h-[280px]">
+        <div className="rounded-lg border-2 border-zinc-300 p-2 my-6 overflow-hidden min-h-[180px] md:min-h-[280px]">
           <Image
             src="/portrait.png"
             alt="Soulmate"
@@ -39,18 +39,18 @@ export default async function SoulmateWelcomePage({
 
         <div className="flex gap-8 md:gap-16 mb-12">
           <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold text-violet-600 dark:text-violet-400">
+            <div className="text-2xl md:text-3xl font-bold text-violet-600">
               {t.soulmate.welcome.stat1Value}
             </div>
-            <div className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+            <div className="text-sm text-zinc-600 mt-1">
               {t.soulmate.welcome.stat1Label}
             </div>
           </div>
           <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold text-violet-600 dark:text-violet-400">
+            <div className="text-2xl md:text-3xl font-bold text-violet-600">
               {t.soulmate.welcome.stat2Value}
             </div>
-            <div className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+            <div className="text-sm text-zinc-600 mt-1">
               {t.soulmate.welcome.stat2Label}
             </div>
           </div>
@@ -60,30 +60,30 @@ export default async function SoulmateWelcomePage({
           {t.soulmate.welcome.ctaButton}
         </RandomReviewLink>
 
-        <p className="text-zinc-600 dark:text-zinc-400 mt-4 text-sm">
+        <p className="text-zinc-600 mt-4 text-sm">
           {t.soulmate.welcome.subheadline}
         </p>
       </main>
 
       <footer className="px-6 py-8 text-center">
-        <p className="text-xs text-zinc-500 dark:text-zinc-500 max-w-md mx-auto leading-relaxed">
+        <p className="text-xs text-zinc-500 max-w-md mx-auto leading-relaxed">
           {t.footer.prefix}
           <Link
             href={`/${locale}/eula`}
-            className="underline hover:text-zinc-700 dark:hover:text-zinc-300 mx-1"
+            className="underline hover:text-zinc-700 mx-1"
           >
             {t.footer.termsLink}
           </Link>
           {t.footer.and}
           <Link
             href={`/${locale}/privacy-notice`}
-            className="underline hover:text-zinc-700 dark:hover:text-zinc-300 mx-1"
+            className="underline hover:text-zinc-700 mx-1"
           >
             {t.footer.privacyLink}
           </Link>
           {t.footer.suffix}
         </p>
-        <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-4">
+        <p className="text-xs text-zinc-400 mt-4">
           {t.footer.disclaimer}
         </p>
       </footer>
