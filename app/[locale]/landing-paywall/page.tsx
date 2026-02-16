@@ -4,6 +4,7 @@ import { LandingHeader } from "@/components/LandingHeader";
 import { LandingPaywallFAQ } from "@/components/LandingPaywallFAQ";
 import { PaymentMethodIcons } from "@/components/PaymentMethodIcons";
 import { RandomReviewLink } from "@/components/RandomReviewLink";
+import { TestimonialsCarousel } from "@/components/TestimonialsCarousel";
 import { getTranslations } from "@/lib/translations";
 import type { Locale } from "@/lib/translations";
 
@@ -247,15 +248,15 @@ export default async function LandingPaywallPage({
         {/* Testimonials */}
         <section className="px-4 md:px-8 py-16 bg-white dark:bg-zinc-950">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-zinc-100 text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-zinc-100 text-center mb-6 md:mb-8">
               {lp.whyLovePrefix}
               <span className="text-violet-600 dark:text-violet-400">
                 {lp.whyLoveHighlight}
               </span>
               {lp.whyLoveSuffix}
             </h2>
-            <div className="grid md:grid-cols-3 gap-4">
-              {[
+            <TestimonialsCarousel
+              testimonials={[
                 {
                   name: lp.testimonial1Name,
                   date: lp.testimonial1Date,
@@ -274,44 +275,8 @@ export default async function LandingPaywallPage({
                   headline: lp.testimonial3Headline,
                   text: lp.testimonial3Text,
                 },
-              ].map((tst, i) => (
-                <div
-                  key={i}
-                  className="bg-white dark:bg-zinc-900 rounded-xl md:rounded-2xl p-6 shadow-md border border-zinc-100 dark:border-zinc-800"
-                >
-                  <div className="flex items-center justify-between gap-4 mb-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full overflow-hidden shrink-0">
-                        <Image
-                          src={`/review-${i + 1}.png`}
-                          alt={tst.name}
-                          width={40}
-                          height={40}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-zinc-900 dark:text-zinc-100 text-sm">
-                          {tst.name}
-                        </div>
-                        <div className="text-xs text-zinc-500 dark:text-zinc-400">
-                          {tst.date}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="shrink-0">
-                      <StarRating size="sm" />
-                    </div>
-                  </div>
-                  <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 text-sm mb-2">
-                    {tst.headline}
-                  </h3>
-                  <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                    {tst.text}
-                  </p>
-                </div>
-              ))}
-            </div>
+              ]}
+            />
           </div>
         </section>
 

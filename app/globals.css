@@ -23,3 +23,29 @@ input[type="date"] {
   -moz-appearance: none;
   appearance: none;
 }
+
+/* Slick carousel overrides for testimonials */
+.testimonials-carousel .slick-list {
+  margin: 0 -8px;
+}
+.testimonials-carousel .slick-slide > div {
+  width: 100%;
+}
+.testimonials-carousel .slick-slide {
+  padding: 0 8px;
+}
+.testimonials-carousel .slick-dots {
+  bottom: -28px;
+}
+.testimonials-carousel .slick-dots li {
+  margin: 0 2px;
+}
+.testimonials-carousel .slick-dots li button:before {
+  font-size: 10px;
+  color: rgb(124 58 237);
+  opacity: 0.4;
+}
+.testimonials-carousel .slick-dots li.slick-active button:before {
+  color: rgb(124 58 237);
+  opacity: 1;
+}
