@@ -77,14 +77,14 @@ export function LandingPaywallSubscription({ locale }: Props) {
 
   return (
     <section className="px-0 md:px-8 py-16 bg-white">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 text-center mb-2 md:mb-10">
           {lp.tryFor7Days}
         </h2>
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-8">
           {/* Left card - Trust */}
           <div className="bg-white rounded-xl md:rounded-2xl p-6 md:p-8 shadow-none border-0 md:shadow-md md:border md:border-zinc-100">
-            <div className="flex items-center gap-3 mb-8 p-4 rounded-xl bg-zinc-100">
+            <div className="flex items-center justify-between flex-wrap gap-3 mb-8 p-4 rounded-xl bg-zinc-100">
               <span className="text-sm font-medium text-zinc-900">
                 {lp.subscriptionPeopleJoined}
               </span>
