@@ -1,5 +1,4 @@
 export { StarRating } from "./StarRating";
-export { LandingPaywallHero } from "./LandingPaywallHero";
 export { LandingPaywallSketchHero } from "./LandingPaywallSketchHero";
 export { LandingPaywallSubscription } from "./LandingPaywallSubscription";
 export { LandingPaywallPortraits } from "./LandingPaywallPortraits";

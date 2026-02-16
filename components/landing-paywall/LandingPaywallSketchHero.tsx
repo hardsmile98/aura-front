@@ -146,7 +146,7 @@ export function LandingPaywallSketchHero({ locale }: Props) {
 
       {/* Media logos strip - infinite marquee, на всю ширину экрана */}
       <div
-        className="relative w-full overflow-hidden group"
+        className="relative w-full overflow-hidden group pt-2 md:pt-6"
         style={{
           maskImage:
             "linear-gradient(to right, transparent 0, black 80px, black calc(100% - 80px), transparent 100%)",
