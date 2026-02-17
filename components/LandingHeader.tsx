@@ -105,14 +105,17 @@ export function LandingHeader() {
               />
             </Link>
 
-            <div className="flex items-center gap-1.5 px-2 py-1.5 rounded-lg bg-zinc-200/80">
+            <Link
+              href={`/${locale}/app`}
+              className="flex items-center gap-1.5 px-2 py-1.5 rounded-lg bg-zinc-200/80 hover:bg-zinc-300/80 transition-colors"
+            >
               <div className="w-5 h-5 rounded-full bg-zinc-300 flex items-center justify-center text-[10px] font-semibold text-zinc-600 shrink-0">
                 {displayEmail.charAt(0).toUpperCase()}
               </div>
               <span className="text-xs text-zinc-600 truncate max-w-[80px] md:max-w-[100px]">
                 {displayEmail}
               </span>
-            </div>
+            </Link>
           </div>
         </div>
       </div>
