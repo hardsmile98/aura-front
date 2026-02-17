@@ -335,12 +335,13 @@ export const en = {
     directionFinance: "Finance",
     directionFamily: "Family",
     directionTravel: "Travel",
-    expertName: "Maria Astral",
-    expertTitle: "Professional Astrologer",
+    expertName: "Marcel Duval",
+    expertTitle: "Energy practitioner / Spiritual direction / Yoga",
     expertBio:
-      "Over 15 years of experience in astrology and spiritual guidance. Maria helps thousands of people find clarity and direction through personalized horoscope readings and expert consultations.",
+      "I help you connect with yourself and your inner state, restoring a sense of stability, resilience, and harmony.\n\nThrough meditation, mindfulness practice, and tension management, you reduce stress, gain a better understanding of yourself, and find inner support. This is a gentle path to clarity, calm, and balance without pressure or rush.\n\nFor those who practice suitable devices that emit tension flows or want to delve deeper into them. Work carefully, respecting your own pace.\n\nSign up via private message.",
     expertTelegram: "Telegram",
     expertInstagram: "Instagram",
+    expertWhatsApp: "WhatsApp",
     expertContact: "Contact Expert",
   },
   footer: {
