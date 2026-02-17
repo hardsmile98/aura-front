@@ -29,6 +29,12 @@ function WhatsAppIcon({ className }: { className?: string }) {
   );
 }
 
+const expertLink = {
+  telegram: 'https://t.me/yousoul_guide',
+  instagram: 'https://instagram.com/energy_versee',
+  whatsApp: 'https://wa.me/66825323200',
+};
+
 export default function ExpertPage() {
   const params = useParams();
 
@@ -61,7 +67,7 @@ export default function ExpertPage() {
             {/* Social links */}
             <div className="flex flex-wrap gap-3">
               <a
-                href="https://t.me/yousoul_guide"
+                href={expertLink.telegram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0088cc]/10 text-[#0088cc] hover:bg-[#0088cc]/20 transition-colors text-sm font-medium"
@@ -70,7 +76,7 @@ export default function ExpertPage() {
                 {t.expertTelegram}
               </a>
               <a
-                href="https://instagram.com/energy_versee"
+                href={expertLink.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-pink-100 text-pink-600 hover:bg-pink-200 transition-colors text-sm font-medium"
@@ -79,7 +85,7 @@ export default function ExpertPage() {
                 {t.expertInstagram}
               </a>
               <a
-                href="https://wa.me/66825323200"
+                href={expertLink.whatsApp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-100 text-emerald-700 hover:bg-emerald-200 transition-colors text-sm font-medium"
