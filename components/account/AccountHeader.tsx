@@ -11,8 +11,6 @@ import {
   ExpertIcon,
   UserCircleIcon,
   LogoutIcon,
-  MenuIcon,
-  CloseIcon,
 } from '@/components/icons';
 
 const userEmail = 'user@example.com';
@@ -83,9 +81,7 @@ export function AccountHeader() {
   const t = getTranslations(locale).account;
 
   const [userMenuOpen, setUserMenuOpen] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const userMenuRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLElement>(null);
 
   const basePath = `/${locale}/app`;
   const isHoroscopes = pathname?.includes('/horoscopes');
@@ -93,11 +89,8 @@ export function AccountHeader() {
 
   const handleLogout = useCallback(() => {
     setUserMenuOpen(false);
-    setMobileMenuOpen(false);
     router.push(`/${locale}/landing-paywall`);
   }, [locale, router]);
-
-  const closeMobileMenu = useCallback(() => setMobileMenuOpen(false), []);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -105,14 +98,11 @@ export function AccountHeader() {
       if (userMenuRef.current && !userMenuRef.current.contains(target)) {
         setUserMenuOpen(false);
       }
-      if (mobileMenuOpen && headerRef.current && !headerRef.current.contains(target)) {
-        setMobileMenuOpen(false);
-      }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [mobileMenuOpen]);
+  }, []);
 
   const navLinksProps = {
     basePath,
@@ -120,14 +110,11 @@ export function AccountHeader() {
     isExpert,
     horoscopesLabel: t.horoscopes,
     expertHelpLabel: t.expertHelp,
-    onLinkClick: closeMobileMenu,
+    onLinkClick: () => {},
   };
 
   return (
-    <header
-      ref={headerRef}
-      className="bg-white shadow-sm border-b border-zinc-200 sticky top-0 z-40"
-    >
+    <header className="bg-white shadow-sm border-b border-zinc-200 sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="flex justify-between items-center py-3 md:py-4">
           <Link href={basePath} className="flex items-center shrink-0">
@@ -146,19 +133,6 @@ export function AccountHeader() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen((o) => !o)}
-              className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-zinc-100 cursor-pointer transition-colors"
-              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-            >
-              {mobileMenuOpen ? (
-                <CloseIcon className="w-6 h-6 text-zinc-600" />
-              ) : (
-                <MenuIcon className="w-6 h-6 text-zinc-600" />
-              )}
-            </button>
-
             <div className="relative" ref={userMenuRef}>
               <button
                 type="button"
@@ -196,14 +170,6 @@ export function AccountHeader() {
             </div>
           </div>
         </div>
-
-        {mobileMenuOpen && (
-          <div className="md:hidden py-3 border-t border-zinc-200">
-            <nav className="flex flex-col gap-1">
-              <NavLinks {...navLinksProps} isMobile />
-            </nav>
-          </div>
-        )}
       </div>
     </header>
   );
