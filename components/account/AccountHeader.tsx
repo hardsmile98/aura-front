@@ -6,12 +6,8 @@ import { useParams, usePathname, useRouter } from 'next/navigation';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { getTranslations } from '@/lib/translations';
 import type { Locale } from '@/lib/translations';
-import {
-  HoroscopeIcon,
-  ExpertIcon,
-  UserCircleIcon,
-  LogoutIcon,
-} from '@/components/icons';
+import { UserCircleIcon, LogoutIcon } from '@/components/icons';
+import { ACCOUNT_MENU_ITEMS } from './accountMenuConfig';
 
 const userEmail = 'user@example.com';
 
@@ -21,6 +17,7 @@ function getNavLinkClass(active: boolean, isMobile: boolean): string {
       active ? 'bg-violet-100 text-violet-700' : 'text-zinc-600 hover:bg-zinc-100'
     }`;
   }
+
   return `flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors border-b-2 -mb-[1px] ${
     active
       ? 'text-violet-600 border-violet-600'
@@ -30,66 +27,56 @@ function getNavLinkClass(active: boolean, isMobile: boolean): string {
 
 type NavLinksProps = {
   basePath: string;
-  isHoroscopes: boolean;
-  isExpert: boolean;
+  pathname: string | null;
   isMobile: boolean;
-  horoscopesLabel: string;
-  expertHelpLabel: string;
+  labels: Record<string, string>;
   onLinkClick: () => void;
 };
 
-function NavLinks({
-  basePath,
-  isHoroscopes,
-  isExpert,
-  isMobile,
-  horoscopesLabel,
-  expertHelpLabel,
-  onLinkClick,
-}: NavLinksProps) {
+function NavLinks({ basePath, pathname, isMobile, labels, onLinkClick }: NavLinksProps) {
   return (
     <>
-      <Link
-        href={`${basePath}/horoscopes`}
-        className={getNavLinkClass(isHoroscopes, isMobile)}
-        onClick={onLinkClick}
-      >
-        <HoroscopeIcon
-          className={`w-5 h-5 shrink-0 ${isHoroscopes ? 'text-violet-600' : 'text-zinc-500'}`}
-        />
-        {horoscopesLabel}
-      </Link>
-      <Link
-        href={`${basePath}/expert`}
-        className={getNavLinkClass(isExpert, isMobile)}
-        onClick={onLinkClick}
-      >
-        <ExpertIcon
-          className={`w-5 h-5 shrink-0 ${isExpert ? 'text-violet-600' : 'text-zinc-500'}`}
-        />
-        {expertHelpLabel}
-      </Link>
+      {ACCOUNT_MENU_ITEMS.map(({ path, labelKey, Icon }) => {
+        const isActive = pathname?.includes(`/${path}`) ?? false;
+        return (
+          <Link
+            key={path}
+            href={`${basePath}/${path}`}
+            className={getNavLinkClass(isActive, isMobile)}
+            onClick={onLinkClick}
+          >
+            <Icon
+              className={`w-5 h-5 shrink-0 ${isActive ? 'text-violet-600' : 'text-zinc-500'}`}
+            />
+            {labels[labelKey]}
+          </Link>
+        );
+      })}
     </>
   );
 }
 
 export function AccountHeader() {
   const params = useParams();
+
   const pathname = usePathname();
+
   const router = useRouter();
+
   const locale = (params?.locale as Locale) || 'en';
+
   const t = getTranslations(locale).account;
 
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+
   const userMenuRef = useRef<HTMLDivElement>(null);
 
   const basePath = `/${locale}/app`;
-  const isHoroscopes = pathname?.includes('/horoscopes');
-  const isExpert = pathname?.includes('/expert');
 
   const handleLogout = useCallback(() => {
     setUserMenuOpen(false);
-    router.push(`/${locale}/landing-paywall`);
+
+    router.push(`/${locale}/`);
   }, [locale, router]);
 
   useEffect(() => {
@@ -104,13 +91,9 @@ export function AccountHeader() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const navLinksProps = {
-    basePath,
-    isHoroscopes,
-    isExpert,
-    horoscopesLabel: t.horoscopes,
-    expertHelpLabel: t.expertHelp,
-    onLinkClick: () => {},
+  const labels = {
+    horoscopes: t.horoscopes,
+    expertHelp: t.expertHelp,
   };
 
   return (
@@ -129,7 +112,13 @@ export function AccountHeader() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">
-            <NavLinks {...navLinksProps} isMobile={false} />
+            <NavLinks
+              basePath={basePath}
+              pathname={pathname}
+              isMobile={false}
+              labels={labels}
+              onLinkClick={() => {}}
+            />
           </nav>
 
           <div className="flex items-center gap-2">
