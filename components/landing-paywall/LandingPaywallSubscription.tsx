@@ -91,7 +91,7 @@ export function LandingPaywallSubscription({ locale }: Props) {
               <div className="flex -space-x-2">
                 <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-zinc-200 shrink-0">
                   <Image
-                    src="/man-1.png"
+                    src="/img/man-1.png"
                     alt=""
                     width={32}
                     height={32}
@@ -103,7 +103,7 @@ export function LandingPaywallSubscription({ locale }: Props) {
                 </div>
                 <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-zinc-200 shrink-0">
                   <Image
-                    src="/woman-1.png"
+                    src="/img/woman-1.png"
                     alt=""
                     width={32}
                     height={32}
@@ -142,28 +142,28 @@ export function LandingPaywallSubscription({ locale }: Props) {
 
               <div className="flex flex-wrap items-center gap-3">
                 <Image
-                  src="/Globe.svg"
+                  src="/img/Globe.svg"
                   alt="The Globe and Mail"
                   width={80}
                   height={24}
                   className="h-5 w-auto object-contain opacity-70"
                 />
                 <Image
-                  src="/Benzinga.svg"
+                  src="/img/Benzinga.svg"
                   alt="Benzinga"
                   width={80}
                   height={24}
                   className="h-5 w-auto object-contain opacity-70"
                 />
                 <Image
-                  src="/Barchart.svg"
+                  src="/img/Barchart.svg"
                   alt="Barchart"
                   width={80}
                   height={24}
                   className="h-5 w-auto object-contain opacity-70"
                 />
                 <Image
-                  src="/Yahoo.svg"
+                  src="/img/Yahoo.svg"
                   alt="Yahoo!"
                   width={80}
                   height={24}

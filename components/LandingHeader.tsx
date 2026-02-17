@@ -97,7 +97,7 @@ export function LandingHeader() {
             <Link href={`/${locale}`} className="flex items-center">
               <Image
                 priority
-                src="/logo.svg"
+                src="/img/logo.svg"
                 alt={t.logo}
                 width={100}
                 height={28}

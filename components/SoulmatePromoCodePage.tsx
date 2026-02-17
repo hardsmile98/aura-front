@@ -24,7 +24,7 @@ export function SoulmatePromoCodePage({ locale }: SoulmatePromoCodePageProps) {
         <div className="w-full">
           <div className="flex flex-col items-center mb-8">
             <span className="flex size-24 shrink-0 items-center justify-center rounded-2xl bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.06)] ring-1 ring-zinc-200/60 md:size-28">
-              <Image src="/gift.gif" alt="Gift box" width={80} height={80} className="size-16 shrink-0 object-contain md:size-20" />
+              <Image src="/img/gift.gif" alt="Gift box" width={80} height={80} className="size-16 shrink-0 object-contain md:size-20" />
             </span>
           </div>
 

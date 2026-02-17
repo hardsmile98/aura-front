@@ -47,7 +47,7 @@ function SketchImagesBlock({ className }: { className?: string }) {
     <div className={`relative gap-4 flex flex-row justify-center items-center w-full ${className ?? ""}`}>
       <div className="relative w-[calc(50%-8px)] min-w-[160px] aspect-[3/4] overflow-hidden">
         <Image
-          src="/woman.webp"
+          src="/img/woman.webp"
           alt="Woman viewing soulmate sketch"
           fill
           sizes="(max-width: 768px) 50vw, 25vw"
@@ -56,7 +56,7 @@ function SketchImagesBlock({ className }: { className?: string }) {
 
       <div className="relative w-[calc(50%-8px)] min-w-[160px] aspect-[3/4] overflow-hidden">
         <Image
-          src="/man-sketch.webp"
+          src="/img/man-sketch.webp"
           alt="Soulmate sketch"
           fill
           sizes="(max-width: 768px) 50vw, 25vw"

@@ -43,7 +43,7 @@ function TestimonialCard({
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-full overflow-hidden shrink-0">
             <Image
-              src={`/review-${index + 1}.png`}
+              src={`/img/review-${index + 1}.png`}
               alt={testimonial.name}
               width={40}
               height={40}

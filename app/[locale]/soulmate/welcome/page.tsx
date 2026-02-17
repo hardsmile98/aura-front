@@ -28,7 +28,7 @@ export default async function SoulmateWelcomePage({
 
         <div className="rounded-lg border-2 border-zinc-300 p-2 my-6 overflow-hidden min-h-[180px] md:min-h-[280px]">
           <Image
-            src="/portrait.png"
+            src="/img/portrait.png"
             alt="Soulmate"
             width={220}
             height={280}

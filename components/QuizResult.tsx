@@ -1,41 +1,44 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { Header } from "@/components/Header";
-import { getTranslations } from "@/lib/translations";
-import type { Locale } from "@/lib/translations";
-import type { QuizState } from "@/components/quiz";
-import { QuizResultProgress } from "@/components/quiz/QuizResultProgress";
-import { QuizResultQuestionModal } from "@/components/quiz/QuizResultQuestionModal";
-import { QuizResultWarningModal } from "@/components/quiz/QuizResultWarningModal";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Header } from '@/components/Header';
+import { getTranslations } from '@/lib/translations';
+import type { Locale } from '@/lib/translations';
+import type { QuizState } from '@/components/quiz';
+import { QuizResultProgress } from '@/components/quiz/QuizResultProgress';
+import { QuizResultQuestionModal } from '@/components/quiz/QuizResultQuestionModal';
+import { QuizResultWarningModal } from '@/components/quiz/QuizResultWarningModal';
 
 type QuizResultProps = {
   locale: string;
   onUpdateQuiz: (updates: Partial<QuizState>) => void;
 };
 
-type ModalState = "none" | "question1" | "question2" | "warning";
+type ModalState = 'none' | 'question1' | 'question2' | 'warning';
 
 const PROGRESS_BARS = [
-  { key: "progressHeartIntentions" as const, duration: 2500 },
-  { key: "progressPortrait" as const, duration: 3000 },
-  { key: "progressConnection" as const, duration: 2500 },
+  { key: 'progressHeartIntentions' as const, duration: 2500 },
+  { key: 'progressPortrait' as const, duration: 3000 },
+  { key: 'progressConnection' as const, duration: 2500 },
 ];
 
 export function QuizResult({ locale, onUpdateQuiz }: QuizResultProps) {
   const router = useRouter();
+
   const [progress, setProgress] = useState([0, 0, 0]);
-  const [modal, setModal] = useState<ModalState>("none");
+
+  const [modal, setModal] = useState<ModalState>('none');
+
   const [phase, setPhase] = useState(0);
 
-  const t = getTranslations((locale as Locale) || "en");
+  const t = getTranslations((locale as Locale) || 'en');
 
   useEffect(() => {
-    if (modal !== "none") return;
-  
+    if (modal !== 'none') return;
+
     const barIndex = phase;
-  
+
     if (barIndex >= PROGRESS_BARS.length) return;
 
     const config = PROGRESS_BARS[barIndex];
@@ -43,9 +46,9 @@ export function QuizResult({ locale, onUpdateQuiz }: QuizResultProps) {
     const duration = config.duration;
 
     const interval = 50;
-  
+
     const step = 100 / (duration / interval);
-  
+
     let current = 0;
 
     const timer = setInterval(() => {
@@ -59,11 +62,9 @@ export function QuizResult({ locale, onUpdateQuiz }: QuizResultProps) {
 
         clearInterval(timer);
 
-        if (barIndex === 0) setModal("question1");
-      
-        else if (barIndex === 1) setModal("question2");
-
-        else if (barIndex === 2) setModal("warning");
+        if (barIndex === 0) setModal('question1');
+        else if (barIndex === 1) setModal('question2');
+        else if (barIndex === 2) setModal('warning');
       } else {
         setProgress((prev) => {
           const next = [...prev];
@@ -76,18 +77,20 @@ export function QuizResult({ locale, onUpdateQuiz }: QuizResultProps) {
     return () => clearInterval(timer);
   }, [phase, modal]);
 
-  const handleModalAnswer = (value: "yes" | "no") => {
-    if (modal === "question1") {
+  const handleModalAnswer = (value: 'yes' | 'no') => {
+    if (modal === 'question1') {
       onUpdateQuiz({ spiritualPerson: value });
-    } else if (modal === "question2") {
+    } else if (modal === 'question2') {
       onUpdateQuiz({ psychicArtistry: value });
     }
-    setModal("none");
+  
+    setModal('none');
+  
     setPhase((p) => p + 1);
   };
 
   const handleWarningClose = () => {
-    setModal("none");
+    setModal('none');
     setPhase((p) => p + 1);
     router.push(`/${locale}/email`);
   };
@@ -98,43 +101,42 @@ export function QuizResult({ locale, onUpdateQuiz }: QuizResultProps) {
     t.soulmate.result.progressConnection,
   ];
 
-  const isModalOpen = modal !== "none";
+  const isModalOpen = modal !== 'none';
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-pink-50 flex flex-col">
       <Header />
 
       <div
-        className={`flex-1 flex flex-col transition-all duration-300 ${isModalOpen ? "blur-[2px] pointer-events-none" : ""}`}
-      >
+        className={`flex-1 flex flex-col transition-all duration-300 ${isModalOpen ? 'blur-[2px] pointer-events-none' : ''}`}>
         <QuizResultProgress
-        title={t.soulmate.result.title}
-        labels={progressLabels}
-        progress={progress}
-      />
+          title={t.soulmate.result.title}
+          labels={progressLabels}
+          progress={progress}
+        />
       </div>
 
-      {modal === "question1" && (
+      {modal === 'question1' && (
         <QuizResultQuestionModal
           question={t.soulmate.result.modalQuestion1}
-          onNo={() => handleModalAnswer("no")}
-          onYes={() => handleModalAnswer("yes")}
+          onNo={() => handleModalAnswer('no')}
+          onYes={() => handleModalAnswer('yes')}
           noLabel={t.soulmate.result.modalNo}
           yesLabel={t.soulmate.result.modalYes}
         />
       )}
 
-      {modal === "question2" && (
+      {modal === 'question2' && (
         <QuizResultQuestionModal
           question={t.soulmate.result.modalQuestion2}
-          onNo={() => handleModalAnswer("no")}
-          onYes={() => handleModalAnswer("yes")}
+          onNo={() => handleModalAnswer('no')}
+          onYes={() => handleModalAnswer('yes')}
           noLabel={t.soulmate.result.modalNo}
           yesLabel={t.soulmate.result.modalYes}
         />
       )}
 
-      {modal === "warning" && (
+      {modal === 'warning' && (
         <QuizResultWarningModal
           title={t.soulmate.result.warningTitle}
           message={t.soulmate.result.warningMessage}

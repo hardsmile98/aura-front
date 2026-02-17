@@ -22,7 +22,7 @@ export function SoulmateEmailPage({ locale }: SoulmateEmailPageProps) {
 
         <div className="relative w-full max-w-[280px] aspect-[3/4] mx-auto">
           <Image
-            src="/portrait.png"
+            src="/img/portrait.png"
             alt=""
             fill
             className="object-cover rounded-lg blur-sm grayscale"

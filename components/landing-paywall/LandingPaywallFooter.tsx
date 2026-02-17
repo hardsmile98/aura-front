@@ -15,7 +15,7 @@ export function LandingPaywallFooter({ locale }: Props) {
         <div className="flex flex-col md:flex-row justify-between gap-8 mb-8">
           <div className="flex items-center gap-4">
             <Image
-              src="/logo.svg"
+              src="/img/logo.svg"
               alt="Aura"
               width={80}
               height={24}

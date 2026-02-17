@@ -31,7 +31,7 @@ export function LandingPaywallPortraits({ locale }: Props) {
                   className="flex-1 rounded-lg overflow-hidden shrink-0"
                 >
                   <Image
-                    src={src}
+                    src={`/img${src}`}
                     alt={`Soulmate portrait ${idx * 2 + i + 1}`}
                     width={200}
                     height={200}

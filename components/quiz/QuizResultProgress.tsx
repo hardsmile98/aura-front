@@ -24,10 +24,11 @@ export function QuizResultProgress({
               <span className="text-sm font-medium text-zinc-700">
                 {label}
               </span>
-              <span className="text-sm text-zinc-500">
+              <span className="text-sm text-zinc-500" translate="no">
                 {Math.round(progress[i])}%
               </span>
             </div>
+
             <div className="h-2.5 w-full rounded-full bg-zinc-200 overflow-hidden">
               <div
                 className="h-full bg-violet-600 transition-all duration-300 ease-out rounded-full"

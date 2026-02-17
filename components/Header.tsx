@@ -6,15 +6,10 @@ import { useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
 
 type HeaderProps = {
-  /** Show back button (for quiz steps > 1) */
   backHref?: string;
-  /** Callback for back button (alternative to backHref) */
   onBack?: () => void;
-  /** Label for back button */
   backLabel?: string;
-  /** Current step number (1-based). When > 1, back button is shown. */
   currentStep?: number;
-  /** Total number of steps for progress display */
   totalSteps?: number;
 };
 
@@ -31,7 +26,9 @@ function HeaderWithParams({
   const searchParams = useSearchParams();
 
   const path = backHref!.split('?')[0];
+
   const search = searchParams.toString();
+
   const resolvedBackHref = search ? `${path}?${search}` : path;
 
   return (
@@ -96,7 +93,7 @@ function HeaderContent({
           )
         ) : null}
 
-        <Image priority src="/logo.svg" alt="Aura" width={100} height={28} />
+        <Image priority src="/img/logo.svg" alt="Aura" width={100} height={28} />
 
         <div className="absolute right-4 md:right-6">
           {totalSteps != null && currentStep > 0 ? (
