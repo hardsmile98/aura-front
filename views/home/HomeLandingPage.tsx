@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getTranslations } from '@/lib/translations';
 import type { Locale } from '@/lib/translations';
 import { HomeLandingHeader } from '@/components/landing-home';
+import { LocaleLink } from '@/components/shared';
 import { LandingPaywallFAQ } from '@/components/landing';
 import {
   StarIcon,
@@ -331,16 +332,18 @@ export function HomeLandingPage({ locale }: Props) {
               {t.footerCopyright}
             </p>
             <div className="flex gap-4 text-sm">
-              <Link
+              <LocaleLink
+                locale="en"
                 href="/en/"
                 className={`transition-colors ${locale === 'en' ? 'text-white font-medium' : 'hover:text-white'}`}>
                 English
-              </Link>
-              <Link
+              </LocaleLink>
+              <LocaleLink
+                locale="ru"
                 href="/ru/"
                 className={`transition-colors ${locale === 'ru' ? 'text-white font-medium' : 'hover:text-white'}`}>
                 Русский
-              </Link>
+              </LocaleLink>
             </div>
           </div>
         </div>
