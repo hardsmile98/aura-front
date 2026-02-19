@@ -7,6 +7,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { getTranslations } from '@/lib/translations';
 import type { Locale } from '@/lib/translations';
 import { UserCircleIcon, LogoutIcon } from '@/components/icons';
+import { LocaleLink } from '@/components/shared';
 import { removeAuthJWT } from '@/lib/auth';
 import { ACCOUNT_MENU_ITEMS } from './accountMenuConfig';
 import { containerClass } from '@/lib/container';
@@ -70,8 +71,10 @@ export function AccountHeader() {
   const t = getTranslations(locale).account;
 
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [localeMenuOpen, setLocaleMenuOpen] = useState(false);
 
   const userMenuRef = useRef<HTMLDivElement>(null);
+  const localeMenuRef = useRef<HTMLDivElement>(null);
 
   const basePath = `/${locale}/app`;
 
@@ -88,6 +91,9 @@ export function AccountHeader() {
       const target = e.target as Node;
       if (userMenuRef.current && !userMenuRef.current.contains(target)) {
         setUserMenuOpen(false);
+      }
+      if (localeMenuRef.current && !localeMenuRef.current.contains(target)) {
+        setLocaleMenuOpen(false);
       }
     };
 
@@ -125,7 +131,49 @@ export function AccountHeader() {
             />
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
+            <div className="relative" ref={localeMenuRef}>
+              <button
+                type="button"
+                onClick={() => setLocaleMenuOpen((o) => !o)}
+                className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-zinc-700 bg-zinc-100 hover:bg-zinc-200 rounded-lg transition-colors"
+                aria-label="Language"
+                aria-expanded={localeMenuOpen}
+                aria-haspopup="true"
+              >
+                {locale === 'en' ? 'English' : 'Русский'}
+                <svg className="w-4 h-4 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {localeMenuOpen && (
+                <div
+                  className="absolute right-0 top-full mt-2 w-40 py-2 bg-white rounded-xl shadow-lg border border-zinc-200 z-50"
+                  role="menu"
+                >
+                  <LocaleLink
+                    locale="en"
+                    href={`/en${pathname?.replace(/^\/[a-z]{2}/, '') ?? '/app'}`}
+                    className={`flex w-full px-4 py-2 text-sm font-medium transition-colors ${
+                      locale === 'en' ? 'text-violet-600 bg-violet-50' : 'text-zinc-700 hover:bg-zinc-50'
+                    }`}
+                    onClick={() => setLocaleMenuOpen(false)}
+                  >
+                    English
+                  </LocaleLink>
+                  <LocaleLink
+                    locale="ru"
+                    href={`/ru${pathname?.replace(/^\/[a-z]{2}/, '') ?? '/app'}`}
+                    className={`flex w-full px-4 py-2 text-sm font-medium transition-colors ${
+                      locale === 'ru' ? 'text-violet-600 bg-violet-50' : 'text-zinc-700 hover:bg-zinc-50'
+                    }`}
+                    onClick={() => setLocaleMenuOpen(false)}
+                  >
+                    Русский
+                  </LocaleLink>
+                </div>
+              )}
+            </div>
             <div className="relative" ref={userMenuRef}>
               <button
                 type="button"

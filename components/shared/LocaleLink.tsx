@@ -9,18 +9,22 @@ type Props = {
   href: string;
   className?: string;
   children: React.ReactNode;
+  onClick?: () => void;
 };
 
 /**
  * Link that saves the target locale to localStorage on click.
  * Use for language switcher links.
  */
-export function LocaleLink({ locale, href, className, children }: Props) {
+export function LocaleLink({ locale, href, className, children, onClick }: Props) {
   return (
     <Link
       href={href}
       className={className}
-      onClick={() => setStoredLocale(locale)}
+      onClick={() => {
+        setStoredLocale(locale);
+        onClick?.();
+      }}
     >
       {children}
     </Link>
