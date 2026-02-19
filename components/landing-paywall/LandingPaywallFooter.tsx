@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { PaymentMethodIcons } from "@/components/PaymentMethodIcons";
+import { PaymentMethodIcons } from "@/components/landing";
 import { getTranslations } from "@/lib/translations";
 import { containerSectionClass } from "@/lib/container";
 import type { Locale } from "@/lib/translations";

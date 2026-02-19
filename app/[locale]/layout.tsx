@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations } from "@/lib/translations";
 import { isValidLocale, defaultLocale, locales } from "@/lib/i18n";
-import { RedirectWithParams } from "@/components/RedirectWithParams";
-import { AuthRedirectToApp } from "@/components/AuthRedirectToApp";
+import { RedirectWithParams } from "@/components/shared";
+import { AuthRedirectToApp } from "@/components/shared";
 import type { Locale } from "@/lib/translations";
 
 export function generateStaticParams() {

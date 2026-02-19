@@ -22,4 +22,4 @@ export {
   renderInfoSlideIcon,
   type QuizIconName,
   type InfoSlideIconName,
-} from "./quizIcons";
+} from "@/components/icons";

@@ -1,6 +1,6 @@
 "use client";
 
-import { renderInfoSlideIcon, type InfoSlideIconName } from "./quizIcons";
+import { renderInfoSlideIcon, type InfoSlideIconName } from "@/components/icons";
 import { getTranslations } from "@/lib/translations";
 import type { Locale } from "@/lib/translations";
 

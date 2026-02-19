@@ -1,11 +1,10 @@
-import { SoulmateQuiz } from "@/components/SoulmateQuiz";
+import { QuizPage } from "@/views/soulmate";
 
-export default async function SoulmateQuizPage({
+export default async function SoulmateQuizRoute({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-
-  return <SoulmateQuiz locale={locale} />;
+  return <QuizPage locale={locale} />;
 }

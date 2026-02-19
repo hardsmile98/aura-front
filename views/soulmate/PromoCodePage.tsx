@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { Header } from '@/components/Header';
 import Image from 'next/image';
+import { Header } from '@/components/soulmate';
 import { getTranslations } from '@/lib/translations';
 import { containerClass, containerFormClass } from '@/lib/container';
 import type { Locale } from '@/lib/translations';
@@ -10,11 +10,9 @@ const continueButtonClassName =
 
 const PROMO_CODE = 'AURASOUL93';
 
-type SoulmatePromoCodePageProps = {
-  locale: string;
-};
+type Props = { locale: string };
 
-export function SoulmatePromoCodePage({ locale }: SoulmatePromoCodePageProps) {
+export function PromoCodePage({ locale }: Props) {
   const t = getTranslations((locale as Locale) || 'en');
 
   return (

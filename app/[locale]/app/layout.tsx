@@ -1,5 +1,4 @@
-import { AccountHeader } from '@/components/account/AccountHeader';
-import { AccountBottomNav } from '@/components/account/AccountBottomNav';
+import { AccountHeader, AccountBottomNav } from '@/components/account';
 import { containerClass } from '@/lib/container';
 
 export default function AppLayout({

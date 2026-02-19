@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Header } from '@/components/Header';
+import { Header } from '@/components/soulmate';
 import { getTranslations } from '@/lib/translations';
 import type { Locale } from '@/lib/translations';
 import type { QuizState } from '@/components/quiz';

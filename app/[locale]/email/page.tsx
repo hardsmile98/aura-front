@@ -1,4 +1,4 @@
-import { SoulmateEmailPage } from "@/components/SoulmateEmailPage";
+import { EmailPage } from "@/views/soulmate";
 
 export default async function EmailRoute({
   params,
@@ -6,6 +6,5 @@ export default async function EmailRoute({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-
-  return <SoulmateEmailPage locale={locale} />;
+  return <EmailPage locale={locale} />;
 }

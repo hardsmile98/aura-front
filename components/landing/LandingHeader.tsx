@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { getTranslations } from '@/lib/translations';
 import type { Locale } from '@/lib/translations';
-import { ScrollToPaymentButton } from '@/components/landing-paywall/ScrollToPaymentButton';
+import { ScrollToPaymentButton } from '@/components/landing-paywall';
 import { containerClass } from '@/lib/container';
 
 const TOP_BAR_HEIGHT = 40;

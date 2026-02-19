@@ -1,7 +1,7 @@
 "use client";
 
-import { ButtonLink } from "@/components/ButtonLink";
-import { getQuizIcon, type QuizIconName } from "./quizIcons";
+import { ButtonLink } from "@/components/shared";
+import { getQuizIcon, type QuizIconName } from "@/components/icons";
 import { getTranslations } from "@/lib/translations";
 import type { Locale } from "@/lib/translations";
 import type { QuizStepSelectOption } from "./quizConfig";

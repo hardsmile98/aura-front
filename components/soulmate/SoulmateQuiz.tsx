@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Header } from "@/components/Header";
-import { QuizResult } from "@/components/QuizResult";
+import { Header } from "@/components/soulmate";
+import { QuizResult } from "@/components/soulmate";
 import {
   QuizStepSelect,
   QuizStepDate,

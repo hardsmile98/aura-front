@@ -7,29 +7,7 @@ type FAQItem = {
   answer: React.ReactNode;
 };
 
-function ChevronIcon({
-  className,
-  open,
-}: {
-  className?: string;
-  open: boolean;
-}) {
-  return (
-    <svg
-      className={className}
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d={open ? "M5 15l7-7 7 7" : "M19 9l-7 7-7-7"}
-      />
-    </svg>
-  );
-}
+import { ChevronIcon } from '@/components/icons';
 
 export function LandingPaywallFAQ({ items }: { items: FAQItem[] }) {
   const [openIndices, setOpenIndices] = useState<Set<number>>(new Set());

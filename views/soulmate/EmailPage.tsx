@@ -1,15 +1,13 @@
 import Image from 'next/image';
-import { Header } from '@/components/Header';
+import { Header } from '@/components/soulmate';
+import { SoulmateEmailForm } from '@/components/soulmate';
 import { getTranslations } from '@/lib/translations';
 import type { Locale } from '@/lib/translations';
-import { SoulmateEmailForm } from '@/components/SoulmateEmailForm';
 import { containerClass, containerFormClass } from '@/lib/container';
 
-type SoulmateEmailPageProps = {
-  locale: string;
-};
+type Props = { locale: string };
 
-export function SoulmateEmailPage({ locale }: SoulmateEmailPageProps) {
+export function EmailPage({ locale }: Props) {
   const t = getTranslations((locale as Locale) || 'en');
 
   return (

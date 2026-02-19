@@ -1,6 +1,6 @@
-import { RedirectWithParams } from "@/components/RedirectWithParams";
+import { RedirectWithParams } from "@/components/shared";
 
-export default async function SoulmateResultPage({
+export default async function SoulmateResultRoute({
   params,
 }: {
   params: Promise<{ locale: string }>;

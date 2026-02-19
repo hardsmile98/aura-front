@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LandingPaywallFAQ } from "@/components/LandingPaywallFAQ";
+import { LandingPaywallFAQ } from "@/components/landing";
 import { getTranslations } from "@/lib/translations";
 import { containerSectionClass } from "@/lib/container";
 import type { Locale } from "@/lib/translations";

@@ -1,4 +1,4 @@
-import { SoulmatePromoCodePage } from "@/components/SoulmatePromoCodePage";
+import { PromoCodePage } from "@/views/soulmate";
 
 export default async function PromoCodeRoute({
   params,
@@ -6,6 +6,5 @@ export default async function PromoCodeRoute({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-
-  return <SoulmatePromoCodePage locale={locale} />;
+  return <PromoCodePage locale={locale} />;
 }

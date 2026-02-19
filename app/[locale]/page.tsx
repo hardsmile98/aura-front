@@ -1,5 +1,5 @@
-import { RedirectWithParams } from "@/components/RedirectWithParams";
-import { HomeLandingPage } from "@/components/landing-home";
+import { RedirectWithParams } from "@/components/shared";
+import { HomeLandingPage } from "@/views/home";
 import { locales, isValidLocale, defaultLocale } from "@/lib/i18n";
 
 export function generateStaticParams() {

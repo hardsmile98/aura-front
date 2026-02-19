@@ -1,6 +1,6 @@
-import { ReviewRedirect } from "@/components/ReviewRedirect";
+import { ReviewRedirect } from "@/components/soulmate";
 
-export default async function ReviewRedirectPage({
+export default async function ReviewRedirectRoute({
   params,
 }: {
   params: Promise<{ locale: string }>;

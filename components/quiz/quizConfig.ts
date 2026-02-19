@@ -1,5 +1,5 @@
 import type { Translations } from "@/lib/translations";
-import type { QuizIconName, InfoSlideIconName } from "./quizIcons";
+import type { QuizIconName, InfoSlideIconName } from "@/components/icons";
 
 export type QuizState = {
   step: number;
