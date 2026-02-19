@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Header } from '@/components/Header';
 import Image from 'next/image';
 import { getTranslations } from '@/lib/translations';
+import { containerClass, containerFormClass } from '@/lib/container';
 import type { Locale } from '@/lib/translations';
 
 const continueButtonClassName =
@@ -20,8 +21,8 @@ export function SoulmatePromoCodePage({ locale }: SoulmatePromoCodePageProps) {
     <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-pink-50 flex flex-col">
       <Header />
 
-      <main className="flex-1 flex flex-col items-center px-6 py-8 md:py-16 max-w-lg mx-auto w-full">
-        <div className="w-full">
+      <main className={`flex-1 flex flex-col items-center py-8 md:py-16 w-full ${containerClass}`}>
+        <div className={`${containerFormClass} w-full`}>
           <div className="flex flex-col items-center mb-8">
             <span className="flex size-24 shrink-0 items-center justify-center rounded-2xl bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.06)] ring-1 ring-zinc-200/60 md:size-28">
               <Image src="/img/gift.gif" alt="Gift box" width={80} height={80} className="size-16 shrink-0 object-contain md:size-20" />

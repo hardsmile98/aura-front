@@ -2,6 +2,7 @@ import { Header } from "@/components/Header";
 import { ButtonLink } from "@/components/ButtonLink";
 import { CheckIcon, StarIcon } from "@/components/icons";
 import { getTranslations } from "@/lib/translations";
+import { containerClass, containerFormClass } from "@/lib/container";
 import type { Locale } from "@/lib/translations";
 
 export function generateStaticParams() {
@@ -23,7 +24,8 @@ export default async function SoulmateReviewPage({
     <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-pink-50 flex flex-col">
       <Header />
 
-      <main className="flex-1 flex flex-col items-center px-4 py-8 max-w-lg mx-auto">
+      <main className={`flex-1 flex flex-col items-center py-8 w-full ${containerClass}`}>
+        <div className={`${containerFormClass} w-full flex flex-col items-center`}>
         <h1 className="text-2xl md:text-3xl font-bold text-zinc-900 text-center leading-tight mb-4 md:mb-12">
           <span className="text-violet-600">
             {t.soulmate.review.headlineHighlight}
@@ -88,6 +90,7 @@ export default async function SoulmateReviewPage({
         <ButtonLink href={`/${locale}/soulmate/quiz`}>
           {t.soulmate.review.ctaButton}
         </ButtonLink>
+        </div>
       </main>
     </div>
   );

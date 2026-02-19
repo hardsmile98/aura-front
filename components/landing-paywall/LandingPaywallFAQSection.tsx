@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { LandingPaywallFAQ } from "@/components/LandingPaywallFAQ";
 import { getTranslations } from "@/lib/translations";
+import { containerSectionClass } from "@/lib/container";
 import type { Locale } from "@/lib/translations";
 
 type Props = { locale: string };
@@ -28,8 +29,8 @@ export function LandingPaywallFAQSection({ locale }: Props) {
   ];
 
   return (
-    <section className="px-4 md:px-8 py-8 md:py-16">
-      <div className="max-w-7xl mx-auto grid grid-cols-12 gap-y-4 gap-x-0 md:gap-y-0 md:gap-x-16 items-start">
+    <section className="py-8 md:py-16">
+      <div className={`${containerSectionClass} grid grid-cols-12 gap-y-4 gap-x-0 md:gap-y-0 md:gap-x-16 items-start`}>
         <h2 className="col-span-12 md:col-span-4 text-2xl md:text-3xl font-bold text-zinc-900 leading-tight">
           {lp.faqTitle}
         </h2>

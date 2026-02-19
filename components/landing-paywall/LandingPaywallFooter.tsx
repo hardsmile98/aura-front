@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PaymentMethodIcons } from "@/components/PaymentMethodIcons";
 import { getTranslations } from "@/lib/translations";
+import { containerSectionClass } from "@/lib/container";
 import type { Locale } from "@/lib/translations";
 
 type Props = { locale: string };
@@ -10,8 +11,8 @@ export function LandingPaywallFooter({ locale }: Props) {
   const lp = getTranslations((locale as Locale) || "en").landingPaywall;
 
   return (
-    <footer className="bg-zinc-900 text-zinc-300 py-12 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto">
+    <footer className="bg-zinc-900 text-zinc-300 py-12">
+      <div className={containerSectionClass}>
         <div className="flex flex-col md:flex-row justify-between gap-8 mb-8">
           <div className="flex items-center gap-4">
             <Image

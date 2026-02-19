@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getTranslations } from "@/lib/translations";
+import { containerSectionClass } from "@/lib/container";
 import type { Locale } from "@/lib/translations";
 
 type Props = { locale: string };
@@ -13,8 +14,8 @@ export function LandingPaywallPortraits({ locale }: Props) {
   const lp = getTranslations((locale as Locale) || "en").landingPaywall;
 
   return (
-    <section className="px-4 md:px-8 py-8 md:py-16 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-8 md:py-16 bg-white">
+      <div className={containerSectionClass}>
         <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 text-center mb-6 md:mb-10">
           {lp.usersPortraits}
         </h2>

@@ -7,6 +7,7 @@ import { useParams } from 'next/navigation';
 import { getTranslations } from '@/lib/translations';
 import type { Locale } from '@/lib/translations';
 import { ScrollToPaymentButton } from '@/components/landing-paywall/ScrollToPaymentButton';
+import { containerClass } from '@/lib/container';
 
 const TOP_BAR_HEIGHT = 40;
 
@@ -62,16 +63,12 @@ export function LandingHeader() {
     return () => clearInterval(id);
   }, []);
 
-  const containerWrapper = 'px-4 md:px-8';
-
-  const containerInner = 'max-w-7xl mx-auto';
-
   return (
     <>
       {/* Блок 1 — верхняя плашка с действиями, sticky, как блок 3 */}
       <div className="sticky top-0 z-50 w-full shrink-0 bg-[#f8f8f8] border-b border-zinc-200">
-        <div className={containerWrapper}>
-          <div className={`${containerInner} py-3 flex justify-center`}>
+        <div className={containerClass}>
+          <div className="py-3 flex justify-center">
             <div
               className="text-xs text-zinc-600 text-center animate-activity-fade"
               key={messageIndex}>
@@ -91,9 +88,8 @@ export function LandingHeader() {
 
       {/* Блок 2 — основной хедер, НЕ sticky, скроллится */}
       <div className="w-full bg-zinc-100 border-b border-zinc-200">
-        <div className={containerWrapper}>
-          <div
-            className={`${containerInner} flex justify-between items-center py-3`}>
+        <div className={containerClass}>
+          <div className="flex justify-between items-center py-3">
             <Link href={`/${locale}`} className="flex items-center">
               <Image
                 priority
@@ -124,9 +120,8 @@ export function LandingHeader() {
       <div
         className="sticky z-40 w-full shrink-0 bg-white border-b border-zinc-200"
         style={{ top: TOP_BAR_HEIGHT }}>
-        <div className={containerWrapper}>
-          <div
-            className={`${containerInner} flex justify-between items-center py-3`}>
+        <div className={containerClass}>
+          <div className="flex justify-between items-center py-3">
             <div className="text-sm text-zinc-800 font-semibold ">
               <span>{t.offerPrefix}</span>
               <span className="text-violet-600">{t.offerHighlight}</span>

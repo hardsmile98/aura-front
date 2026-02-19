@@ -4,6 +4,7 @@ import { RandomReviewLink } from "@/components/RandomReviewLink";
 import { getTranslations } from "@/lib/translations";
 import type { Locale } from "@/lib/translations";
 import Image from "next/image";
+import { containerClass, containerFormClass } from "@/lib/container";
 
 export default async function SoulmateWelcomePage({
   params,
@@ -18,7 +19,8 @@ export default async function SoulmateWelcomePage({
     <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-pink-50 flex flex-col">
       <Header />
 
-      <main className="flex-1 flex flex-col items-center justify-center px-6 py-12 max-w-lg mx-auto text-center">
+      <main className={`flex-1 flex flex-col items-center justify-center py-12 w-full ${containerClass}`}>
+        <div className={`${containerFormClass} w-full flex flex-col items-center text-center`}>
         <h1 className="text-2xl md:text-3xl font-bold text-zinc-900 leading-tight mb-4 md:mb-12">
           <span className="text-violet-600">
             {t.soulmate.welcome.headlineStart}
@@ -63,9 +65,10 @@ export default async function SoulmateWelcomePage({
         <p className="text-zinc-600 mt-4 text-sm">
           {t.soulmate.welcome.subheadline}
         </p>
+        </div>
       </main>
 
-      <footer className="px-6 py-8 text-center">
+      <footer className={`${containerClass} py-8 text-center`}>
         <p className="text-xs text-zinc-500 max-w-md mx-auto leading-relaxed">
           {t.footer.prefix}
           <Link

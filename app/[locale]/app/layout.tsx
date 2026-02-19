@@ -1,5 +1,6 @@
 import { AccountHeader } from '@/components/account/AccountHeader';
 import { AccountBottomNav } from '@/components/account/AccountBottomNav';
+import { containerClass } from '@/lib/container';
 
 export default function AppLayout({
   children,
@@ -11,7 +12,7 @@ export default function AppLayout({
       <AccountHeader />
 
       <main className="flex-1 w-full pb-20 md:pb-0">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-8 md:py-12">
+        <div className={`${containerClass} py-8 md:py-12`}>
           {children}
         </div>
       </main>

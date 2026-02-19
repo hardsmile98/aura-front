@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CheckIcon, GiftBoxIcon, StarIcon } from "@/components/icons";
 import { getTranslations } from "@/lib/translations";
+import { containerSectionClass } from "@/lib/container";
 import type { Locale } from "@/lib/translations";
 
 type Props = { locale: string };
@@ -76,8 +77,8 @@ export function LandingPaywallSubscription({ locale }: Props) {
   ];
 
   return (
-    <section className="px-0 md:px-8 py-16 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-16 bg-white">
+      <div className={containerSectionClass}>
         <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 text-center mb-2 md:mb-10">
           {lp.tryFor7Days}
         </h2>

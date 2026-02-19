@@ -1,5 +1,6 @@
 import { TestimonialsCarousel } from "@/components/TestimonialsCarousel";
 import { getTranslations } from "@/lib/translations";
+import { containerSectionClass } from "@/lib/container";
 import type { Locale } from "@/lib/translations";
 
 type Props = { locale: string };
@@ -29,8 +30,8 @@ export function LandingPaywallTestimonials({ locale }: Props) {
   ];
 
   return (
-    <section className="px-4 md:px-8 py-16 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-16 bg-white">
+      <div className={containerSectionClass}>
         <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 text-center mb-6 md:mb-8">
           {lp.whyLovePrefix}
           <span className="text-violet-600">{lp.whyLoveHighlight}</span>

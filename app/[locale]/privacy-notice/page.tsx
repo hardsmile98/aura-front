@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { getPrivacyContent } from "@/lib/translations";
+import { containerClass, containerProseClass } from "@/lib/container";
 import type { Locale } from "@/lib/translations";
 
 export default async function PrivacyNoticePage({
@@ -16,10 +17,11 @@ export default async function PrivacyNoticePage({
     <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-pink-50 flex flex-col">
       <Header/>
 
-      <main className="flex-1 px-4 md:px-6 py-8 max-w-3xl mx-auto w-full">
+      <main className={`flex-1 py-8 w-full ${containerClass}`}>
+        <div className={containerProseClass}>
         <div className="mb-8">
           <Link
-            href={`/${locale}/soulmate/welcome`}
+            href={`/${locale}`}
             className="inline-flex items-center gap-2 text-sm font-medium text-violet-600 hover:text-violet-700 transition-colors"
           >
             <svg
@@ -104,6 +106,7 @@ export default async function PrivacyNoticePage({
           >
             {p.backToHome}
           </Link>
+        </div>
         </div>
       </main>
     </div>

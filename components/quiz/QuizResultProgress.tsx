@@ -1,5 +1,7 @@
 "use client";
 
+import { containerClass, containerFormClass } from "@/lib/container";
+
 type QuizResultProgressProps = {
   title: string;
   labels: string[];
@@ -12,7 +14,8 @@ export function QuizResultProgress({
   progress,
 }: QuizResultProgressProps) {
   return (
-    <main className="flex-1 flex flex-col items-center px-6 py-8 md:py-16 max-w-lg mx-auto w-full">
+    <main className={`flex-1 flex flex-col items-center py-8 md:py-16 w-full ${containerClass}`}>
+      <div className={`${containerFormClass} w-full flex flex-col items-center`}>
       <h1 className="text-2xl md:text-3xl font-bold text-zinc-900 mb-8 text-center">
         {title}
       </h1>
@@ -37,6 +40,7 @@ export function QuizResultProgress({
             </div>
           </div>
         ))}
+      </div>
       </div>
     </main>
   );

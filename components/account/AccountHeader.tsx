@@ -7,7 +7,9 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { getTranslations } from '@/lib/translations';
 import type { Locale } from '@/lib/translations';
 import { UserCircleIcon, LogoutIcon } from '@/components/icons';
+import { removeAuthJWT } from '@/lib/auth';
 import { ACCOUNT_MENU_ITEMS } from './accountMenuConfig';
+import { containerClass } from '@/lib/container';
 
 const userEmail = 'user@example.com';
 
@@ -75,7 +77,9 @@ export function AccountHeader() {
 
   const handleLogout = useCallback(() => {
     setUserMenuOpen(false);
-
+  
+    removeAuthJWT();
+  
     router.push(`/${locale}/`);
   }, [locale, router]);
 
@@ -98,7 +102,7 @@ export function AccountHeader() {
 
   return (
     <header className="bg-white shadow-sm border-b border-zinc-200 sticky top-0 z-40">
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
+      <div className={containerClass}>
         <div className="flex justify-between items-center py-3 md:py-4">
           <Link href={basePath} className="flex items-center shrink-0">
             <Image

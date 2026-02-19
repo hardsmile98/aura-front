@@ -17,6 +17,7 @@ import {
 import { getTranslations } from "@/lib/translations";
 import type { Locale } from "@/lib/translations";
 import { getZodiacSignKey } from "@/lib/zodiac";
+import { containerClass, containerFormClass } from "@/lib/container";
 
 type SoulmateQuizProps = {
   locale: string;
@@ -107,7 +108,8 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
           currentStep={infoSlide.nextStep - 1}
           totalSteps={QUIZ_STEPS.length}
         />
-        <main className="flex-1 flex flex-col items-center px-6 py-8 md:py-16 max-w-lg mx-auto w-full">
+        <main className={`flex-1 flex flex-col items-center py-8 md:py-16 w-full ${containerClass}`}>
+          <div className={`${containerFormClass} w-full flex flex-col items-center`}>
           <QuizInfoSlide
             titleKey={infoSlide.titleKey}
             descriptionKey={infoSlide.descriptionKey}
@@ -119,6 +121,7 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
               setInfoSlide(null);
             }}
           />
+          </div>
         </main>
       </div>
     );
@@ -138,7 +141,8 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
         totalSteps={QUIZ_STEPS.length}
       />
 
-      <main className="flex-1 flex flex-col items-center px-6 py-8 md:py-16 max-w-lg mx-auto w-full">
+      <main className={`flex-1 flex flex-col items-center py-8 md:py-16 w-full ${containerClass}`}>
+        <div className={`${containerFormClass} w-full flex flex-col items-center`}>
         {currentStepConfig?.type === "select" && (
           <QuizStepSelect
             value={currentValue as string}
@@ -195,6 +199,7 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
             onSubmit={() => setShowResult(true)}
           />
         )}
+        </div>
       </main>
     </div>
   );

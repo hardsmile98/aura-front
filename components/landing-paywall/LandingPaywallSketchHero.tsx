@@ -4,6 +4,7 @@ import { ScrollToPaymentButton } from "./ScrollToPaymentButton";
 import type { Locale } from "@/lib/translations";
 import { StarRating } from "./StarRating";
 import { MEDIA_LOGOS } from "./MediaLogos";
+import { containerSectionClass } from "@/lib/container";
 
 type Props = { locale: string };
 
@@ -84,8 +85,7 @@ export function LandingPaywallSketchHero({ locale }: Props) {
 
   return (
     <section className="bg-zinc-50 py-12 md:py-16 overflow-x-hidden">
-      <div className="px-4 md:px-8">
-        <div className="max-w-7xl mx-auto">
+      <div className={containerSectionClass}>
           <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center mb-12">
           {/* Left: CTA & Social Proof */}
           <div>
@@ -141,7 +141,6 @@ export function LandingPaywallSketchHero({ locale }: Props) {
           {/* Desktop: Woman + Sketch with curved arrow (скрыт на мобиле) */}
           <SketchImagesBlock className="hidden md:flex" />
         </div>
-      </div>
       </div>
 
       {/* Media logos strip - infinite marquee, на всю ширину экрана */}

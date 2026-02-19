@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "@/lib/translations";
 import { isValidLocale, defaultLocale, locales } from "@/lib/i18n";
 import { RedirectWithParams } from "@/components/RedirectWithParams";
+import { AuthRedirectToApp } from "@/components/AuthRedirectToApp";
 import type { Locale } from "@/lib/translations";
 
 export function generateStaticParams() {
@@ -45,5 +46,10 @@ export default async function LocaleLayout({
     return <RedirectWithParams to={`/${defaultLocale}`} />;
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      <AuthRedirectToApp />
+      {children}
+    </>
+  );
 }

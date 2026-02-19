@@ -3,6 +3,7 @@ import { Header } from '@/components/Header';
 import { getTranslations } from '@/lib/translations';
 import type { Locale } from '@/lib/translations';
 import { SoulmateEmailForm } from '@/components/SoulmateEmailForm';
+import { containerClass, containerFormClass } from '@/lib/container';
 
 type SoulmateEmailPageProps = {
   locale: string;
@@ -15,7 +16,8 @@ export function SoulmateEmailPage({ locale }: SoulmateEmailPageProps) {
     <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-pink-50 flex flex-col">
       <Header />
 
-      <main className="flex-1 flex flex-col items-center px-6 py-8 md:py-16 max-w-lg mx-auto w-full">
+      <main className={`flex-1 flex flex-col items-center py-8 md:py-16 w-full ${containerClass}`}>
+        <div className={`${containerFormClass} w-full flex flex-col items-center`}>
         <h1 className="text-xl md:text-2xl font-bold text-zinc-900 mb-8 text-center">
           {t.soulmate.result.emailTitle}
         </h1>
@@ -28,6 +30,7 @@ export function SoulmateEmailPage({ locale }: SoulmateEmailPageProps) {
             className="object-cover rounded-lg blur-sm grayscale"
             sizes="(max-width: 768px) 280px, 320px"
           />
+        </div>
         </div>
       </main>
 

@@ -1,5 +1,6 @@
 import { RedirectWithParams } from "@/components/RedirectWithParams";
-import { locales } from "@/lib/i18n";
+import { HomeLandingPage } from "@/components/landing-home";
+import { locales, isValidLocale, defaultLocale } from "@/lib/i18n";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -11,5 +12,10 @@ export default async function LocaleHome({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  return <RedirectWithParams to={`/${locale}/soulmate/welcome`} />;
+
+  if (!isValidLocale(locale)) {
+    return <RedirectWithParams to={`/${defaultLocale}`} />;
+  }
+
+  return <HomeLandingPage locale={locale} />;
 }

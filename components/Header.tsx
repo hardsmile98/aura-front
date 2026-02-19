@@ -14,7 +14,7 @@ type HeaderProps = {
 };
 
 const backButtonClass =
-  'absolute left-4 md:left-6 top-1/2 -translate-y-1/2 inline-flex items-center justify-center gap-1.5 p-3 md:p-0 text-base font-semibold text-zinc-900 hover:text-violet-600 transition-colors';
+  'absolute left-4 md:left-8 top-1/2 -translate-y-1/2 inline-flex items-center justify-center gap-1.5 p-3 md:p-0 text-base font-semibold text-zinc-900 hover:text-violet-600 transition-colors';
 
 function HeaderWithParams({
   backHref,
@@ -56,7 +56,7 @@ function HeaderContent({
 
   return (
     <header className="bg-white/80 backdrop-blur-sm border-b border-zinc-200">
-      <div className="relative flex justify-center items-center px-4 md:px-6 py-4">
+      <div className="relative flex justify-center items-center max-w-7xl mx-auto px-4 md:px-8 py-4">
         {showBack ? (
           onBack ? (
             <button type="button" onClick={onBack} className={backButtonClass}>
@@ -95,7 +95,7 @@ function HeaderContent({
 
         <Image priority src="/img/logo.svg" alt="Aura" width={100} height={28} />
 
-        <div className="absolute right-4 md:right-6">
+        <div className="absolute right-4 md:right-8">
           {totalSteps != null && currentStep > 0 ? (
             <span className="text-sm text-zinc-500">
               {currentStep}/{totalSteps}
