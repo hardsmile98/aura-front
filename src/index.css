@@ -103,3 +103,40 @@ input[type="date"] {
 .animate-activity-fade {
   animation: activity-fade-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
+
+/* Horoscope loading shimmer */
+@keyframes horoscope-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-horoscope-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgb(243 232 255 / 0.3) 25%,
+    rgb(196 181 253 / 0.6) 50%,
+    rgb(243 232 255 / 0.3) 75%
+  );
+  background-size: 200% 100%;
+  animation: horoscope-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes horoscope-star-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.animate-horoscope-star {
+  animation: horoscope-star-pulse 2s ease-in-out infinite;
+}

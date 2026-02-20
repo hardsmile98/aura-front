@@ -1,10 +1,17 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
+import { useGetHoroscopeQuery } from '@/lib/api/userApi';
 import { HeartFilledIcon, BriefcaseIcon, HeartPulseIcon, CoinsIcon, HomeIcon, PlaneIcon } from '@/components/icons';
 
 type TabKey = 'today' | 'week' | 'month';
+
+const TAB_TO_PERIOD: Record<TabKey, 'day' | 'week' | 'month'> = {
+  today: 'day',
+  week: 'week',
+  month: 'month',
+};
 
 const DIRECTION_KEYS = [
   'directionLove',
@@ -15,14 +22,7 @@ const DIRECTION_KEYS = [
   'directionTravel',
 ] as const;
 
-const HOROSCOPE_BY_PERIOD: Record<TabKey, string> = {
-  today:
-    'The stars align favorably for you today. Trust your intuition and stay open to new opportunities. A positive energy surrounds your endeavors.',
-  week:
-    'This week brings promising developments. Focus on your goals and maintain balance. The cosmic energy supports growth and meaningful connections.',
-  month:
-    'A transformative month awaits. Major shifts in perspective may occur. Embrace change and trust the journey. Long-term plans gain momentum.',
-};
+const HOROSCOPE_KEYS = ['love', 'career', 'health', 'finance', 'family', 'travel'] as const;
 
 const DIRECTION_ICONS = [
   HeartFilledIcon,
@@ -35,10 +35,27 @@ const DIRECTION_ICONS = [
 
 export function HoroscopesPage() {
   const params = useParams();
+
   const locale = toLocale(params?.locale);
+
   const t = getTranslations(locale).account;
 
   const [activeTab, setActiveTab] = useState<TabKey>('today');
+  const period = TAB_TO_PERIOD[activeTab];
+
+  const { data, isFetching, error } = useGetHoroscopeQuery({
+    period,
+    locale,
+  });
+
+  const horoscopeEntries = useMemo(() => {
+    if (!data?.horoscope) return null;
+
+    return DIRECTION_KEYS.map((dirKey, i) => ({
+      label: t[dirKey],
+      text: data.horoscope[HOROSCOPE_KEYS[i]],
+    }));
+  }, [data, t]);
 
   const tabs: { key: TabKey; label: string }[] = [
     { key: 'today', label: t.tabToday },
@@ -69,12 +86,51 @@ export function HoroscopesPage() {
       </div>
 
       <div className="space-y-6">
-        {DIRECTION_KEYS.map((key, i) => {
+        {isFetching && (
+          <div className="space-y-6">
+            <div className="flex flex-col items-center gap-4 py-4">
+              <div className="flex gap-2">
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <span
+                    key={i}
+                    className="text-2xl animate-horoscope-star"
+                    style={{ animationDelay: `${i * 0.3}s` }}
+                  >
+                    ✦
+                  </span>
+                ))}
+              </div>
+              <p className="text-violet-600 font-medium text-center">
+                {t.horoscopeLoading}
+              </p>
+              <p className="text-zinc-500 text-sm">
+                {activeTab === 'today' && t.horoscopeLoadingHintDay}
+                {activeTab === 'week' && t.horoscopeLoadingHintWeek}
+                {activeTab === 'month' && t.horoscopeLoadingHintMonth}
+              </p>
+            </div>
+          </div>
+        )}
+
+        {error && (
+          <div className="text-center py-12 px-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 text-red-500 mb-4">
+              <span className="text-2xl">⚠</span>
+            </div>
+            <p className="text-red-600 font-medium mb-2">
+              {t.horoscopeError}
+            </p>
+            <p className="text-zinc-500 text-sm">
+              {t.horoscopeErrorHint}
+            </p>
+          </div>
+        )}
+
+        {!isFetching && !error && horoscopeEntries?.map((entry, i) => {
           const Icon = DIRECTION_ICONS[i];
-          const label = t[key];
           return (
             <div
-              key={key}
+              key={DIRECTION_KEYS[i]}
               className="bg-white rounded-xl md:rounded-2xl p-6 shadow-sm border border-zinc-100"
             >
               <div className="flex gap-4">
@@ -82,9 +138,9 @@ export function HoroscopesPage() {
                   <Icon className="w-6 h-6 text-violet-600" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h2 className="text-lg font-bold text-zinc-900 mb-2">{label}</h2>
+                  <h2 className="text-lg font-bold text-zinc-900 mb-2">{entry.label}</h2>
                   <p className="text-zinc-600 text-sm leading-relaxed">
-                    {HOROSCOPE_BY_PERIOD[activeTab]}
+                    {entry.text || '—'}
                   </p>
                 </div>
               </div>

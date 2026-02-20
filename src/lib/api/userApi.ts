@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { AUTH_JWT_KEY } from '../auth';
 import { clearAuth } from '../authSlice';
-import { GetProfileResponse } from './types';
+import { GetHoroscopeResponse, GetProfileResponse } from './types';
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -35,7 +35,22 @@ export const userApi = createApi({
         method: 'GET',
       }),
     }),
+    getHoroscope: builder.query<GetHoroscopeResponse, { period: 'day' | 'week' | 'month'; locale: string }>({
+      query: ({ period, locale }) => ({
+        url: '/api/user/horoscope',
+        method: 'GET',
+        params: {
+          period,
+          locale,
+        },
+      }),
+    }),
   }),
 });
 
-export const { useGetProfileQuery, useLazyGetProfileQuery } = userApi;
+export const {
+  useGetProfileQuery,
+  useLazyGetProfileQuery,
+  useGetHoroscopeQuery,
+  useLazyGetHoroscopeQuery,
+} = userApi;

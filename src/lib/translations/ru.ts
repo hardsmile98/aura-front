@@ -349,6 +349,12 @@ export const ru = {
     expertInstagram: "Instagram",
     expertWhatsApp: "WhatsApp",
     expertContact: "Связаться с экспертом",
+    horoscopeLoading: "Составляем ваш гороскоп... Подождите немного.",
+    horoscopeLoadingHintDay: "Анализируем положение планет...",
+    horoscopeLoadingHintWeek: "Просчитываем недельный прогноз...",
+    horoscopeLoadingHintMonth: "Готовим месячный гороскоп...",
+    horoscopeError: "Не удалось загрузить гороскоп. Попробуйте ещё раз.",
+    horoscopeErrorHint: "Проверьте подключение к интернету и попробуйте снова.",
   },
   footer: {
     prefix: "Продолжая, ты соглашаешься с нашими ",

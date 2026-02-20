@@ -349,6 +349,12 @@ export const en = {
     expertInstagram: "Instagram",
     expertWhatsApp: "WhatsApp",
     expertContact: "Contact Expert",
+    horoscopeLoading: "Reading the stars for you... Please wait a moment.",
+    horoscopeLoadingHintDay: "Analyzing planetary positions...",
+    horoscopeLoadingHintWeek: "Calculating weekly forecast...",
+    horoscopeLoadingHintMonth: "Preparing monthly horoscope...",
+    horoscopeError: "Failed to load your horoscope. Please try again.",
+    horoscopeErrorHint: "Check your connection and try again.",
   },
   footer: {
     prefix: "By continuing, you agree to our ",
