@@ -2,7 +2,6 @@ import { ButtonLink } from "@/components/shared";
 import { getQuizIcon, type QuizIconName } from "@/components/icons";
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
-import type { Locale } from "@/lib/translations";
 import type { QuizStepSelectOption } from "./quizConfig";
 
 const optionButtonBase =
@@ -63,7 +62,7 @@ export function QuizStepSelect({
       ? "flex flex-row flex-wrap gap-3 justify-center"
       : "flex flex-col gap-3";
 
-  const getButtonClass = (opt: QuizStepSelectOption, index: number) => {
+  const getButtonClass = (_opt: QuizStepSelectOption, index: number) => {
     if (isDegree) {
       const rounded =
         index === 0

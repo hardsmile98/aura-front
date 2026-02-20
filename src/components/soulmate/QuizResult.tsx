@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Header } from '@/components/soulmate';
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
-import type { Locale } from '@/lib/translations';
 import type { QuizState } from '@/components/quiz';
+import { setQuizResult } from '@/lib/quizSlice';
 import { QuizResultProgress } from '@/components/quiz/QuizResultProgress';
 import { QuizResultQuestionModal } from '@/components/quiz/QuizResultQuestionModal';
 import { QuizResultWarningModal } from '@/components/quiz/QuizResultWarningModal';
 
 type QuizResultProps = {
   locale: string;
+  quiz: QuizState;
   onUpdateQuiz: (updates: Partial<QuizState>) => void;
 };
 
@@ -22,8 +24,9 @@ const PROGRESS_BARS = [
   { key: 'progressConnection' as const, duration: 2500 },
 ];
 
-export function QuizResult({ locale, onUpdateQuiz }: QuizResultProps) {
+export function QuizResult({ locale, quiz, onUpdateQuiz }: QuizResultProps) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [progress, setProgress] = useState([0, 0, 0]);
 
@@ -91,6 +94,7 @@ export function QuizResult({ locale, onUpdateQuiz }: QuizResultProps) {
   const handleWarningClose = () => {
     setModal('none');
     setPhase((p) => p + 1);
+    dispatch(setQuizResult(quiz));
     navigate(`/${locale}/email`);
   };
 

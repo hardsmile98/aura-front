@@ -1,6 +1,5 @@
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
-import type { Locale } from "@/lib/translations";
 
 /** Validates birth date: must be a real date, in the past, and within reasonable range (1900-today) */
 function isValidBirthDate(value: string): boolean {

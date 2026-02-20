@@ -4,14 +4,12 @@ import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '@/lib/store';
 import { clearAuth } from '@/lib/authSlice';
 import { getTranslations } from '@/lib/translations';
-import type { Locale } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
 import { UserCircleIcon, LogoutIcon } from '@/components/icons';
 import { LocaleLink } from '@/components/shared';
 import { ACCOUNT_MENU_ITEMS } from './accountMenuConfig';
 import { containerClass } from '@/lib/container';
-
-const userEmail = 'user@example.com';
+import { useGetProfileQuery } from '@/lib/api/userApi';
 
 function getNavLinkClass(active: boolean, isMobile: boolean): string {
   if (isMobile) {
@@ -60,8 +58,11 @@ function NavLinks({ basePath, pathname, isMobile, labels, onLinkClick }: NavLink
 
 export function AccountHeader() {
   const params = useParams();
+
   const { pathname } = useLocation();
+
   const navigate = useNavigate();
+
   const dispatch = useDispatch<AppDispatch>();
 
   const locale = toLocale(params?.locale);
@@ -69,10 +70,14 @@ export function AccountHeader() {
   const t = getTranslations(locale).account;
 
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+
   const [localeMenuOpen, setLocaleMenuOpen] = useState(false);
 
   const userMenuRef = useRef<HTMLDivElement>(null);
+
   const localeMenuRef = useRef<HTMLDivElement>(null);
+
+  const { data: profile } = useGetProfileQuery();
 
   const basePath = `/${locale}/app`;
 
@@ -87,15 +92,18 @@ export function AccountHeader() {
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as Node;
+
       if (userMenuRef.current && !userMenuRef.current.contains(target)) {
         setUserMenuOpen(false);
       }
+
       if (localeMenuRef.current && !localeMenuRef.current.contains(target)) {
         setLocaleMenuOpen(false);
       }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
+
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
@@ -189,7 +197,7 @@ export function AccountHeader() {
                   <div className="px-4 py-3 border-b border-zinc-100">
                     <p className="text-xs text-zinc-500 mb-0.5">Email</p>
                     <p className="text-sm font-medium text-zinc-900 truncate">
-                      {userEmail}
+                      {profile?.email}
                     </p>
                   </div>
                   <button

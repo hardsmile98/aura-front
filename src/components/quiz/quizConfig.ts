@@ -2,7 +2,6 @@ import type { Translations } from "@/lib/translations";
 import type { QuizIconName, InfoSlideIconName } from "@/components/icons";
 
 export type QuizState = {
-  step: number;
   gender: string;
   interest: string;
   idealAge: string;
@@ -37,7 +36,7 @@ export type QuizStepSelectOption = {
 export type QuizStepConfig =
   | {
       type: "select";
-      field: keyof Omit<QuizState, "step" | "sharedGoals">;
+      field: keyof Omit<QuizState, "sharedGoals">;
       titleKey: keyof Translations["soulmate"]["quiz"];
       options: QuizStepSelectOption[];
       layout?: "vertical" | "horizontal" | "verticalIcons" | "horizontalIcons" | "emoji" | "degree";
@@ -46,7 +45,7 @@ export type QuizStepConfig =
     }
   | {
       type: "date";
-      field: keyof Omit<QuizState, "step" | "sharedGoals">;
+      field: keyof Omit<QuizState, "sharedGoals">;
       titleKey: keyof Translations["soulmate"]["quiz"];
       nextLabelKey: keyof Translations["soulmate"]["quiz"];
       placeholderKey?: keyof Translations["soulmate"]["quiz"];
@@ -325,7 +324,6 @@ export const INFO_SLIDES: InfoSlideConfig[] = [
 ];
 
 export const INITIAL_QUIZ_STATE: QuizState = {
-  step: 1,
   gender: "",
   interest: "",
   idealAge: "",

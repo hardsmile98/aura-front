@@ -5,8 +5,11 @@ import { ACCOUNT_MENU_ITEMS } from './accountMenuConfig';
 
 export function AccountBottomNav() {
   const params = useParams();
+
   const { pathname } = useLocation();
+
   const locale = toLocale(params?.locale);
+
   const t = getTranslations(locale);
 
   const basePath = `/${locale}/app`;
@@ -24,6 +27,7 @@ export function AccountBottomNav() {
       <div className="flex">
         {ACCOUNT_MENU_ITEMS.map(({ path, labelKey, Icon }) => {
           const isActive = pathname?.includes(`/${path}`) ?? false;
+
           return (
             <Link
               key={path}

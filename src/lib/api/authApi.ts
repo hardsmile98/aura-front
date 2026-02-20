@@ -28,7 +28,17 @@ export const authApi = createApi({
         },
       }),
     }),
+    lead: builder.mutation<void, { email: string; locale: string; quizResult: Record<string, unknown> }>({
+      query: ({ email, locale, quizResult }) => ({
+        url: '/api/auth/lead',
+        method: 'POST',
+        body: { email, quizResult, locale },
+        headers: {
+          'x-locale': locale,
+        },
+      }),
+    }),
   }),
 });
 
-export const { useSendLinkMutation, useVerifyMutation } = authApi;
+export const { useSendLinkMutation, useVerifyMutation, useLeadMutation } = authApi;

@@ -22,8 +22,8 @@ type SoulmateQuizProps = {
 };
 
 export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
+  const [step, setStep] = useState(1);
   const [quiz, setQuiz] = useState<QuizState>(INITIAL_QUIZ_STATE);
-
   const [showResult, setShowResult] = useState(false);
 
   const [infoSlide, setInfoSlide] = useState<{
@@ -79,7 +79,7 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
         descriptionReplacements,
       });
     } else {
-      updateQuiz({ step: fromStep + 1 });
+      setStep(fromStep + 1);
     }
   };
 
@@ -87,13 +87,13 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
     if (infoSlide) {
       setInfoSlide(null);
     } else {
-      updateQuiz({ step: quiz.step - 1 });
+      setStep((s) => s - 1);
     }
   };
 
   if (showResult) {
     return (
-      <QuizResult locale={locale} onUpdateQuiz={updateQuiz} />
+      <QuizResult locale={locale} quiz={quiz} onUpdateQuiz={updateQuiz} />
     );
   }
 
@@ -115,7 +115,7 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
             locale={locale}
             descriptionReplacements={infoSlide.descriptionReplacements}
             onContinue={() => {
-              updateQuiz({ step: infoSlide.nextStep });
+              setStep(infoSlide.nextStep);
               setInfoSlide(null);
             }}
           />
@@ -125,7 +125,7 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
     );
   }
 
-  const currentStepConfig = QUIZ_STEPS[quiz.step - 1];
+  const currentStepConfig = QUIZ_STEPS[step - 1];
   const currentValue = currentStepConfig
     ? quiz[currentStepConfig.field as keyof QuizState]
     : "";
@@ -135,7 +135,7 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
       <Header
         onBack={handleBack}
         backLabel={t.soulmate.quiz.back}
-        currentStep={quiz.step}
+        currentStep={step}
         totalSteps={QUIZ_STEPS.length}
       />
 
@@ -147,7 +147,7 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
             onSelect={(value) => {
               updateQuiz({ [currentStepConfig.field]: value });
               if (currentStepConfig.autoAdvance) {
-                advanceStep(quiz.step, value);
+                advanceStep(step, value);
               }
             }}
             options={currentStepConfig.options}
@@ -167,7 +167,7 @@ export function SoulmateQuiz({ locale }: SoulmateQuizProps) {
           <QuizStepDate
             value={currentValue as string}
             onChange={(value) => updateQuiz({ [currentStepConfig.field]: value })}
-            onNext={() => advanceStep(quiz.step)}
+            onNext={() => advanceStep(step)}
             titleKey={currentStepConfig.titleKey}
             nextLabelKey={currentStepConfig.nextLabelKey}
             placeholderKey={

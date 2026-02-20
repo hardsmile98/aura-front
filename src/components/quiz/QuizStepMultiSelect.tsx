@@ -1,7 +1,6 @@
 import { CheckMarkIcon } from "@/components/icons";
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
-import type { Locale } from "@/lib/translations";
 import type { QuizStepSelectOption } from "./quizConfig";
 
 const optionButtonBase =
