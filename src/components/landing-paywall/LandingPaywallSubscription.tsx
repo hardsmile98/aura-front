@@ -1,0 +1,203 @@
+import { Link } from "react-router-dom";
+import { CheckIcon, GiftBoxIcon, StarIcon, BrainIcon, ConnectionIcon } from "@/components/icons";
+import { getTranslations } from '@/lib/translations';
+import { toLocale } from '@/lib/i18n';
+import { containerSectionClass } from "@/lib/container";
+
+type Props = { locale: string };
+
+function StarOutlineIcon({ className }: { className?: string }) {
+  return <StarIcon filled={false} className={className} />;
+}
+
+export function LandingPaywallSubscription({ locale }: Props) {
+  const t = getTranslations(toLocale(locale));
+  const lp = t.landingPaywall;
+
+  const trustFeatures = [
+    {
+      icon: BrainIcon,
+      title: lp.subscriptionTrust1Title,
+      desc: lp.subscriptionTrust1Desc,
+    },
+    {
+      icon: StarOutlineIcon,
+      title: lp.subscriptionTrust2Title,
+      desc: lp.subscriptionTrust2Desc,
+    },
+    {
+      icon: ConnectionIcon,
+      title: lp.subscriptionTrust3Title,
+      desc: lp.subscriptionTrust3Desc,
+    },
+  ];
+
+  const benefits = [
+    lp.subscriptionBenefit1,
+    lp.subscriptionBenefit2,
+    lp.subscriptionBenefit3,
+    lp.subscriptionBenefit4,
+  ];
+
+  return (
+    <section className="py-16 bg-white">
+      <div className={containerSectionClass}>
+        <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 text-center mb-2 md:mb-10">
+          {lp.tryFor7Days}
+        </h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Left card - Trust */}
+          <div className="bg-white rounded-xl md:rounded-2xl p-6 md:p-8 shadow-none border-0 md:shadow-md md:border md:border-zinc-100">
+            <div className="flex items-center justify-between flex-wrap gap-3 mb-8 p-4 rounded-xl bg-zinc-100">
+              <span className="text-sm font-medium text-zinc-900">
+                <span className="font-bold">{lp.subscriptionPeopleJoinedCount}</span> {lp.subscriptionPeopleJoinedRest}
+              </span>
+              <div className="flex -space-x-2">
+                <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-zinc-200 shrink-0">
+                  <img
+                    src="/img/man-1.png"
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="w-8 h-8 rounded-full border-2 border-white bg-zinc-200 flex items-center justify-center text-xs font-semibold text-zinc-700 shrink-0">
+                  S
+                </div>
+                <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-zinc-200 shrink-0">
+                  <img
+                    src="/img/woman-1.png"
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="w-8 h-8 rounded-full border-2 border-white bg-zinc-200 flex items-center justify-center text-[10px] font-semibold text-zinc-700 shrink-0">
+                  +993
+                </div>
+              </div>
+            </div>
+            <h3 className="text-sm font-bold text-zinc-800 uppercase tracking-wide mb-6">
+              {lp.subscriptionWhyTrust}
+            </h3>
+            <ul className="space-y-5 mb-8">
+              {trustFeatures.map((f, i) => (
+                <li key={i} className="flex gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-violet-100 flex items-center justify-center shrink-0">
+                    <f.icon className="w-5 h-5 text-violet-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-zinc-900 text-sm mb-1">
+                      {f.title}
+                    </h4>
+                    <p className="text-xs text-zinc-600 leading-relaxed">
+                      {f.desc}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div>
+              <h4 className="text-sm font-bold text-zinc-800 uppercase tracking-wide mb-3">
+                {lp.subscriptionFeaturedIn}
+              </h4>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <img src="/img/Globe.svg" alt="The Globe and Mail" className="h-5 w-auto object-contain opacity-70" />
+                <img src="/img/Benzinga.svg" alt="Benzinga" className="h-5 w-auto object-contain opacity-70" />
+                <img src="/img/Barchart.svg" alt="Barchart" className="h-5 w-auto object-contain opacity-70" />
+                <img src="/img/Yahoo.svg" alt="Yahoo!" className="h-5 w-auto object-contain opacity-70" />
+              </div>
+            </div>
+          </div>
+
+          {/* Right card - Pricing & Payment */}
+          <div className="bg-white rounded-xl md:rounded-2xl p-6 md:p-8 shadow-none border-0 md:shadow-md md:border md:border-zinc-100">
+            <ul className="space-y-3 mb-6">
+              {benefits.map((text, i) => (
+                <li key={i} className="flex gap-3 text-sm text-zinc-700">
+                  <CheckIcon className="h-5 w-5 text-violet-600 shrink-0 mt-0.5" />
+                  <span>{text}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="space-y-3 mb-6">
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-violet-50/80 border border-violet-100">
+                <GiftBoxIcon className="w-6 h-6 text-violet-600 shrink-0" />
+                <div className="flex-1 min-w-0">
+                  <p className="font-medium text-zinc-900 text-sm">
+                    {lp.subscriptionPromoReport}
+                  </p>
+                  <p className="text-xs text-violet-600 font-medium">
+                    {lp.subscriptionPromoClaimed}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-violet-50/80 border border-violet-100">
+                <GiftBoxIcon className="w-6 h-6 text-violet-600 shrink-0" />
+                <div className="flex-1 min-w-0">
+                  <p className="font-medium text-sm">
+                    {lp.subscriptionPromoCodePrefix}
+                    <span>
+                      {lp.subscriptionPromoCodeValue}
+                    </span>
+                    {lp.subscriptionPromoCodeSuffix}
+                  </p>
+                  <p className="text-xs text-emerald-600 font-medium">
+                    {lp.subscriptionPromoYouSave}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center justify-between py-4 border-t border-zinc-200 mb-6">
+              <span className="text-zinc-700 font-bold">
+                {lp.subscriptionTotalDue}
+              </span>
+              <div className="text-right">
+                <span className="line-through text-zinc-400 text-sm mr-2">
+                  {lp.plan1Price}
+                </span>
+                <span className="font-bold text-zinc-900">{lp.plan1PriceStruck}</span>
+                <p className="text-sm text-emerald-600 font-medium mt-0.5">
+                  {lp.subscriptionPromoYouSave}
+                </p>
+              </div>
+            </div>
+            <div id="payment-button" className="space-y-3">
+              <Link
+                to="#"
+                className="flex items-center justify-center gap-2 w-full py-3.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" />
+                </svg>
+                {lp.subscriptionCreditCard}
+              </Link>
+            </div>
+            <p className="text-xs text-zinc-500 mt-4 text-center">
+              {t.footer.prefix}
+              <Link
+                to={`/${locale}/eula`}
+                className="underline hover:text-zinc-700 mx-1"
+                target="_blank"
+              >
+                {t.footer.termsLink}
+              </Link>
+              {t.footer.and}
+              <Link
+                to={`/${locale}/privacy-notice`}
+                className="underline hover:text-zinc-700 mx-1"
+                target="_blank"
+              >
+                {t.footer.privacyLink}
+              </Link>
+              {t.footer.suffix}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

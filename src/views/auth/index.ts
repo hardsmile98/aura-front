@@ -1,0 +1,1 @@
+export { AuthVerifyPage } from './AuthVerifyPage';
