@@ -2,7 +2,7 @@ import { Header } from '@/components/soulmate';
 import { SoulmateEmailForm } from '@/components/soulmate';
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
-import { containerClass, containerFormClass } from '@/lib/container';
+import { containerClass, containerFormClass } from '@/lib/ui/container';
 
 type Props = { locale: string };
 

@@ -3,7 +3,7 @@ import { toLocale } from '@/lib/i18n';
 import { ScrollToPaymentButton } from "./ScrollToPaymentButton";
 import { StarRating } from "./StarRating";
 import { MEDIA_LOGOS } from "./MediaLogos";
-import { containerSectionClass } from "@/lib/container";
+import { containerSectionClass } from "@/lib/ui/container";
 import { UsersIcon, ShieldCheckIcon } from "@/components/icons";
 
 type Props = { locale: string };

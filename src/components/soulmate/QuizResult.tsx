@@ -5,7 +5,7 @@ import { Header } from '@/components/soulmate';
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
 import type { QuizState } from '@/components/quiz';
-import { setQuizResult } from '@/lib/quizSlice';
+import { setQuizResult } from '@/lib/store';
 import { QuizResultProgress } from '@/components/quiz/QuizResultProgress';
 import { QuizResultQuestionModal } from '@/components/quiz/QuizResultQuestionModal';
 import { QuizResultWarningModal } from '@/components/quiz/QuizResultWarningModal';

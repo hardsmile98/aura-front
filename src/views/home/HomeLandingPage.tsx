@@ -16,7 +16,7 @@ import {
   DocumentReadIcon,
   ChatUserIcon,
 } from '@/components/icons';
-import { containerSectionClass } from '@/lib/container';
+import { containerSectionClass } from '@/lib/ui/container';
 
 type Props = { locale: string };
 

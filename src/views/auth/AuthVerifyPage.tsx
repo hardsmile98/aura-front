@@ -2,7 +2,7 @@ import { useEffect, Suspense } from 'react';
 import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '@/lib/store';
-import { setAuth } from '@/lib/authSlice';
+import { setAuth } from '@/lib/auth';
 import { useVerifyMutation } from '@/lib/api/authApi';
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';

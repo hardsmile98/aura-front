@@ -1,4 +1,4 @@
-import { containerClass, containerFormClass } from "@/lib/container";
+import { containerClass, containerFormClass } from "@/lib/ui/container";
 
 type QuizResultProgressProps = {
   title: string;

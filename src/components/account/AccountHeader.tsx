@@ -2,13 +2,13 @@ import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '@/lib/store';
-import { clearAuth } from '@/lib/authSlice';
+import { clearAuth } from '@/lib/auth';
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
 import { UserCircleIcon, LogoutIcon } from '@/components/icons';
 import { LocaleLink } from '@/components/shared';
 import { ACCOUNT_MENU_ITEMS } from './accountMenuConfig';
-import { containerClass } from '@/lib/container';
+import { containerClass } from '@/lib/ui/container';
 import { useGetProfileQuery } from '@/lib/api/userApi';
 
 function getNavLinkClass(active: boolean, isMobile: boolean): string {

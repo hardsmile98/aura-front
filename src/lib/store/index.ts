@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { authApi } from './api/authApi';
-import { userApi } from './api/userApi';
-import { authSlice } from './authSlice';
+import { authApi } from '@/lib/api/authApi';
+import { userApi } from '@/lib/api/userApi';
+import { authSlice } from '@/lib/auth';
 import { quizSlice } from './quizSlice';
 
 export const store = configureStore({
@@ -17,3 +17,5 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+export { setQuizResult, clearQuizResult } from './quizSlice';

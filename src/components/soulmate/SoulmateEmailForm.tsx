@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
 import { useLeadMutation } from '@/lib/api/authApi';
-import { clearQuizResult } from '@/lib/quizSlice';
+import { clearQuizResult } from '@/lib/store';
 import type { RootState } from '@/lib/store';
 
 const inputClassName =

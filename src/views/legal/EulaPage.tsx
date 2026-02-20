@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Header } from "@/components/soulmate";
 import { getEulaContent } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
-import { containerClass, containerProseClass } from "@/lib/container";
+import { containerClass, containerProseClass } from "@/lib/ui/container";
 
 type Props = { locale: string };
 

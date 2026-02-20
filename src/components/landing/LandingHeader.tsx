@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
 import { ScrollToPaymentButton } from '@/components/landing-paywall';
-import { containerClass } from '@/lib/container';
+import { containerClass } from '@/lib/ui/container';
 
 const TOP_BAR_HEIGHT = 40;
 

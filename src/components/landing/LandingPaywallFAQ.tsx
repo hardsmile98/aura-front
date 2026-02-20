@@ -13,6 +13,7 @@ export function LandingPaywallFAQ({ items }: { items: FAQItem[] }) {
   const toggleIndex = (i: number) => {
     setOpenIndices((prev) => {
       const next = new Set(prev);
+  
       if (next.has(i)) {
         next.delete(i);
       } else {

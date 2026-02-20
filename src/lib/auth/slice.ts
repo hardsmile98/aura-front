@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { setAuthJWT, removeAuthJWT, isAuthorized } from './auth';
+import { setAuthJWT, removeAuthJWT, isAuthorized } from './storage';
 
 export const authSlice = createSlice({
   name: 'auth',

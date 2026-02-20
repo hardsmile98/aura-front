@@ -16,7 +16,7 @@ import {
   DocumentMeta,
 } from '@/components/shared';
 import { AccountHeader, AccountBottomNav } from '@/components/account';
-import { containerClass } from '@/lib/container';
+import { containerClass } from '@/lib/ui/container';
 import {
   HomeLandingPage,
   HoroscopesPage,

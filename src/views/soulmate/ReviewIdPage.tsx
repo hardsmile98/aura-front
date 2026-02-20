@@ -3,7 +3,7 @@ import { ButtonLink } from "@/components/shared";
 import { CheckIcon, StarIcon } from "@/components/icons";
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
-import { containerClass, containerFormClass } from "@/lib/container";
+import { containerClass, containerFormClass } from "@/lib/ui/container";
 
 type Props = { locale: string; id: string };
 

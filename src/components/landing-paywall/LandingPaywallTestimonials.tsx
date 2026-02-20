@@ -1,7 +1,7 @@
 import { TestimonialsCarousel } from "@/components/landing";
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
-import { containerSectionClass } from "@/lib/container";
+import { containerSectionClass } from "@/lib/ui/container";
 
 type Props = { locale: string };
 

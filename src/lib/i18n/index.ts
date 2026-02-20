@@ -1,4 +1,4 @@
-import type { Locale } from './translations';
+import type { Locale } from '@/lib/translations';
 
 export const locales: Locale[] = ['ru', 'en'];
 

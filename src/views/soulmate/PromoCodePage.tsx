@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Header } from '@/components/soulmate';
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
-import { containerClass, containerFormClass } from '@/lib/container';
+import { containerClass, containerFormClass } from '@/lib/ui/container';
 
 const continueButtonClassName =
   'w-full py-4 px-8 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center';

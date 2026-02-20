@@ -14,8 +14,8 @@ import {
 } from "@/components/quiz";
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
-import { getZodiacSignKey } from "@/lib/zodiac";
-import { containerClass, containerFormClass } from "@/lib/container";
+import { getZodiacSignKey } from "@/lib/utils/zodiac";
+import { containerClass, containerFormClass } from "@/lib/ui/container";
 
 type SoulmateQuizProps = {
   locale: string;

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { CheckIcon, GiftBoxIcon, StarIcon, BrainIcon, ConnectionIcon } from "@/components/icons";
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
-import { containerSectionClass } from "@/lib/container";
+import { containerSectionClass } from "@/lib/ui/container";
 
 type Props = { locale: string };
 

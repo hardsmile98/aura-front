@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Header, RandomReviewLink } from '@/components/soulmate';
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
-import { containerClass, containerFormClass } from '@/lib/container';
+import { containerClass, containerFormClass } from '@/lib/ui/container';
 
 type Props = { locale: string };
 

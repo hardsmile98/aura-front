@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { AUTH_JWT_KEY } from '../auth';
-import { clearAuth } from '../authSlice';
+import { AUTH_JWT_KEY, clearAuth } from '@/lib/auth';
 import { GetHoroscopeResponse, GetProfileResponse } from './types';
 
 const baseUrl = import.meta.env.VITE_API_URL;

@@ -6,7 +6,7 @@ import { UserCircleIcon } from '@/components/icons';
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
 import { LoginModal } from './LoginModal';
-import { containerClass } from '@/lib/container';
+import { containerClass } from '@/lib/ui/container';
 
 type Props = { locale: string };
 

@@ -11,7 +11,9 @@ const expertLink = {
 
 export function ExpertPage() {
   const { locale: localeParam } = useParams<{ locale: string }>();
+
   const locale = toLocale(localeParam);
+
   const t = getTranslations(locale).account;
 
   return (
