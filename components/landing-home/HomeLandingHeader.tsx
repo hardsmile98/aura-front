@@ -3,10 +3,11 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
+import type { RootState } from '@/lib/store';
 import { UserCircleIcon } from '@/components/icons';
 import { getTranslations } from '@/lib/translations';
 import type { Locale } from '@/lib/translations';
-import { isAuthorized } from '@/lib/auth';
 import { LoginModal } from './LoginModal';
 import { containerClass } from '@/lib/container';
 
@@ -17,6 +18,7 @@ const btnClass =
 
 export function HomeLandingHeader({ locale }: Props) {
   const t = getTranslations((locale as Locale) || 'en').landingHome;
+  const isAuthorized = useSelector((state: RootState) => state.auth.isAuthorized);
 
   const [loginModalOpen, setLoginModalOpen] = useState(false);
 
@@ -28,7 +30,7 @@ export function HomeLandingHeader({ locale }: Props) {
     }, 0);
   }, []);
 
-  const showAppLink = mounted && isAuthorized();
+  const showAppLink = mounted && isAuthorized;
 
   return (
     <>

@@ -4,11 +4,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from '@/lib/store';
+import { clearAuth } from '@/lib/authSlice';
 import { getTranslations } from '@/lib/translations';
 import type { Locale } from '@/lib/translations';
 import { UserCircleIcon, LogoutIcon } from '@/components/icons';
 import { LocaleLink } from '@/components/shared';
-import { removeAuthJWT } from '@/lib/auth';
 import { ACCOUNT_MENU_ITEMS } from './accountMenuConfig';
 import { containerClass } from '@/lib/container';
 
@@ -61,10 +63,9 @@ function NavLinks({ basePath, pathname, isMobile, labels, onLinkClick }: NavLink
 
 export function AccountHeader() {
   const params = useParams();
-
   const pathname = usePathname();
-
   const router = useRouter();
+  const dispatch = useDispatch<AppDispatch>();
 
   const locale = (params?.locale as Locale) || 'en';
 
@@ -80,11 +81,11 @@ export function AccountHeader() {
 
   const handleLogout = useCallback(() => {
     setUserMenuOpen(false);
-  
-    removeAuthJWT();
-  
+
+    dispatch(clearAuth());
+
     router.push(`/${locale}/`);
-  }, [locale, router]);
+  }, [locale, router, dispatch]);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {

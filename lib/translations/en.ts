@@ -5,6 +5,12 @@ export const en = {
     description:
       "Discover your unique destiny and connect with your soulmate. 87% of users said it felt familiar.",
   },
+  authVerify: {
+    loading: "Signing you in...",
+    success: "Success! Redirecting...",
+    error: "Invalid or expired link. Please request a new one.",
+    goHome: "Go to Home",
+  },
   common: {
     header: {
       logo: "Aura",
@@ -360,6 +366,11 @@ export const en = {
     loginModalEmailLabel: "Email",
     loginModalEmailPlaceholder: "Enter your email",
     loginModalSubmit: "Continue",
+    loginModalSuccess: "Login email has been sent to your email address.",
+    loginModalClose: "Close",
+    loginModalError: "Something went wrong. Please try again.",
+    loginModalError404:
+      "Please make sure to enter the email address you used to create your Aura account.",
     heroTitle: "Navigate through life with the help of modern astrology",
     heroSubtitle: "The #1 app that simplifies astrology to raise awareness",
     ctaButton: "Begin My Journey",
