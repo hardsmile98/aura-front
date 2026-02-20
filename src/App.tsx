@@ -150,6 +150,7 @@ export function App() {
                 </AppRouteGuard>
               }
             />
+
             <Route
               path="app/expert"
               element={
@@ -173,6 +174,7 @@ export function App() {
                 </LocaleRoute>
               }
             />
+
             <Route
               path="soulmate/quiz"
               element={
@@ -197,6 +199,7 @@ export function App() {
                 </LocaleRoute>
               }
             />
+
             <Route
               path="soulmate/review"
               element={

@@ -12,10 +12,12 @@ type Props = {
  */
 export function AppRouteGuard({ children }: Props) {
   const { locale } = useParams<{ locale: string }>();
+
   const isAuthorized = useSelector((state: RootState) => state.auth.isAuthorized);
 
   if (!isAuthorized) {
     const loc = locale && isValidLocale(locale) ? locale : defaultLocale;
+
     return <Navigate to={`/${loc}`} replace />;
   }
 

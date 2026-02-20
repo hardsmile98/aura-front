@@ -10,8 +10,11 @@ const linkClassName =
 
 export function ButtonLink({ to, children }: ButtonLinkProps) {
   const [searchParams] = useSearchParams();
+
   const path = to.split('?')[0];
+
   const search = searchParams.toString();
+
   const resolvedTo = search ? `${path}?${search}` : path;
 
   return (
