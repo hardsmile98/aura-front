@@ -130,6 +130,7 @@ export function AccountHeader() {
 
   const labels = {
     horoscopes: t.horoscopes,
+    insights: t.insights,
     expertHelp: t.expertHelp,
   };
 

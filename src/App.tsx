@@ -21,6 +21,7 @@ import { containerClass } from '@/lib/ui/container';
 import {
   HomeLandingPage,
   HoroscopesPage,
+  InsightsPage,
   ExpertPage,
   WelcomePage,
   QuizPage,
@@ -156,6 +157,17 @@ export function App() {
                 <AppRouteGuard>
                   <AppLayout>
                     <HoroscopesPage />
+                  </AppLayout>
+                </AppRouteGuard>
+              }
+            />
+
+            <Route
+              path="app/insights"
+              element={
+                <AppRouteGuard>
+                  <AppLayout>
+                    <InsightsPage />
                   </AppLayout>
                 </AppRouteGuard>
               }

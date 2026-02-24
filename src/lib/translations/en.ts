@@ -334,6 +334,8 @@ export const en = {
     cancelSubscriptionSuccess: "Subscription cancelled",
     cancelSubscriptionError: "Failed to cancel subscription",
     horoscopes: "Horoscopes",
+    insights: "Insights",
+    insightsPlaceholder: "Your personalized insights will appear here soon.",
     expertHelp: "Expert Help",
     tabToday: "Today",
     tabWeek: "Week",

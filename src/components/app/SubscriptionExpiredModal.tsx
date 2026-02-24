@@ -14,23 +14,30 @@ type Props = {
   onClose: () => void;
 };
 
-export function SubscriptionExpiredModal({
-  isOpen,
-  onClose,
-}: Props) {
+export function SubscriptionExpiredModal({ isOpen, onClose }: Props) {
   const { locale: localeParam } = useParams<{ locale: string }>();
 
-  const locale = localeParam && isValidLocale(localeParam) ? localeParam : defaultLocale;
+  const locale =
+    localeParam && isValidLocale(localeParam) ? localeParam : defaultLocale;
 
   const t = getTranslations(locale as Locale);
 
   const lp = t.landingPaywall;
 
-  const { data: profile, isLoading: isProfileLoading } = useGetProfileQuery(undefined, {
-    skip: !isOpen,
-  });
-  const [subscribe, { isLoading: isSubscribing, isSuccess: isSubscribed, error: subscribeError }] =
-    useSubscribeMutation();
+  const { data: profile, isLoading: isProfileLoading } = useGetProfileQuery(
+    undefined,
+    {
+      skip: !isOpen,
+    },
+  );
+  const [
+    subscribe,
+    {
+      isLoading: isSubscribing,
+      isSuccess: isSubscribed,
+      error: subscribeError,
+    },
+  ] = useSubscribeMutation();
 
   const benefits = [
     lp.subscriptionExpiredBenefit1,
@@ -41,7 +48,7 @@ export function SubscriptionExpiredModal({
 
   const handleRestore = () => {
     const paymentMethodId = profile?.stripePaymentMethodId?.trim();
-  
+
     if (!paymentMethodId) {
       toast.error(lp.subscriptionError);
       return;
@@ -91,18 +98,15 @@ export function SubscriptionExpiredModal({
   return (
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50"
-      onClick={(e) => e.target === e.currentTarget && onClose()}
-    >
+      onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div
         className="w-full max-w-lg max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-xl p-6 md:p-8 relative"
-        onClick={(e) => e.stopPropagation()}
-      >
+        onClick={(e) => e.stopPropagation()}>
         <button
           type="button"
           onClick={onClose}
           className="absolute top-4 right-4 p-1 rounded-lg text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 transition-colors cursor-pointer"
-          aria-label={lp.subscriptionExpiredClose}
-        >
+          aria-label={lp.subscriptionExpiredClose}>
           <CloseIcon className="w-5 h-5" />
         </button>
 
@@ -110,7 +114,9 @@ export function SubscriptionExpiredModal({
         <div className="flex items-center justify-center gap-2 mb-2 text-center">
           <p className="text-sm text-zinc-600 text-center">
             {lp.subscriptionExpiredPeoplePrefix}{' '}
-            <span className="font-bold text-violet-600">{lp.subscriptionExpiredPeopleCount}</span>{' '}
+            <span className="font-bold text-violet-600">
+              {lp.subscriptionExpiredPeopleCount}
+            </span>{' '}
             {lp.subscriptionExpiredPeopleRest}
           </p>
         </div>
@@ -142,7 +148,9 @@ export function SubscriptionExpiredModal({
             {lp.subscriptionExpiredAccessLabel}
           </span>
           <div className="text-right">
-            <span className="font-bold text-violet-600">{lp.subscriptionExpiredPriceOriginal}</span>
+            <span className="font-bold text-violet-600">
+              {lp.subscriptionExpiredPriceOriginal}
+            </span>
           </div>
         </div>
 
@@ -151,8 +159,7 @@ export function SubscriptionExpiredModal({
           type="button"
           onClick={handleRestore}
           disabled={isSubscribing || isProfileLoading}
-          className="w-full py-3.5 px-4 bg-violet-600 hover:bg-violet-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-colors mb-4"
-        >
+          className="w-full py-3.5 px-4 bg-violet-600 hover:bg-violet-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-colors mb-4">
           {isSubscribing || isProfileLoading
             ? lp.subscriptionProcessing
             : lp.subscriptionExpiredRestoreButton}

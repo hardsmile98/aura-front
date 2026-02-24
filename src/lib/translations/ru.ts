@@ -334,6 +334,8 @@ export const ru = {
     cancelSubscriptionSuccess: "Подписка отменена",
     cancelSubscriptionError: "Не удалось отменить подписку",
     horoscopes: "Гороскопы",
+    insights: "Инсайты",
+    insightsPlaceholder: "Ваши персональные инсайты скоро появятся здесь.",
     expertHelp: "Помощь эксперта",
     tabToday: "Сегодня",
     tabWeek: "Неделя",
