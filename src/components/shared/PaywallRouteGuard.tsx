@@ -1,5 +1,7 @@
-import { Navigate } from 'react-router-dom';
-import { useSubscriptionRedirect } from '@/lib/hooks/useSubscriptionRedirect';
+import { Navigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import type { RootState } from '@/lib/store';
+import { useGetProfileQuery } from '@/lib/api/userApi';
 
 type Props = {
   children: React.ReactNode;
@@ -7,11 +9,22 @@ type Props = {
 
 /**
  * Protects landing-paywall route.
- * Allows guests and authorized users with subscription=none.
- * Authorized + subscription!=none -> redirect to app.
+ * Unauthorized -> redirect to home.
+ * Authorized + subscription=active -> redirect to app.
+ * Authorized + no/other subscription -> show paywall.
  */
 export function PaywallRouteGuard({ children }: Props) {
-  const { isLoading, redirectTo } = useSubscriptionRedirect('paywall');
+  const { locale } = useParams<{ locale: string }>();
+
+  const isAuthorized = useSelector((state: RootState) => state.auth.isAuthorized);
+
+  const { data: profile, isLoading } = useGetProfileQuery(undefined, {
+    skip: !isAuthorized,
+  });
+
+  if (!isAuthorized) {
+    return <Navigate to={locale ? `/${locale}` : '/'} replace />;
+  }
 
   if (isLoading) {
     return (
@@ -21,8 +34,13 @@ export function PaywallRouteGuard({ children }: Props) {
     );
   }
 
-  if (redirectTo) {
-    return <Navigate to={redirectTo} replace />;
+  if (profile?.subscription === 'active') {
+    return (
+      <Navigate
+        to={locale ? `/${locale}/app/insights` : '/app/insights'}
+        replace
+      />
+    );
   }
 
   return <>{children}</>;
