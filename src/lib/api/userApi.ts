@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { AUTH_JWT_KEY, clearAuth } from '@/lib/auth';
-import { GetHoroscopeResponse, GetProfileResponse } from './types';
+import { GetHoroscopeResponse, GetProfileResponse, GetSketchResponse } from './types';
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -47,6 +47,17 @@ export const userApi = createApi({
         },
       }),
     }),
+
+    getSketch: builder.query<GetSketchResponse, { type: 'soulmate' | 'baby'; locale: string }>({
+      query: ({ type, locale }) => ({
+        url: '/api/user/sketch',
+        method: 'GET',
+        params: {
+          type,
+          locale,
+        },
+      }),
+    }),
   }),
 });
 
@@ -55,4 +66,6 @@ export const {
   useLazyGetProfileQuery,
   useGetHoroscopeQuery,
   useLazyGetHoroscopeQuery,
+  useGetSketchQuery,
+  useLazyGetSketchQuery,
 } = userApi;

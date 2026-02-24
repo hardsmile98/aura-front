@@ -3,6 +3,42 @@ import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
 import { BabyIcon } from '@/components/icons';
 import { LocaleLink } from '@/components/shared';
+import { useGetProfileQuery, useGetSketchQuery } from '@/lib/api/userApi';
+import { BABY_SECTION_KEYS, BABY_SECTION_GROUPS } from '@/lib/api/types/getSketch';
+
+type SketchLoaderProps = {
+  loadingText: string;
+  hintText: string;
+};
+
+type SketchErrorProps = {
+  title: string;
+  hint: string;
+};
+
+function SketchError({ title, hint }: SketchErrorProps) {
+  return (
+    <div className="text-center py-12 px-4">
+      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 text-red-500 mb-4">
+        <span className="text-2xl">⚠</span>
+      </div>
+      <p className="text-red-600 font-medium mb-2">{title}</p>
+      <p className="text-zinc-500 text-sm">{hint}</p>
+    </div>
+  );
+}
+
+function SketchLoader({ loadingText, hintText }: SketchLoaderProps) {
+  return (
+    <div className="flex flex-col items-center gap-4 py-4">
+      <div className="w-16 h-16 rounded-2xl bg-amber-100 flex items-center justify-center">
+        <BabyIcon className="w-8 h-8 text-amber-600" />
+      </div>
+      <p className="text-violet-600 font-medium text-center">{loadingText}</p>
+      <p className="text-zinc-500 text-sm">{hintText}</p>
+    </div>
+  );
+}
 
 export function BabySketchPage() {
   const { locale: localeParam } = useParams<{ locale: string }>();
@@ -10,6 +46,30 @@ export function BabySketchPage() {
   const locale = toLocale(localeParam);
 
   const t = getTranslations(locale).account;
+
+  const {
+    data: sketchData,
+    isLoading: isSketchLoading,
+    isError: isSketchError,
+  } = useGetSketchQuery({ type: 'baby', locale });
+
+  const {
+    data: profile,
+    isLoading: isProfileLoading,
+    isError: isProfileError,
+  } = useGetProfileQuery();
+
+  const sketch = sketchData?.sketch;
+
+  const gender = (sketch?.gender?.toLowerCase() === 'w' ? 'w' : 'm') as 'm' | 'w';
+
+  const sketchIndex = ((profile?.id ?? 0) % 2) + 1;
+
+  const sketchImage = `/sketchs/sketch-baby-${gender}-${sketchIndex}.jpg`;
+
+  const isLoading = isSketchLoading || isProfileLoading;
+
+  const isError = isProfileError || isSketchError;
 
   return (
     <div className="w-full">
@@ -21,19 +81,88 @@ export function BabySketchPage() {
         ← {t.insights}
       </LocaleLink>
 
-      <div className="bg-white rounded-xl md:rounded-2xl p-6 md:p-10 shadow-sm border border-zinc-100">
-        <div className="flex flex-col items-center gap-6 text-center">
-          <div className="w-16 h-16 rounded-2xl bg-amber-100 flex items-center justify-center">
-            <BabyIcon className="w-8 h-8 text-amber-600" />
-          </div>
-          <h1 className="text-2xl md:text-3xl font-bold text-zinc-900">
-            {t.futureBabySketchTitle}
-          </h1>
-          <p className="text-zinc-600 text-sm leading-relaxed max-w-md">
-            {t.futureBabySketchPagePlaceholder}
-          </p>
+      {isLoading ? (
+        <div className="bg-white rounded-xl md:rounded-2xl p-6 md:p-10 shadow-sm border border-zinc-100">
+          <SketchLoader
+            loadingText={t.futureBabySketchLoading}
+            hintText={t.futureBabySketchLoadingHint}
+          />
         </div>
-      </div>
+      ) : isError ? (
+        <div className="bg-white rounded-xl md:rounded-2xl p-6 md:p-10 shadow-sm border border-zinc-100">
+          <SketchError
+            title={t.futureBabySketchError}
+            hint={t.futureBabySketchErrorHint}
+          />
+        </div>
+      ) : (
+        <div className="flex flex-col gap-6">
+          {BABY_SECTION_GROUPS.map((groupKeys, groupIndex) => {
+            const sectionsInGroup = groupKeys
+              .map((key) => ({
+                key,
+                text: sketch?.[key]?.trim(),
+                title: t.futureBabySketchSections[key],
+              }))
+              .filter((s) => s.text);
+
+            if (sectionsInGroup.length === 0) return null;
+
+            const isIntroGroup = groupKeys[0] === 'intro';
+      
+            const introSection = sectionsInGroup.find((s) => s.key === 'intro');
+
+            return (
+              <div
+                key={groupIndex}
+                className="bg-white rounded-xl md:rounded-2xl p-6 md:p-8 shadow-sm border border-zinc-100"
+              >
+                {isIntroGroup && introSection ? (
+                  <div className="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div className="flex-shrink-0 w-[192px] h-[240px] overflow-hidden rounded-xl border border-zinc-100 mx-auto md:mx-0">
+                      <img
+                        src={sketchImage}
+                        alt=""
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-3 min-w-0 flex-1">
+                      <h1 className="text-xl md:text-2xl font-bold text-zinc-900">
+                        {t.futureBabySketchTitle}
+                      </h1>
+                      <p className="text-zinc-600 text-sm leading-relaxed whitespace-pre-line">
+                        {introSection.text}
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-6">
+                    {sectionsInGroup.map(({ key, text, title }) => (
+                      <div key={key} className="flex flex-col gap-2 text-left">
+                        <h2 className="text-lg font-semibold text-zinc-900">
+                          {title}
+                        </h2>
+                        <p className="text-zinc-600 text-sm leading-relaxed whitespace-pre-line">
+                          {text}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+
+          {!sketch ||
+            !BABY_SECTION_KEYS.some((key) => sketch[key]?.trim()) ? (
+              <div className="bg-white rounded-xl md:rounded-2xl p-6 md:p-10 shadow-sm border border-zinc-100">
+                <p className="text-zinc-500 text-sm text-center">
+                  {t.futureBabySketchPagePlaceholder}
+                </p>
+              </div>
+            ) : null}
+        </div>
+      )}
     </div>
   );
 }
