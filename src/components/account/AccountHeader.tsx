@@ -5,11 +5,13 @@ import type { AppDispatch } from '@/lib/store';
 import { clearAuth } from '@/lib/auth';
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
-import { UserCircleIcon, LogoutIcon } from '@/components/icons';
+import { UserCircleIcon, LogoutIcon, CreditCardIcon } from '@/components/icons';
 import { LocaleLink } from '@/components/shared';
 import { ACCOUNT_MENU_ITEMS } from './accountMenuConfig';
 import { containerClass } from '@/lib/ui/container';
 import { useGetProfileQuery } from '@/lib/api/userApi';
+import { useCancelSubscriptionMutation } from '@/lib/api/paymentsApi';
+import toast from 'react-hot-toast';
 
 function getNavLinkClass(active: boolean, isMobile: boolean): string {
   if (isMobile) {
@@ -79,7 +81,26 @@ export function AccountHeader() {
 
   const { data: profile } = useGetProfileQuery();
 
+  const [cancelSubscription, { isLoading: isCancelling }] = useCancelSubscriptionMutation();
+
   const basePath = `/${locale}/app`;
+
+  const hasSubscription = profile?.subscription && profile.subscription !== 'none';
+
+  const subscriptionEndsAt = profile?.subscriptionEndsAt;
+
+  const handleCancelSubscription = useCallback(async () => {
+    try {
+      await cancelSubscription({ locale }).unwrap();
+      setUserMenuOpen(false);
+      toast.success(t.cancelSubscriptionSuccess);
+    } catch (err) {
+      const msg = err && typeof err === 'object' && 'data' in err
+        ? (err as { data?: { message?: string } }).data?.message
+        : null;
+      toast.error(msg ?? t.cancelSubscriptionError);
+    }
+  }, [cancelSubscription, locale, t]);
 
   const handleLogout = useCallback(() => {
     setUserMenuOpen(false);
@@ -200,6 +221,18 @@ export function AccountHeader() {
                       {profile?.email}
                     </p>
                   </div>
+                  {hasSubscription && subscriptionEndsAt === null && (
+                    <button
+                      type="button"
+                      onClick={handleCancelSubscription}
+                      disabled={isCancelling}
+                      role="menuitem"
+                      className="flex items-center gap-2 w-full px-4 py-3 text-sm font-medium text-red-600 hover:bg-red-50 cursor-pointer transition-colors text-left disabled:opacity-50"
+                    >
+                      <CreditCardIcon className="w-5 h-5 shrink-0 text-red-600" />
+                      {t.cancelSubscription}
+                    </button>
+                  )}
                   <button
                     type="button"
                     onClick={handleLogout}

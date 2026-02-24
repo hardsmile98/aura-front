@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { AUTH_JWT_KEY, clearAuth } from '@/lib/auth';
+import { userApi } from './userApi';
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -25,7 +26,6 @@ const baseQueryWithLogout: typeof baseQuery = async (args, api, extraOptions) =>
 export const paymentsApi = createApi({
   reducerPath: 'paymentsApi',
   baseQuery: baseQueryWithLogout,
-  tagTypes: ['Profile'],
   endpoints: (builder) => ({
     createSetupIntent: builder.mutation<{ clientSecret: string }, { locale: string }>({
       query: ({ locale }) => ({
@@ -42,7 +42,22 @@ export const paymentsApi = createApi({
         body: { paymentMethodId },
         params: { locale },
       }),
-      invalidatesTags: ['Profile'],
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        await queryFulfilled;
+        dispatch(userApi.util.invalidateTags(['Profile']));
+      },
+    }),
+
+    cancelSubscription: builder.mutation<void, { locale: string }>({
+      query: ({ locale }) => ({
+        url: '/api/payments/cancel-subscription',
+        method: 'POST',
+        params: { locale },
+      }),
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        await queryFulfilled;
+        dispatch(userApi.util.invalidateTags(['Profile']));
+      },
     }),
   }),
 });
@@ -50,4 +65,5 @@ export const paymentsApi = createApi({
 export const {
   useCreateSetupIntentMutation,
   useSubscribeMutation,
+  useCancelSubscriptionMutation,
 } = paymentsApi;

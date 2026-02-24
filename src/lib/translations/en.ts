@@ -330,6 +330,9 @@ export const en = {
   account: {
     logo: "Aura",
     logout: "Log out",
+    cancelSubscription: "Cancel subscription",
+    cancelSubscriptionSuccess: "Subscription cancelled",
+    cancelSubscriptionError: "Failed to cancel subscription",
     horoscopes: "Horoscopes",
     expertHelp: "Expert Help",
     tabToday: "Today",

@@ -36,6 +36,7 @@ export const userApi = createApi({
       }),
       providesTags: ['Profile'],
     }),
+
     getHoroscope: builder.query<GetHoroscopeResponse, { period: 'day' | 'week' | 'month'; locale: string }>({
       query: ({ period, locale }) => ({
         url: '/api/user/horoscope',

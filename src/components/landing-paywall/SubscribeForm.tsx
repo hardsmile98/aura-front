@@ -5,6 +5,8 @@ import { useCreateSetupIntentMutation, useSubscribeMutation } from '@/lib/api/pa
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
 import type { StripeCardElementChangeEvent } from '@stripe/stripe-js';
+import { userApi } from '@/lib/api/userApi';
+import { useDispatch } from 'react-redux';
 
 const CARD_ELEMENT_OPTIONS = {
   style: {
@@ -28,6 +30,8 @@ export function SubscribeForm({ locale, onSuccess }: Props) {
   const stripe = useStripe();
 
   const elements = useElements();
+
+  const dispatch = useDispatch();
 
   const [cardComplete, setCardComplete] = useState(false);
 
@@ -110,7 +114,10 @@ export function SubscribeForm({ locale, onSuccess }: Props) {
   // Успешная подписка
   useEffect(() => {
     if (isSubscribed) {
+      dispatch(userApi.util.invalidateTags(['Profile']));
+
       onSuccess?.();
+  
       toast.success(lp.subscriptionSuccess);
     }
   }, [isSubscribed, onSuccess, lp.subscriptionSuccess]);

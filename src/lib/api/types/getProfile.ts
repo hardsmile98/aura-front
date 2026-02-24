@@ -3,6 +3,9 @@ type GetProfileResponse = {
   email: string;
   locale: string;
   subscription: string;
+  stripeCustomerId: string;
+  stripePaymentMethodId: string;
+  subscriptionEndsAt: string | null;
   quizResult: {
     gender: string;
     element: string;

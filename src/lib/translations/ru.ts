@@ -330,6 +330,9 @@ export const ru = {
   account: {
     logo: "Aura",
     logout: "Выйти",
+    cancelSubscription: "Отменить подписку",
+    cancelSubscriptionSuccess: "Подписка отменена",
+    cancelSubscriptionError: "Не удалось отменить подписку",
     horoscopes: "Гороскопы",
     expertHelp: "Помощь эксперта",
     tabToday: "Сегодня",

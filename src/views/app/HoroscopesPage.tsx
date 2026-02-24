@@ -43,7 +43,7 @@ export function HoroscopesPage() {
   const [activeTab, setActiveTab] = useState<TabKey>('today');
   const period = TAB_TO_PERIOD[activeTab];
 
-  const { data, isFetching, error } = useGetHoroscopeQuery({
+  const { data, isSuccess, isFetching, error } = useGetHoroscopeQuery({
     period,
     locale,
   });
@@ -112,7 +112,7 @@ export function HoroscopesPage() {
           </div>
         )}
 
-        {error && (
+        {!isFetching && error && (
           <div className="text-center py-12 px-4">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 text-red-500 mb-4">
               <span className="text-2xl">⚠</span>
@@ -126,7 +126,7 @@ export function HoroscopesPage() {
           </div>
         )}
 
-        {!isFetching && !error && horoscopeEntries?.map((entry, i) => {
+        {!isFetching && isSuccess && horoscopeEntries?.map((entry, i) => {
           const Icon = DIRECTION_ICONS[i];
           return (
             <div
