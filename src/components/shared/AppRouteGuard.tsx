@@ -1,30 +1,26 @@
-import { Navigate } from 'react-router-dom';
+import { useState } from 'react';
 import { useSubscriptionRedirect } from '@/lib/hooks/useSubscriptionRedirect';
+import { SubscriptionExpiredModal } from '@/components/app/SubscriptionExpiredModal';
 
 type Props = {
   children: React.ReactNode;
 };
 
-/**
- * Protects app routes.
- * Unauthorized -> home.
- * Authorized + subscription=none -> landing-paywall.
- * Authorized + subscription!=none -> allow.
- */
 export function AppRouteGuard({ children }: Props) {
-  const { isLoading, redirectTo } = useSubscriptionRedirect('app');
+  const [modalDismissed, setModalDismissed] = useState(false);
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-zinc-50">
-        <div className="w-8 h-8 border-2 border-violet-600 border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
-  }
+  const { showSubscriptionModal } = useSubscriptionRedirect();
 
-  if (redirectTo) {
-    return <Navigate to={redirectTo} replace />;
-  }
+  const showModal = showSubscriptionModal && !modalDismissed;
 
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+
+      <SubscriptionExpiredModal
+        isOpen={showModal}
+        onClose={() => setModalDismissed(true)}
+      />
+    </>
+  );
 }
