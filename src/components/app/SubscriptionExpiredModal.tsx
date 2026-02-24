@@ -23,6 +23,7 @@ export function SubscriptionExpiredModal({
   const locale = localeParam && isValidLocale(localeParam) ? localeParam : defaultLocale;
 
   const t = getTranslations(locale as Locale);
+
   const lp = t.landingPaywall;
 
   const { data: profile, isLoading: isProfileLoading } = useGetProfileQuery(undefined, {
