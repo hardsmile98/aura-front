@@ -103,14 +103,14 @@ function LocaleReviewIdRoute() {
 export function App() {
   return (
     <ReduxProvider store={store}>
-      <StripeProvider>
-        <Toaster
-          position="bottom-center"
-          toastOptions={{
-            duration: 4000,
-          }}
-        />
-        <BrowserRouter>
+      <Toaster
+        position="bottom-center"
+        toastOptions={{
+          duration: 4000,
+        }}
+      />
+      <BrowserRouter>
+        <StripeProvider>
         <Routes>
           <Route path="/" element={<RootRedirect />} />
 
@@ -300,8 +300,8 @@ export function App() {
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        </StripeProvider>
       </BrowserRouter>
-      </StripeProvider>
     </ReduxProvider>
   );
 }
