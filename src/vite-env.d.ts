@@ -8,6 +8,7 @@ declare module '*.ico' {
 interface ImportMetaEnv {
   readonly VITE_API_URL: string;
   readonly VITE_STRIPE_PUBLIC_KEY: string;
+  readonly VITE_YANDEX_METRIKA_ID?: string;
 }
 
 interface ImportMeta {
