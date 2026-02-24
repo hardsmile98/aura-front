@@ -20,9 +20,13 @@ export function LandingPaywallPage({ locale }: Props) {
 
       <main className="flex-1">
         <LandingPaywallSketchHero locale={locale} />
+
         <LandingPaywallSubscription locale={locale} />
+      
         <LandingPaywallPortraits locale={locale} />
+
         <LandingPaywallTestimonials locale={locale} />
+
         <LandingPaywallFAQSection locale={locale} />
       </main>
 

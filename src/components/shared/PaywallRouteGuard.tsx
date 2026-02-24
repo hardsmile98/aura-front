@@ -6,13 +6,12 @@ type Props = {
 };
 
 /**
- * Protects app routes.
- * Unauthorized -> home.
- * Authorized + subscription=none -> landing-paywall.
- * Authorized + subscription!=none -> allow.
+ * Protects landing-paywall route.
+ * Allows guests and authorized users with subscription=none.
+ * Authorized + subscription!=none -> redirect to app.
  */
-export function AppRouteGuard({ children }: Props) {
-  const { isLoading, redirectTo } = useSubscriptionRedirect('app');
+export function PaywallRouteGuard({ children }: Props) {
+  const { isLoading, redirectTo } = useSubscriptionRedirect('paywall');
 
   if (isLoading) {
     return (

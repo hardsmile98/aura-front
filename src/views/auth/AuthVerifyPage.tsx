@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '@/lib/store';
 import { setAuth } from '@/lib/auth';
 import { useVerifyMutation } from '@/lib/api/authApi';
+import { useLazyGetProfileQuery } from '@/lib/api/userApi';
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
 
@@ -19,6 +20,7 @@ function AuthVerifyContent({ locale }: AuthVerifyContentProps) {
   const dispatch = useDispatch<AppDispatch>();
 
   const [verify, { isLoading, isSuccess, isError, data }] = useVerifyMutation();
+  const [fetchProfile] = useLazyGetProfileQuery();
 
   const t = getTranslations(toLocale(locale)).authVerify;
 
@@ -26,18 +28,28 @@ function AuthVerifyContent({ locale }: AuthVerifyContentProps) {
 
   useEffect(() => {
     if (!token) return;
-  
+
     verify({ token, locale: toLocale(locale) });
   }, [token, verify, locale]);
 
   const accessToken = data?.accessToken;
 
   useEffect(() => {
-    if (isSuccess && accessToken) {
+    if (!isSuccess || !accessToken) return;
+
+    const runAuthAndRedirect = async () => {
       dispatch(setAuth(accessToken));
-      navigate(`/${toLocale(locale)}/app`, { replace: true });
-    }
-  }, [isSuccess, accessToken, dispatch, navigate, locale]);
+      const profile = await fetchProfile().unwrap().catch(() => undefined);
+
+      if (profile?.subscription === 'none') {
+        navigate(`/${toLocale(locale)}/landing-paywall`, { replace: true });
+      } else {
+        navigate(`/${toLocale(locale)}/app/horoscopes`, { replace: true });
+      }
+    };
+
+    runAuthAndRedirect();
+  }, [isSuccess, accessToken, dispatch, fetchProfile, navigate, locale]);
 
   const alertBase =
     'flex flex-col items-center gap-4 max-w-md w-full p-6 rounded-2xl shadow-lg border';

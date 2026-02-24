@@ -6,3 +6,4 @@ export { LocaleLink } from './LocaleLink';
 export { LocalePersist } from './LocalePersist';
 export { AppRouteGuard } from './AppRouteGuard';
 export { GuestRouteGuard } from './GuestRouteGuard';
+export { PaywallRouteGuard } from './PaywallRouteGuard';

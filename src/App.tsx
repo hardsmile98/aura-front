@@ -13,6 +13,7 @@ import {
   RootRedirect,
   AppRouteGuard,
   GuestRouteGuard,
+  PaywallRouteGuard,
   DocumentMeta,
 } from '@/components/shared';
 import { AccountHeader, AccountBottomNav } from '@/components/account';
@@ -37,6 +38,8 @@ import { isValidLocale, defaultLocale } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 import type { Locale } from '@/lib/translations';
 import { store } from '@/lib/store';
+import { StripeProvider } from '@/components/stripe/StripeProvider';
+import { Toaster } from 'react-hot-toast';
 
 function LocaleLayout() {
   const { locale } = useParams<{ locale: string }>();
@@ -100,7 +103,14 @@ function LocaleReviewIdRoute() {
 export function App() {
   return (
     <ReduxProvider store={store}>
-      <BrowserRouter>
+      <StripeProvider>
+        <Toaster
+          position="bottom-center"
+          toastOptions={{
+            duration: 4000,
+          }}
+        />
+        <BrowserRouter>
         <Routes>
           <Route path="/" element={<RootRedirect />} />
 
@@ -253,9 +263,9 @@ export function App() {
               element={
                 <LocaleRoute>
                   {(locale) => (
-                    <GuestRouteGuard>
+                    <PaywallRouteGuard>
                       <LandingPaywallPage locale={locale} />
-                    </GuestRouteGuard>
+                    </PaywallRouteGuard>
                   )}
                 </LocaleRoute>
               }
@@ -291,6 +301,7 @@ export function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
+      </StripeProvider>
     </ReduxProvider>
   );
 }

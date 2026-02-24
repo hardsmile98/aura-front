@@ -4,6 +4,7 @@ import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
 import { ScrollToPaymentButton } from '@/components/landing-paywall';
 import { containerClass } from '@/lib/ui/container';
+import { useGetProfileQuery } from '@/lib/api/userApi';
 
 const TOP_BAR_HEIGHT = 40;
 
@@ -13,16 +14,20 @@ function formatTime(seconds: number): string {
   return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
 }
 
-const userEmail = 'user@example.com';
-
 export function LandingHeader() {
   const { locale } = useParams<{ locale: string }>();
+
   const loc = toLocale(locale);
+
   const t = getTranslations(loc).common.header;
 
-  const displayEmail = userEmail.length > 20
-    ? `${userEmail.slice(0, 12)}...`
-    : userEmail;
+  const { data: profile, isLoading: profileLoading } = useGetProfileQuery();
+
+  const email = profile?.email;
+
+  const displayEmail = email && email.length > 20
+    ? `${email?.slice(0, 12)}...`
+    : email;
 
   // Анимированные сообщения в верхней плашке
   const messages = [
@@ -93,13 +98,13 @@ export function LandingHeader() {
             />
 
             <div
-              className="flex items-center gap-1.5 px-2 py-1.5 rounded-lg bg-zinc-200/80 hover:bg-zinc-300/80 transition-colors"
+              className={`flex items-center gap-1.5 px-2 py-1.5 rounded-lg bg-zinc-200/80 hover:bg-zinc-300/80 transition-colors ${profileLoading ? 'opacity-50' : ''}`}
             >
               <div className="w-5 h-5 rounded-full bg-zinc-300 flex items-center justify-center text-[10px] font-semibold text-zinc-600 shrink-0">
-                {displayEmail.charAt(0).toUpperCase()}
+                {displayEmail?.charAt(0).toUpperCase()}
               </div>
               <span className="text-xs text-zinc-600 truncate max-w-[80px] md:max-w-[100px]">
-                {displayEmail}
+                {displayEmail ?? ''}
               </span>
             </div>
           </div>

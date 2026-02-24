@@ -83,9 +83,9 @@ export const eulaEn = {
       type: "list",
       items: [
         "Subscription: Recurring paid access to premium features",
-        "Trial Period: Initial 7-day access period with user-selected price (default $0.52)",
+        "Trial Period: Initial 3-day access period with user-selected price (default $1)",
         "Standard Subscription: Recurring paid access following trial period",
-        "Billing Cycle: The frequency of subscription charges (weekly, monthly)",
+        "Billing Cycle: The frequency of subscription charges (monthly)",
       ],
     },
     {
@@ -210,7 +210,7 @@ export const eulaEn = {
     {
       type: "paragraph",
       content:
-        "7-day trial period. Users can select preferred trial price upon sign-up. Full access to premium features during trial. Converts to selected plan rate after trial. One trial per user. Standard subscription begins after trial. Charged on saved payment method. Regional pricing applies. Cancel anytime before renewal to avoid charges. All subscriptions auto-renew until canceled.",
+        "3-day trial period. Users can select preferred trial price upon sign-up ($1 default). Full access to premium features during trial. Converts to monthly plan ($29.99/month) after trial. One trial per user. Standard subscription begins after trial. Charged on saved payment method. Regional pricing applies. Cancel anytime before renewal to avoid charges. All subscriptions auto-renew until canceled.",
     },
     {
       type: "paragraph",

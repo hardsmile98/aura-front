@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CheckIcon, GiftBoxIcon, StarIcon, BrainIcon, ConnectionIcon } from "@/components/icons";
+import { SubscribeForm } from "./SubscribeForm";
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
 import { containerSectionClass } from "@/lib/ui/container";
@@ -11,8 +12,15 @@ function StarOutlineIcon({ className }: { className?: string }) {
 }
 
 export function LandingPaywallSubscription({ locale }: Props) {
+  const navigate = useNavigate();
+
   const t = getTranslations(toLocale(locale));
+
   const lp = t.landingPaywall;
+
+  const handleSubscribeSuccess = () => {
+    navigate(`/${locale}/app/horoscopes`, { replace: true });
+  };
 
   const trustFeatures = [
     {
@@ -162,19 +170,7 @@ export function LandingPaywallSubscription({ locale }: Props) {
               </div>
             </div>
             <div id="payment-button" className="space-y-3">
-              <Link
-                to="#"
-                className="flex items-center justify-center gap-2 w-full py-3.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" />
-                </svg>
-                {lp.subscriptionCreditCard}
-              </Link>
+              <SubscribeForm locale={locale} onSuccess={handleSubscribeSuccess} />
             </div>
             <p className="text-xs text-zinc-500 mt-4 text-center">
               {t.footer.prefix}

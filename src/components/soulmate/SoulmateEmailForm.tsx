@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
 import { useLeadMutation } from '@/lib/api/authApi';
+import { setAuth } from '@/lib/auth';
 import { clearQuizResult } from '@/lib/store';
 import type { RootState } from '@/lib/store';
+import type { AppDispatch } from '@/lib/store';
 
 const inputClassName =
   'w-full min-w-0 max-w-full py-4 px-4 rounded-2xl border-2 border-zinc-200 bg-white text-zinc-900 focus:border-violet-400 focus:ring-2 focus:ring-violet-200 outline-none transition-all text-base min-w-auto';
@@ -23,11 +25,11 @@ type SoulmateEmailFormProps = {
 export function SoulmateEmailForm({ locale }: SoulmateEmailFormProps) {
   const [email, setEmail] = useState('');
 
-  const [lead, { isLoading, isSuccess }] = useLeadMutation();
+  const [lead, { isLoading, isSuccess, data: leadData }] = useLeadMutation();
 
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const quizResult = useSelector((state: RootState) => state.quiz);
 
@@ -57,11 +59,14 @@ export function SoulmateEmailForm({ locale }: SoulmateEmailFormProps) {
   };
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && leadData.accessToken) {
+      dispatch(setAuth(leadData.accessToken));
+  
       dispatch(clearQuizResult());
-      navigate(`/${locale}/promo-code`);
+
+      navigate(`/${locale}/promo-code`, { replace: true });
     }
-  }, [isSuccess, dispatch, navigate, locale]);
+  }, [isSuccess, leadData, dispatch, navigate, locale]);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pt-20">

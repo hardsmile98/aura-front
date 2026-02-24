@@ -28,7 +28,10 @@ export const authApi = createApi({
         },
       }),
     }),
-    lead: builder.mutation<void, { email: string; locale: string; quizResult: Record<string, unknown> }>({
+    lead: builder.mutation<
+      { accessToken: string },
+      { email: string; locale: string; quizResult: Record<string, unknown> }
+    >({
       query: ({ email, locale, quizResult }) => ({
         url: '/api/auth/lead',
         method: 'POST',

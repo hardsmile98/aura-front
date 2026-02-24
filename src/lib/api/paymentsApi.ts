@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { AUTH_JWT_KEY, clearAuth } from '@/lib/auth';
-import { GetHoroscopeResponse, GetProfileResponse } from './types';
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -17,41 +16,36 @@ const baseQuery = fetchBaseQuery({
 
 const baseQueryWithLogout: typeof baseQuery = async (args, api, extraOptions) => {
   const result = await baseQuery(args, api, extraOptions);
-
   if (result.error?.status === 401) {
     api.dispatch(clearAuth());
   }
   return result;
 };
 
-export const userApi = createApi({
-  reducerPath: 'userApi',
+export const paymentsApi = createApi({
+  reducerPath: 'paymentsApi',
   baseQuery: baseQueryWithLogout,
   tagTypes: ['Profile'],
   endpoints: (builder) => ({
-    getProfile: builder.query<GetProfileResponse, void>({
+    createSetupIntent: builder.mutation<{ clientSecret: string }, void>({
       query: () => ({
-        url: '/api/user/profile',
-        method: 'GET',
+        url: '/api/payments/create-setup-intent',
+        method: 'POST',
       }),
-      providesTags: ['Profile'],
     }),
-    getHoroscope: builder.query<GetHoroscopeResponse, { period: 'day' | 'week' | 'month'; locale: string }>({
-      query: ({ period, locale }) => ({
-        url: '/api/user/horoscope',
-        method: 'GET',
-        params: {
-          period,
-          locale,
-        },
+
+    subscribe: builder.mutation<void, { paymentMethodId: string }>({
+      query: ({ paymentMethodId }) => ({
+        url: '/api/payments/subscribe',
+        method: 'POST',
+        body: { paymentMethodId },
       }),
+      invalidatesTags: ['Profile'],
     }),
   }),
 });
 
 export const {
-  useGetProfileQuery,
-  useLazyGetProfileQuery,
-  useGetHoroscopeQuery,
-  useLazyGetHoroscopeQuery,
-} = userApi;
+  useCreateSetupIntentMutation,
+  useSubscribeMutation,
+} = paymentsApi;
