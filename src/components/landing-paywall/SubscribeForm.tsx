@@ -1,5 +1,5 @@
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useCreateSetupIntentMutation, useSubscribeMutation } from '@/lib/api/paymentsApi';
 import { getTranslations } from '@/lib/translations';
@@ -33,7 +33,7 @@ export function SubscribeForm({ locale, onSuccess }: Props) {
 
   const [cardError, setCardError] = useState<string | null>(null);
 
-  const confirmStartedRef = useRef(false);
+  const [isConfirmingCard, setIsConfirmingCard] = useState(false);
 
   const [createSetupIntent, {
     data: setupIntentData,
@@ -48,61 +48,60 @@ export function SubscribeForm({ locale, onSuccess }: Props) {
   }] = useSubscribeMutation();
 
   const t = getTranslations(toLocale(locale));
+
   const lp = t.landingPaywall;
 
   const handleCardChange = (event: StripeCardElementChangeEvent) => {
     setCardComplete(event.complete);
+
     setCardError(event.error?.message ?? null);
   };
 
   const handleSubscribe = () => {
     if (!stripe || !elements) return;
   
-    confirmStartedRef.current = false;
-  
-    createSetupIntent();
+    createSetupIntent({ locale });
   };
 
   // После получения clientSecret — подтверждаем карту и создаём подписку
   useEffect(() => {
     const clientSecret = setupIntentData?.clientSecret;
-    if (!clientSecret || !stripe || !elements || confirmStartedRef.current) return;
-
-    confirmStartedRef.current = true;
+    if (!clientSecret || !stripe || !elements) return;
 
     const run = async () => {
       const cardElement = elements.getElement(CardElement);
-    
+
       if (!cardElement) {
-        confirmStartedRef.current = false;
         return;
       }
 
-      const result = await stripe.confirmCardSetup(clientSecret, {
-        payment_method: { card: cardElement },
-      });
+      setIsConfirmingCard(true);
 
-      if (result.error) {
-        toast.error(result.error.message ?? lp.subscriptionError);
-        confirmStartedRef.current = false;
-        return;
+      try {
+        const result = await stripe.confirmCardSetup(clientSecret, {
+          payment_method: { card: cardElement },
+        });
+
+        if (result.error) {
+          toast.error(result.error.message ?? lp.subscriptionError);
+          return;
+        }
+
+        const paymentMethodId =
+          result.setupIntent?.payment_method?.toString() ??
+          (typeof result.setupIntent?.payment_method === 'string'
+            ? result.setupIntent.payment_method
+            : null);
+
+        if (!paymentMethodId) {
+          toast.error(lp.subscriptionError);
+          return;
+        }
+
+        subscribe({ paymentMethodId, locale });
+      } finally {
+        setIsConfirmingCard(false);
       }
-
-      const paymentMethodId =
-        result.setupIntent?.payment_method?.toString() ??
-        (typeof result.setupIntent?.payment_method === 'string'
-          ? result.setupIntent.payment_method
-          : null);
-
-      if (!paymentMethodId) {
-        toast.error(lp.subscriptionError);
-  
-        confirmStartedRef.current = false;
-    
-        return;
-      }
-
-      subscribe({ paymentMethodId });
     };
 
     run();
@@ -116,15 +115,24 @@ export function SubscribeForm({ locale, onSuccess }: Props) {
     }
   }, [isSubscribed, onSuccess, lp.subscriptionSuccess]);
 
-  // Ошибки
+  // Ошибки — показываем message из ответа API или дефолтную ошибку
   useEffect(() => {
-    if (createSetupIntentError || subscribeError) {
-      toast.error(lp.subscriptionError);
-    }
+    const getMessage = (err: unknown) => {
+      if (err && typeof err === 'object' && 'data' in err) {
+        const data = (err as { data?: { message?: string } }).data;
+        if (typeof data?.message === 'string') return data.message;
+      }
+      return lp.subscriptionError;
+    };
+  
+    if (createSetupIntentError) toast.error(getMessage(createSetupIntentError));
+  
+    if (subscribeError) toast.error(getMessage(subscribeError));
   }, [createSetupIntentError, subscribeError, lp.subscriptionError]);
 
   const loading =
     isCreatingSetupIntent ||
+    isConfirmingCard ||
     isSubscribing;
 
   const isButtonDisabled =

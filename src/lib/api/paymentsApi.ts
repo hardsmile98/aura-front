@@ -27,18 +27,20 @@ export const paymentsApi = createApi({
   baseQuery: baseQueryWithLogout,
   tagTypes: ['Profile'],
   endpoints: (builder) => ({
-    createSetupIntent: builder.mutation<{ clientSecret: string }, void>({
-      query: () => ({
+    createSetupIntent: builder.mutation<{ clientSecret: string }, { locale: string }>({
+      query: ({ locale }) => ({
         url: '/api/payments/create-setup-intent',
         method: 'POST',
+        params: { locale },
       }),
     }),
 
-    subscribe: builder.mutation<void, { paymentMethodId: string }>({
-      query: ({ paymentMethodId }) => ({
+    subscribe: builder.mutation<void, { paymentMethodId: string; locale: string }>({
+      query: ({ paymentMethodId, locale }) => ({
         url: '/api/payments/subscribe',
         method: 'POST',
         body: { paymentMethodId },
+        params: { locale },
       }),
       invalidatesTags: ['Profile'],
     }),
