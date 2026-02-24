@@ -85,7 +85,7 @@ export function AccountHeader() {
 
   const basePath = `/${locale}/app`;
 
-  const hasSubscription = profile?.subscription && profile.subscription !== 'none';
+  const hasSubscription = profile?.subscription && profile.subscription === 'active';
 
   const subscriptionEndsAt = profile?.subscriptionEndsAt;
 
@@ -221,6 +221,7 @@ export function AccountHeader() {
                       {profile?.email}
                     </p>
                   </div>
+
                   {hasSubscription && subscriptionEndsAt === null && (
                     <button
                       type="button"
@@ -233,6 +234,7 @@ export function AccountHeader() {
                       {t.cancelSubscription}
                     </button>
                   )}
+          
                   <button
                     type="button"
                     onClick={handleLogout}

@@ -358,6 +358,12 @@ export const ru = {
     horoscopeLoadingHintMonth: "Готовим месячный гороскоп...",
     horoscopeError: "Не удалось загрузить гороскоп. Попробуйте ещё раз.",
     horoscopeErrorHint: "Проверьте подключение к интернету и попробуйте снова.",
+    horoscopeNoSubscription: "Нет активной подписки",
+    horoscopeNoSubscriptionHint: "Оформите подписку, чтобы получить доступ к персональному гороскопу.",
+    profileError: "Не удалось загрузить профиль. Попробуйте ещё раз.",
+    profileErrorHint: "Проверьте подключение к интернету и попробуйте снова.",
+    profileLoading: "Загружаем ваш профиль...",
+    profileLoadingHint: "Подождите немного.",
   },
   footer: {
     prefix: "Продолжая, ты соглашаешься с нашими ",

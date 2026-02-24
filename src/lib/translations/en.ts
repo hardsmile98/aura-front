@@ -358,6 +358,12 @@ export const en = {
     horoscopeLoadingHintMonth: "Preparing monthly horoscope...",
     horoscopeError: "Failed to load your horoscope. Please try again.",
     horoscopeErrorHint: "Check your connection and try again.",
+    horoscopeNoSubscription: "No active subscription",
+    horoscopeNoSubscriptionHint: "Subscribe to access your personalized horoscope.",
+    profileError: "Failed to load profile. Please try again.",
+    profileErrorHint: "Check your connection and try again.",
+    profileLoading: "Loading your profile...",
+    profileLoadingHint: "Please wait a moment.",
   },
   footer: {
     prefix: "By continuing, you agree to our ",
