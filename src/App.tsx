@@ -22,6 +22,8 @@ import {
   HomeLandingPage,
   HoroscopesPage,
   InsightsPage,
+  SoulmateSketchPage,
+  BabySketchPage,
   ExpertPage,
   WelcomePage,
   QuizPage,
@@ -170,6 +172,28 @@ export function App() {
                 <AppRouteGuard>
                   <AppLayout>
                     <InsightsPage />
+                  </AppLayout>
+                </AppRouteGuard>
+              }
+            />
+
+            <Route
+              path="app/soulmate-sketch"
+              element={
+                <AppRouteGuard>
+                  <AppLayout>
+                    <SoulmateSketchPage />
+                  </AppLayout>
+                </AppRouteGuard>
+              }
+            />
+
+            <Route
+              path="app/baby-sketch"
+              element={
+                <AppRouteGuard>
+                  <AppLayout>
+                    <BabySketchPage />
                   </AppLayout>
                 </AppRouteGuard>
               }

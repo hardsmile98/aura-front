@@ -336,6 +336,16 @@ export const ru = {
     horoscopes: "Гороскопы",
     insights: "Инсайты",
     insightsPlaceholder: "Ваши персональные инсайты скоро появятся здесь.",
+    soulmateSketchTitle: "Эскиз родственной души",
+    soulmateSketchDesc:
+      "Увидьте свою родственную душу в персональном эскизе и исследуйте романтический потенциал, предназначенный для вас.",
+    soulmateSketchCta: "Открыть эскиз родственной души",
+    soulmateSketchPagePlaceholder: "Ваш эскиз родственной души скоро появится здесь.",
+    futureBabySketchTitle: "Эскиз будущего ребёнка",
+    futureBabySketchDesc:
+      "Узнайте, как может выглядеть ваш будущий ребёнок, в персональном эскизе и исследуйте черты и связь, предназначенные для вашей семьи.",
+    futureBabySketchCta: "Открыть эскиз будущего ребёнка",
+    futureBabySketchPagePlaceholder: "Ваш эскиз будущего ребёнка скоро появится здесь.",
     expertHelp: "Помощь эксперта",
     tabToday: "Сегодня",
     tabWeek: "Неделя",

@@ -336,6 +336,16 @@ export const en = {
     horoscopes: "Horoscopes",
     insights: "Insights",
     insightsPlaceholder: "Your personalized insights will appear here soon.",
+    soulmateSketchTitle: "Soulmate Sketch Reading",
+    soulmateSketchDesc:
+      "See your soulmate through a personalized sketch and explore the romantic potential destined for you.",
+    soulmateSketchCta: "Access Soulmate Sketch Reading",
+    soulmateSketchPagePlaceholder: "Your soulmate sketch will appear here soon.",
+    futureBabySketchTitle: "Future Baby Sketch Reading",
+    futureBabySketchDesc:
+      "Discover what your future child might look like through a personalized sketch and explore the traits and connection destined for your family.",
+    futureBabySketchCta: "Access Future Baby Sketch Reading",
+    futureBabySketchPagePlaceholder: "Your future baby sketch will appear here soon.",
     expertHelp: "Expert Help",
     tabToday: "Today",
     tabWeek: "Week",
