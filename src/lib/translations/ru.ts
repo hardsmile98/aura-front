@@ -331,6 +331,11 @@ export const ru = {
     logo: "Aura",
     logout: "Выйти",
     cancelSubscription: "Отменить подписку",
+    cancelSubscriptionConfirmTitle: "Отменить подписку?",
+    cancelSubscriptionConfirmMessage:
+      "При отмене вы потеряете доступ ко всем преимуществам: гороскопы, эскиз родственной души, эскиз будущего ребёнка, помощь эксперта и другие функции.",
+    cancelSubscriptionConfirm: "Да, отменить",
+    cancelSubscriptionConfirmBack: "Оставить подписку",
     cancelSubscriptionSuccess: "Подписка отменена",
     cancelSubscriptionError: "Не удалось отменить подписку",
     horoscopes: "Гороскопы",

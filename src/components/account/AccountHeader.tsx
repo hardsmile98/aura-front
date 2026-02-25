@@ -5,7 +5,7 @@ import type { AppDispatch } from '@/lib/store';
 import { clearAuth } from '@/lib/auth';
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
-import { UserCircleIcon, LogoutIcon, CreditCardIcon } from '@/components/icons';
+import { UserCircleIcon, LogoutIcon, CreditCardIcon, CloseIcon } from '@/components/icons';
 import { LocaleLink } from '@/components/shared';
 import { ACCOUNT_MENU_ITEMS } from './accountMenuConfig';
 import { containerClass } from '@/lib/ui/container';
@@ -75,6 +75,8 @@ export function AccountHeader() {
 
   const [localeMenuOpen, setLocaleMenuOpen] = useState(false);
 
+  const [cancelModalOpen, setCancelModalOpen] = useState(false);
+
   const userMenuRef = useRef<HTMLDivElement>(null);
 
   const localeMenuRef = useRef<HTMLDivElement>(null);
@@ -92,6 +94,7 @@ export function AccountHeader() {
   const handleCancelSubscription = useCallback(async () => {
     try {
       await cancelSubscription({ locale }).unwrap();
+      setCancelModalOpen(false);
       setUserMenuOpen(false);
       toast.success(t.cancelSubscriptionSuccess);
     } catch (err) {
@@ -101,6 +104,11 @@ export function AccountHeader() {
       toast.error(msg ?? t.cancelSubscriptionError);
     }
   }, [cancelSubscription, locale, t]);
+
+  const handleOpenCancelModal = useCallback(() => {
+    setUserMenuOpen(false);
+    setCancelModalOpen(true);
+  }, []);
 
   const handleLogout = useCallback(() => {
     setUserMenuOpen(false);
@@ -127,6 +135,20 @@ export function AccountHeader() {
 
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setCancelModalOpen(false);
+    };
+    if (cancelModalOpen) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = '';
+    };
+  }, [cancelModalOpen]);
 
   const labels = {
     horoscopes: t.horoscopes,
@@ -226,12 +248,11 @@ export function AccountHeader() {
                   {hasSubscription && subscriptionEndsAt === null && (
                     <button
                       type="button"
-                      onClick={handleCancelSubscription}
-                      disabled={isCancelling}
+                      onClick={handleOpenCancelModal}
                       role="menuitem"
-                      className="flex items-center gap-2 w-full px-4 py-3 text-sm font-medium text-red-600 hover:bg-red-50 cursor-pointer transition-colors text-left disabled:opacity-50"
+                      className="flex items-center gap-2 w-full px-4 py-3 text-sm font-medium text-zinc-700 hover:bg-zinc-50 cursor-pointer transition-colors text-left"
                     >
-                      <CreditCardIcon className="w-5 h-5 shrink-0 text-red-600" />
+                      <CreditCardIcon className="w-5 h-5 shrink-0 text-zinc-500" />
                       {t.cancelSubscription}
                     </button>
                   )}
@@ -251,6 +272,52 @@ export function AccountHeader() {
           </div>
         </div>
       </div>
+
+      {cancelModalOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50"
+          onClick={(e) => e.target === e.currentTarget && setCancelModalOpen(false)}
+        >
+          <div
+            className="w-full max-w-md bg-white rounded-2xl shadow-xl p-6 relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setCancelModalOpen(false)}
+              className="absolute top-4 right-4 p-1 rounded-lg text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 transition-colors cursor-pointer"
+              aria-label="Close"
+            >
+              <CloseIcon className="w-5 h-5" />
+            </button>
+
+            <h2 className="text-xl font-semibold text-zinc-900 mb-3 pr-8">
+              {t.cancelSubscriptionConfirmTitle}
+            </h2>
+            <p className="text-sm text-zinc-600 mb-6 leading-relaxed">
+              {t.cancelSubscriptionConfirmMessage}
+            </p>
+
+            <div className="flex flex-col gap-3">
+              <button
+                type="button"
+                onClick={handleCancelSubscription}
+                disabled={isCancelling}
+                className="w-full py-3 px-4 bg-red-600 hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-colors"
+              >
+                {isCancelling ? '...' : t.cancelSubscriptionConfirm}
+              </button>
+              <button
+                type="button"
+                onClick={() => setCancelModalOpen(false)}
+                className="w-full py-3 px-4 bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-medium rounded-xl transition-colors"
+              >
+                {t.cancelSubscriptionConfirmBack}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

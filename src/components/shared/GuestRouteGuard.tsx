@@ -7,8 +7,9 @@ type Props = {
 
 /**
  * Protects guest routes (landing, soulmate, email, promo-code).
- * Authorized + subscription=none -> landing-paywall.
- * Authorized + subscription!=none -> app.
+ * Unauthorized -> show content.
+ * Authorized + subscription=active -> redirect to app.
+ * Authorized + subscription=none -> redirect to paywall.
  */
 export function GuestRouteGuard({ children }: Props) {
   const { isLoading, redirectTo } = useSubscriptionRedirect('guest');

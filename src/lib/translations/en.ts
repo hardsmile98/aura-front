@@ -331,6 +331,11 @@ export const en = {
     logo: "Aura",
     logout: "Log out",
     cancelSubscription: "Cancel subscription",
+    cancelSubscriptionConfirmTitle: "Cancel subscription?",
+    cancelSubscriptionConfirmMessage:
+      "If you cancel, you will lose access to all benefits: horoscopes, soulmate sketch, future baby sketch, expert help and other features.",
+    cancelSubscriptionConfirm: "Yes, cancel",
+    cancelSubscriptionConfirmBack: "Keep subscription",
     cancelSubscriptionSuccess: "Subscription cancelled",
     cancelSubscriptionError: "Failed to cancel subscription",
     horoscopes: "Horoscopes",
