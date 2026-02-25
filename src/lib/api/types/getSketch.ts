@@ -1,8 +1,10 @@
-export type GetSketchResponse = {
-  sketch: {
-    [key: string]: string;
-  }
-};
+export type GetSketchResponse =
+  | { status: 'pending' }
+  | { status: 'failed'; error?: string }
+  | {
+      status: 'completed';
+      sketch: { [key: string]: string };
+    };
 
 export const SOULMATE_SECTION_KEYS = [
   'intro',

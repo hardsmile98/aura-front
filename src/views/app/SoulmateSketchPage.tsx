@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getTranslations } from "@/lib/translations";
 import { toLocale } from "@/lib/i18n";
@@ -47,6 +48,8 @@ function SketchLoader({ loadingText, hintText }: SketchLoaderProps) {
   );
 }
 
+const POLL_INTERVAL_MS = 10_000;
+
 export function SoulmateSketchPage() {
   const { locale: localeParam } = useParams<{ locale: string }>();
 
@@ -54,11 +57,26 @@ export function SoulmateSketchPage() {
 
   const t = getTranslations(locale).account;
 
+  const [shouldPoll, setShouldPoll] = useState(false);
+
   const {
     data: sketchData,
     isLoading: isSketchLoading,
     isError: isSketchError,
-  } = useGetSketchQuery({ type: "soulmate", locale });
+  } = useGetSketchQuery(
+    { type: "soulmate", locale },
+    { pollingInterval: shouldPoll ? POLL_INTERVAL_MS : 0 },
+  );
+
+  const reportStatus = sketchData?.status;
+
+  useEffect(() => {
+    if (reportStatus === 'pending') {
+      setShouldPoll(true);
+    } else {
+      setShouldPoll(false);
+    }
+  }, [reportStatus]);
 
   const {
     data: profile,
@@ -68,7 +86,8 @@ export function SoulmateSketchPage() {
 
   const quizResult = profile?.quizResult;
 
-  const sketch = sketchData?.sketch;
+  const sketch =
+    sketchData?.status === "completed" ? sketchData.sketch : undefined;
 
   const gender = quizResult?.interest;
 
@@ -79,9 +98,13 @@ export function SoulmateSketchPage() {
       ? `/sketchs/sketch-man-${sketchIndex}.jpg`
       : `/sketchs/sketch-woman-${sketchIndex}.jpg`;
 
-  const isLoading = isSketchLoading || isProfileLoading;
-  
-  const isError = isProfileError || isSketchError;
+  const isLoading =
+    isSketchLoading || isProfileLoading || sketchData?.status === "pending";
+
+  const isError =
+    isProfileError ||
+    isSketchError ||
+    sketchData?.status === "failed";
 
   return (
     <div className="w-full">
@@ -104,7 +127,11 @@ export function SoulmateSketchPage() {
         <div className="bg-white rounded-xl md:rounded-2xl p-6 md:p-10 shadow-sm border border-zinc-100">
           <SketchError
             title={t.soulmateSketchError}
-            hint={t.soulmateSketchErrorHint}
+            hint={
+              sketchData?.status === "failed" && sketchData.error
+                ? sketchData.error
+                : t.soulmateSketchErrorHint
+            }
           />
         </div>
       ) : (

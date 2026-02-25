@@ -1,9 +1,17 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getTranslations } from '@/lib/translations';
 import { toLocale } from '@/lib/i18n';
 import { useGetHoroscopeQuery, useGetProfileQuery } from '@/lib/api/userApi';
-import { HeartFilledIcon, BriefcaseIcon, HeartPulseIcon, CoinsIcon, HomeIcon, PlaneIcon, UserCircleIcon } from '@/components/icons';
+import {
+  HeartFilledIcon,
+  BriefcaseIcon,
+  HeartPulseIcon,
+  CoinsIcon,
+  HomeIcon,
+  PlaneIcon,
+  UserCircleIcon,
+} from '@/components/icons';
 import type { ComponentType } from 'react';
 
 type TabKey = 'today' | 'week' | 'month';
@@ -23,7 +31,26 @@ const DIRECTION_KEYS = [
   'directionTravel',
 ] as const;
 
-const HOROSCOPE_KEYS = ['love', 'career', 'health', 'finance', 'family', 'travel'] as const;
+const HOROSCOPE_T_KEYS = [
+  ...DIRECTION_KEYS,
+  'horoscopeNoSubscription',
+  'horoscopeNoSubscriptionHint',
+  'horoscopeLoading',
+  'horoscopeLoadingHintDay',
+  'horoscopeLoadingHintWeek',
+  'horoscopeLoadingHintMonth',
+  'horoscopeError',
+  'horoscopeErrorHint',
+] as const;
+
+const HOROSCOPE_KEYS = [
+  'love',
+  'career',
+  'health',
+  'finance',
+  'family',
+  'travel',
+] as const;
 
 const DIRECTION_ICONS = [
   HeartFilledIcon,
@@ -62,8 +89,7 @@ function HoroscopeLoader({ loadingText, hintText }: HoroscopeLoaderProps) {
           <span
             key={i}
             className="text-2xl animate-horoscope-star"
-            style={{ animationDelay: `${i * 0.3}s` }}
-          >
+            style={{ animationDelay: `${i * 0.3}s` }}>
             ✦
           </span>
         ))}
@@ -113,12 +139,14 @@ type HoroscopeNoSubscriptionProps = {
   hint: string;
 };
 
-function HoroscopeNoSubscription({ title, hint }: HoroscopeNoSubscriptionProps) {
+function HoroscopeNoSubscription({
+  title,
+  hint,
+}: HoroscopeNoSubscriptionProps) {
   return (
     <div
       role="alert"
-      className="flex gap-4 p-5 md:p-6 rounded-xl md:rounded-2xl border-amber-500 bg-amber-50/80 border border-amber-100 shadow-sm"
-    >
+      className="flex gap-4 p-5 md:p-6 rounded-xl md:rounded-2xl border-amber-500 bg-amber-50/80 border border-amber-100 shadow-sm">
       <div className="shrink-0 w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center">
         <span className="text-2xl text-amber-600">✦</span>
       </div>
@@ -159,6 +187,8 @@ type HoroscopeContentProps = {
   t: Record<string, string>;
 };
 
+const POLL_INTERVAL_MS = 10_000;
+
 function HoroscopeContent({
   activeTab,
   locale,
@@ -166,14 +196,28 @@ function HoroscopeContent({
   t,
 }: HoroscopeContentProps) {
   const period = TAB_TO_PERIOD[activeTab];
+  const [shouldPoll, setShouldPoll] = useState(false);
 
-  const { data, isFetching, error } = useGetHoroscopeQuery(
+  const { data, isLoading, isError } = useGetHoroscopeQuery(
     { period, locale },
-    { skip: !hasActiveSubscription }
+    {
+      skip: !hasActiveSubscription,
+      pollingInterval: shouldPoll ? POLL_INTERVAL_MS : 0,
+    },
   );
 
+  const reportStatus = data?.status;
+
+  useEffect(() => {
+    if (reportStatus === 'pending') {
+      setShouldPoll(true);
+    } else {
+      setShouldPoll(false);
+    }
+  }, [reportStatus]);
+
   const horoscopeEntries = useMemo(() => {
-    if (!data?.horoscope) return null;
+    if (data?.status !== 'completed' || !data.horoscope) return null;
 
     return DIRECTION_KEYS.map((dirKey, i) => ({
       label: t[dirKey],
@@ -190,7 +234,8 @@ function HoroscopeContent({
     );
   }
 
-  if (isFetching) {
+  const showLoader = isLoading || data?.status === 'pending';
+  if (showLoader) {
     return (
       <HoroscopeLoader
         loadingText={t.horoscopeLoading}
@@ -205,12 +250,16 @@ function HoroscopeContent({
     );
   }
 
-  if (error) {
+  const showError = isError || data?.status === 'failed';
+
+  if (showError) {
+    const errorHint =
+      data?.status === 'failed' && data.error
+        ? data.error
+        : t.horoscopeErrorHint;
+  
     return (
-      <HoroscopeError
-        title={t.horoscopeError}
-        hint={t.horoscopeErrorHint}
-      />
+      <HoroscopeError title={t.horoscopeError} hint={errorHint} />
     );
   }
 
@@ -237,7 +286,11 @@ export function HoroscopesPage() {
 
   const [activeTab, setActiveTab] = useState<TabKey>('today');
 
-  const { data: profile, isLoading: profileLoading, isError: isProfileError } = useGetProfileQuery();
+  const {
+    data: profile,
+    isLoading: profileLoading,
+    isError: isProfileError,
+  } = useGetProfileQuery();
 
   const hasActiveSubscription = profile?.subscription === 'active';
 
@@ -262,8 +315,7 @@ export function HoroscopesPage() {
               activeTab === tab.key
                 ? 'bg-violet-600 text-white shadow-md'
                 : 'text-zinc-600 hover:bg-zinc-300/50 hover:text-zinc-900'
-            }`}
-          >
+            }`}>
             {tab.label}
           </button>
         ))}
@@ -276,16 +328,17 @@ export function HoroscopesPage() {
             hintText={t.profileLoadingHint}
           />
         ) : isProfileError ? (
-          <ProfileError
-            title={t.profileError}
-            hint={t.profileErrorHint}
-          />
+          <ProfileError title={t.profileError} hint={t.profileErrorHint} />
         ) : (
           <HoroscopeContent
             activeTab={activeTab}
             locale={locale}
             hasActiveSubscription={hasActiveSubscription}
-            t={t}
+            t={
+              Object.fromEntries(
+                HOROSCOPE_T_KEYS.map((k) => [k, t[k]]),
+              ) as Record<string, string>
+            }
           />
         )}
       </div>
