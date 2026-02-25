@@ -160,10 +160,10 @@ export function LandingPaywallSubscription({ locale }: Props) {
                 {lp.subscriptionTotalDue}
               </span>
               <div className="text-right">
-                <span className="line-through text-zinc-400 text-sm mr-2">
+                <span className="font-bold text-zinc-900">
                   {lp.plan1Price}
                 </span>
-                <span className="font-bold text-zinc-900">{lp.plan1PriceStruck}</span>
+                <span className="text-zinc-900">{lp.plan1PriceStruck}</span>
                 <p className="text-sm text-emerald-600 font-medium mt-0.5">
                   {lp.subscriptionPromoYouSave}
                 </p>

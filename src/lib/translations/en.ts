@@ -581,8 +581,8 @@ export const en = {
       "Get an in-depth reading based on your birth chart and a psychic analysis",
     subscriptionBullet4:
       "Access to daily horoscope, psychic readings & more",
-    plan1Price: "$1 for 3 days, then $29.99/month",
-    plan1PriceStruck: "$7.5/week",
+    plan1Price: "$1 for 3 days",
+    plan1PriceStruck: ", then $29.99/month",
     continuePayment: "Continue with payment",
     usersPortraits: "Our Users' Soulmate Portraits",
     karmicLoveGuide: "Karmic Love Guide",
