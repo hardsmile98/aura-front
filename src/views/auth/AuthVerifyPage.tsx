@@ -44,7 +44,7 @@ function AuthVerifyContent({ locale }: AuthVerifyContentProps) {
       if (profile?.subscription === 'none') {
         navigate(`/${toLocale(locale)}/landing-paywall`, { replace: true });
       } else {
-        navigate(`/${toLocale(locale)}/app/horoscopes`, { replace: true });
+        navigate(`/${toLocale(locale)}/app/insights`, { replace: true });
       }
     };
 
