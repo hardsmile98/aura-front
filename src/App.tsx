@@ -37,7 +37,7 @@ import {
   AuthVerifyPage,
 } from '@/views';
 import { ReviewRedirect } from '@/components/soulmate';
-import { YandexMetrika } from '@/components/analytics';
+import { YandexMetrika, MetaPixel } from '@/components/analytics';
 import { isValidLocale, defaultLocale } from '@/lib/i18n';
 import { getTranslations } from '@/lib/translations';
 import type { Locale } from '@/lib/translations';
@@ -115,6 +115,9 @@ export function App() {
       />
       <BrowserRouter>
         <YandexMetrika />
+
+        <MetaPixel />
+
         <StripeProvider>
         <Routes>
           <Route path="/" element={<RootRedirect />} />

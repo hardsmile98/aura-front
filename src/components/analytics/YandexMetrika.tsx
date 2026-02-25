@@ -12,7 +12,7 @@ const COUNTER_ID = import.meta.env.VITE_YANDEX_METRIKA_ID
   : null;
 
 function initYandexMetrika() {
-  if (typeof window === 'undefined' || !COUNTER_ID || window.ym) return;
+  if (!COUNTER_ID || window.ym) return;
 
   const script = document.createElement('script');
   script.type = 'text/javascript';
@@ -25,6 +25,7 @@ function initYandexMetrika() {
     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
     ym(${COUNTER_ID}, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
   `;
+
   document.head.appendChild(script);
 }
 
@@ -32,7 +33,11 @@ export function YandexMetrika() {
   const location = useLocation();
 
   useEffect(() => {
-    initYandexMetrika();
+    try {
+      initYandexMetrika();
+    } catch (error) {
+      console.error('Error initializing Yandex Metrika:', error);
+    }
   }, []);
 
   useEffect(() => {
@@ -40,7 +45,7 @@ export function YandexMetrika() {
 
     const url = window.location.origin + location.pathname + location.search;
 
-    window.ym(COUNTER_ID, 'hit', url, {
+    window?.ym?.(COUNTER_ID, 'hit', url, {
       title: document.title,
       referrer: document.referrer || undefined,
     });
