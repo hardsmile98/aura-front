@@ -559,7 +559,7 @@ export const en = {
     subscriptionBenefit3:
       "Gain personalized insights based on astrology and spiritual alignment",
     subscriptionBenefit4:
-      "Access to daily horoscope, psychic readings & more",
+      "Your 3-day trial will cost only $1.00. After that — $29.99/month",
     subscriptionPromoReport: "Your Free Astrocartography Report Awaits",
     subscriptionPromoClaimed: "Offer Claimed",
     subscriptionPromoCodePrefix: "Promo Code ",
@@ -599,8 +599,8 @@ export const en = {
       "Get an in-depth reading based on your birth chart and a psychic analysis",
     subscriptionBullet4:
       "Access to daily horoscope, psychic readings & more",
-    plan1Price: "$1 for 3 days",
-    plan1PriceStruck: ", then $29.99/month",
+    plan1Price: "$1.00",
+    plan1PriceStruck: "$14.99",
     continuePayment: "Continue with payment",
     usersPortraits: "Our Users' Soulmate Portraits",
     karmicLoveGuide: "Karmic Love Guide",
