@@ -36,6 +36,7 @@ import {
   NotFoundPage,
   AuthVerifyPage,
 } from '@/views';
+import { ProfilePage } from '@/views/app/ProfilePage';
 import { ReviewRedirect } from '@/components/soulmate';
 import { YandexMetrika, MetaPixel } from '@/components/analytics';
 import { isValidLocale, defaultLocale } from '@/lib/i18n';
@@ -85,13 +86,13 @@ type LocaleRouteProps = {
 };
 
 function LocaleRoute({ children }: LocaleRouteProps) {
-  const { locale } = useParams<{ locale: string }>();
+  const { locale: maybeLocale } = useParams<{ locale: string }>();
 
-  if (!locale || !isValidLocale(locale)) {
+  if (!maybeLocale || !isValidLocale(maybeLocale)) {
     return <Navigate to={`/${defaultLocale}`} replace />;
   }
 
-  return <>{children(locale)}</>;
+  return <>{children(maybeLocale)}</>;
 }
 
 function LocaleReviewIdRoute() {
@@ -208,6 +209,17 @@ export function App() {
                 <AppRouteGuard>
                   <AppLayout>
                     <ExpertPage />
+                  </AppLayout>
+                </AppRouteGuard>
+              }
+            />
+
+            <Route
+              path="app/profile"
+              element={
+                <AppRouteGuard>
+                  <AppLayout>
+                    <ProfilePage />
                   </AppLayout>
                 </AppRouteGuard>
               }

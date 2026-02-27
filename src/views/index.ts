@@ -7,6 +7,7 @@ export {
   SoulmateSketchPage,
   BabySketchPage,
   ExpertPage,
+  ProfilePage,
 } from './app';
 export { PrivacyNoticePage, EulaPage } from './legal';
 export { AuthVerifyPage } from './auth';

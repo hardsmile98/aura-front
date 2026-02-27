@@ -19,9 +19,12 @@ type Result = {
  */
 export function useSubscriptionRedirect(routeType: RouteType): Result {
   const { locale: localeParam } = useParams<{ locale: string }>();
-  const locale = localeParam && isValidLocale(localeParam) ? localeParam : defaultLocale;
+  const locale =
+    localeParam && isValidLocale(localeParam) ? localeParam : defaultLocale;
 
-  const isAuthorized = useSelector((state: RootState) => state.auth.isAuthorized);
+  const isAuthorized = useSelector(
+    (state: RootState) => state.auth.isAuthorized,
+  );
 
   const { data: profile, isLoading } = useGetProfileQuery(undefined, {
     skip: !isAuthorized,
@@ -31,33 +34,77 @@ export function useSubscriptionRedirect(routeType: RouteType): Result {
 
   if (routeType === 'guest') {
     if (!isAuthorized) {
-      return { isLoading: false, redirectTo: null, showSubscriptionModal: false };
+      return {
+        isLoading: false,
+        redirectTo: null,
+        showSubscriptionModal: false,
+      };
     }
+
     if (isLoading) {
-      return { isLoading: true, redirectTo: null, showSubscriptionModal: false };
+      return {
+        isLoading: true,
+        redirectTo: null,
+        showSubscriptionModal: false,
+      };
     }
+
     if (subscription === 'active') {
-      return { isLoading: false, redirectTo: `/${locale}/app/insights`, showSubscriptionModal: false };
+      return {
+        isLoading: false,
+        redirectTo: `/${locale}/app/insights`,
+        showSubscriptionModal: false,
+      };
     }
+
     if (subscription === 'none') {
-      return { isLoading: false, redirectTo: `/${locale}/landing-paywall`, showSubscriptionModal: false };
+      return {
+        isLoading: false,
+        redirectTo: `/${locale}/landing-paywall`,
+        showSubscriptionModal: false,
+      };
     }
-    return { isLoading: false, redirectTo: `/${locale}/app/insights`, showSubscriptionModal: false };
+
+    return {
+      isLoading: false,
+      redirectTo: `/${locale}/app/insights`,
+      showSubscriptionModal: false,
+    };
   }
 
   if (routeType === 'app') {
     if (!isAuthorized) {
-      return { isLoading: false, redirectTo: `/${locale}`, showSubscriptionModal: false };
+      return {
+        isLoading: false,
+        redirectTo: `/${locale}`,
+        showSubscriptionModal: false,
+      };
     }
+
     if (isLoading) {
-      return { isLoading: true, redirectTo: null, showSubscriptionModal: false };
+      return {
+        isLoading: true,
+        redirectTo: null,
+        showSubscriptionModal: false,
+      };
     }
+
     if (subscription === 'none') {
-      return { isLoading: false, redirectTo: `/${locale}/landing-paywall`, showSubscriptionModal: false };
+      return {
+        isLoading: false,
+        redirectTo: `/${locale}/landing-paywall`,
+        showSubscriptionModal: false,
+      };
     }
+
     if (subscription === 'active') {
-      return { isLoading: false, redirectTo: null, showSubscriptionModal: false };
+      return {
+        isLoading: false,
+        redirectTo: null,
+        showSubscriptionModal: false,
+      };
     }
+
     return {
       isLoading: false,
       redirectTo: null,
